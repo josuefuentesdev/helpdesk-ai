@@ -4,7 +4,7 @@ import { auth } from "@/server/auth"
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
 import { Separator } from "@/components/ui/separator"
-import BreadcrumbNav from "@/components/breadcrumb-nav"
+import { BreadcrumbNav } from "@/components/breadcrumb-nav"
 import { UserAccountNav } from "@/components/user-account-nav"
 import { ModeToggle } from "@/components/mode-toggle"
 
