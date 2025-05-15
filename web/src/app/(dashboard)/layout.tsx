@@ -1,10 +1,20 @@
+import { redirect } from "next/navigation"
+import { auth } from "@/server/auth"
+
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
 import { Separator } from "@/components/ui/separator"
 import BreadcrumbNav from "@/components/breadcrumb-nav"
+import { UserAccountNav } from "@/components/user-account-nav"
 
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default async function Layout({ children }: { children: React.ReactNode }) {
+  const session = await auth();
+
+  if (!session?.user) {
+    redirect("/signin");
+  }
+
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -13,6 +23,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <SidebarTrigger className="-ml-1" />
           <Separator orientation="vertical" className="mr-2 h-4" />
           <BreadcrumbNav />
+          <div className="flex-1" />
+          <UserAccountNav user={session?.user} />
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
           {children}
