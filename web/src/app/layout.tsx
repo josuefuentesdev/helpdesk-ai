@@ -4,6 +4,9 @@ import { type Metadata } from "next";
 import { Geist } from "next/font/google";
 
 import { TRPCReactProvider } from "@/trpc/react";
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale } from 'next-intl/server';
+import { ThemeProvider } from "next-themes";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -16,13 +19,26 @@ const geist = Geist({
   variable: "--font-geist-sans",
 });
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const locale = await getLocale();
+
   return (
-    <html lang="en" className={`${geist.variable}`}>
+    <html lang={locale} className={`${geist.variable}`} suppressHydrationWarning>
       <body>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+        <NextIntlClientProvider>
+          <TRPCReactProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              {children}
+            </ThemeProvider>
+          </TRPCReactProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
