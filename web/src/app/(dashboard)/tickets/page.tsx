@@ -1,7 +1,9 @@
+import { TicketDataTable } from "@/components/ticket-table/ticket-data-table";
+
 export default function Page() {
   return (
-    <div className="flex h-full w-full items-center justify-center">
-      <h1 className="text-2xl font-bold">Tickets</h1>
+    <div className="hidden h-full flex-1 flex-col p-4 md:flex">
+      <TicketDataTable />
     </div>
   )
 }
