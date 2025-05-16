@@ -1,9 +1,10 @@
-import { redirect } from "next/navigation"
-import { providerMap } from "@/server/auth/config"
-import { signIn, } from "@/server/auth"
-import { AuthError } from "next-auth"
+/* eslint-disable @next/next/no-img-element */
+import Image from 'next/image'
+import { getTranslations } from 'next-intl/server';
+import { LoginForm } from "./login-form"
+import { auth } from '@/server/auth';
+import { redirect } from 'next/navigation';
 
-const SIGNIN_ERROR_URL = "/error"
 
 export default async function SignInPage({
   searchParams,
@@ -12,61 +13,41 @@ export default async function SignInPage({
 }) {
   const resolvedSearchParams = await searchParams
 
-  return (
-    <div className="flex flex-col gap-2">
-      <form
-        action={async (formData) => {
-          "use server"
-          try {
-            await signIn("credentials", formData)
-          } catch (error) {
-            if (error instanceof AuthError) {
-              return redirect(`${SIGNIN_ERROR_URL}?error=${error.type}`)
-            }
-            throw error
-          }
-        }}
-      >
-        <label htmlFor="email">
-          Email
-          <input name="email" id="email" />
-        </label>
-        <label htmlFor="password">
-          Password
-          <input name="password" id="password" />
-        </label>
-        <input type="submit" value="Sign In" />
-      </form>
-      {Object.values(providerMap).map((provider) => (
-        <form
-          key={provider.id}
-          action={async () => {
-            "use server"
-            try {
-              await signIn(provider.id, {
-                redirectTo: resolvedSearchParams?.callbackUrl ?? "",
-              })
-            } catch (error) {
-              // Signin can fail for a number of reasons, such as the user
-              // not existing, or the user not having the correct role.
-              // In some cases, you may want to redirect to a custom error
-              if (error instanceof AuthError) {
-                return redirect(`${SIGNIN_ERROR_URL}?error=${error.type}`)
-              }
+  const session = await auth();
 
-              // Otherwise if a redirects happens Next.js can handle it
-              // so you can just re-thrown the error and let Next.js handle it.
-              // Docs:
-              // https://nextjs.org/docs/app/api-reference/functions/redirect#server-component
-              throw error
-            }
-          }}
-        >
-          <button type="submit">
-            <span>Sign in with {provider.name}</span>
-          </button>
-        </form>
-      ))}
+  if (session?.user) {
+    redirect("/");
+  }
+
+  const t = await getTranslations('SignInPage');
+
+  return (
+    <div className="grid min-h-svh lg:grid-cols-2">
+      <div className="flex flex-col gap-4 p-6 md:p-10">
+        <div className="flex justify-center gap-2 md:justify-start">
+          <a href="#" className="flex items-center gap-2 font-medium">
+            <Image
+              src="/helpdesk-ai.png"
+              alt="helpdesk-ai logo"
+              width={32}
+              height={32}
+            />
+            Helpdesk AI
+          </a>
+        </div>
+        <div className="flex flex-1 items-center justify-center">
+          <div className="w-full max-w-xs">
+            <LoginForm callbackUrl={resolvedSearchParams.callbackUrl} t={t} />
+          </div>
+        </div>
+      </div>
+      <div className="relative hidden bg-muted lg:block">
+        <img
+          src="/helpdesk-ai-singin.png"
+          alt="Image"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      </div>
     </div>
   )
 }
