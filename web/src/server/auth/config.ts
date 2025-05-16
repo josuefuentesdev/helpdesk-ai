@@ -1,6 +1,6 @@
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { type DefaultSession, type NextAuthConfig } from "next-auth";
-import DiscordProvider from "next-auth/providers/discord";
+import Google from "next-auth/providers/google";
 import type { Provider } from "next-auth/providers"
 
 import { db } from "@/server/db";
@@ -27,7 +27,7 @@ declare module "next-auth" {
 }
 
 const providers: Provider[] = [
-  DiscordProvider,
+  Google,
   /**
    * ...add more providers here.
    *
