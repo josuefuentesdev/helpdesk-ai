@@ -20,7 +20,15 @@ export function LoginForm({
 }) {
   return (
     <div className={cn("flex flex-col gap-6", className)}>
-      <form className="flex flex-col gap-6">
+      <form className="flex flex-col gap-6"
+        action={async (formData) => {
+          "use server"
+          console.log("signInCallbackUrl", callbackUrl)
+          await signIn("resend", formData, {
+            redirectTo: callbackUrl,
+          })
+        }}
+      >
         <div className="flex flex-col items-center gap-2 text-center">
           <h1 className="text-2xl font-bold">{t('title')}</h1>
           <p className="text-balance text-sm text-muted-foreground">

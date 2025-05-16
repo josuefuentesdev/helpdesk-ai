@@ -2,6 +2,8 @@
 import Image from 'next/image'
 import { getTranslations } from 'next-intl/server';
 import { LoginForm } from "./login-form"
+import { auth } from '@/server/auth';
+import { redirect } from 'next/navigation';
 
 
 export default async function SignInPage({
@@ -10,6 +12,12 @@ export default async function SignInPage({
   searchParams: Promise<{ callbackUrl?: string }>
 }) {
   const resolvedSearchParams = await searchParams
+
+  const session = await auth();
+
+  if (session?.user) {
+    redirect("/");
+  }
 
   const t = await getTranslations('SignInPage');
 
