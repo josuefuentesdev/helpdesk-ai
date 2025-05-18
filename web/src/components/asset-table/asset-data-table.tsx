@@ -3,7 +3,7 @@
 import { useMemo } from "react"
 import type { ColumnDef } from "@tanstack/react-table"
 import type { AssetGetAllItem } from "@/types"
-import { DataTable } from "./data-table"
+import { DataTable } from "@/components/data-table/data-table"
 import { useTranslations } from "next-intl"
 import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header"
 
