@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import {
   flexRender,
   getCoreRowModel,
@@ -11,6 +10,8 @@ import {
   useReactTable,
   type ColumnDef, type ColumnFiltersState, type SortingState, type VisibilityState, type Table as TableType
 } from "@tanstack/react-table"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 
 
 interface DataTableProps<TData, TValue> {
@@ -54,7 +55,7 @@ export function DataTable<TData, TValue>({
   return (
     <div>
       {toolbar?.(table)}
-      <div className="rounded-md border">
+      <ScrollArea className="rounded-md border">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -97,7 +98,8 @@ export function DataTable<TData, TValue>({
             )}
           </TableBody>
         </Table>
-      </div>
+        <ScrollBar orientation="horizontal" />
+      </ScrollArea>
     </div>
   )
 }
