@@ -9,18 +9,20 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
-  type ColumnDef, type ColumnFiltersState, type SortingState, type VisibilityState
+  type ColumnDef, type ColumnFiltersState, type SortingState, type VisibilityState, type Table as TableType
 } from "@tanstack/react-table"
 
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
+  toolbar?: (table: TableType<TData>) => React.ReactNode
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  toolbar,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
@@ -51,6 +53,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div>
+      {toolbar?.(table)}
       <div className="rounded-md border">
         <Table>
           <TableHeader>

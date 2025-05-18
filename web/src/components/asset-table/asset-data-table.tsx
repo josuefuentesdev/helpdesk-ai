@@ -6,6 +6,7 @@ import type { AssetGetAllItem } from "@/types"
 import { DataTable } from "@/components/data-table/data-table"
 import { useTranslations } from "next-intl"
 import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header"
+import { AssetDataTableToolbar } from "@/components/asset-table/asset-data-table-toolbar"
 
 
 export function AssetDataTable({ data }: { data: AssetGetAllItem[] }) {
@@ -101,6 +102,7 @@ export function AssetDataTable({ data }: { data: AssetGetAllItem[] }) {
     <DataTable
       columns={columns}
       data={data}
+      toolbar={(table) => <AssetDataTableToolbar table={table} />}
     />
   )
 }
