@@ -14,18 +14,6 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model Post {
-    id        Int      @id @default(autoincrement())
-    name      String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-
-    createdBy   User   @relation(fields: [createdById], references: [id])
-    createdById String
-
-    @@index([name])
-}
-
 // Necessary for Next auth
 model Account {
     id                       String  @id @default(cuid())
@@ -62,7 +50,6 @@ model User {
     image         String?
     accounts      Account[]
     sessions      Session[]
-    posts         Post[]
 }
 
 model VerificationToken {
@@ -71,4 +58,30 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
+}
+
+enum AssetType {
+    hardware
+    software
+    other
+}
+
+model Asset {
+    id              String    @id @default(cuid())
+    type            AssetType
+    subtype         String?
+    name            String
+    serialNumber    String?
+    purchaseDate    DateTime?
+    purchasePrice   Float?
+    currency        String?   @db.Char(3)
+    warrantyExpires DateTime?
+    status          String
+    assignedTo      String?   @db.Uuid
+    customFields    Json?
+    createdAt       DateTime  @default(now())
+    updatedAt       DateTime?
+    deletedAt       DateTime?
+    // TODO: tags
+    // TODO: location
 }

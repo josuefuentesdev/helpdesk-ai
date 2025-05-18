@@ -10,5 +10,21 @@
     "signInWith": "Sign in with",
     "noAccount": "Don't have an account?",
     "signUpLink": "Sign up"
+  },
+  "TicketDataTable": {
+    "id": "ID",
+    "type": "Type",
+    "subtype": "SubType",
+    "name": "Name",
+    "serialNumber": "Serial Number",
+    "purchaseDate": "Purchase Date",
+    "purchasePrice": "Purchase Price",
+    "currency": "",
+    "warrantyExpires": "Warranty Expires",
+    "status": "Status",
+    "assignedTo": "Assigned To",
+    "createdAt": "Created At",
+    "updatedAt": "Updated At",
+    "deletedAt": "Deleted At"
   }
 }
