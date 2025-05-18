@@ -14,18 +14,21 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { DataTableViewOptions } from "./data-table-view-options";
 import { DataTablePagination } from "./data-table-pagination"
+import { cn } from "@/lib/utils"
 
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
-  toolbar?: (table: TableType<TData>) => React.ReactNode
+  toolbar?: (table: TableType<TData>) => React.ReactNode,
+  className?: string
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
   toolbar,
+  className,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
@@ -55,12 +58,12 @@ export function DataTable<TData, TValue>({
   })
 
   return (
-    <div className="space-y-4">
+    <div className={cn("space-y-4 flex flex-col h-full min-h-0", className)}>
       <div className="flex items-center">
         {toolbar?.(table)}
         <DataTableViewOptions table={table} />
       </div>
-      <ScrollArea className="rounded-md border">
+      <ScrollArea className="rounded-md border flex-1 min-h-0">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

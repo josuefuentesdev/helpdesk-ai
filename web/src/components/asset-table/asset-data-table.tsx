@@ -9,7 +9,13 @@ import { DataTableColumnHeader } from "@/components/data-table/data-table-column
 import { AssetDataTableToolbar } from "@/components/asset-table/asset-data-table-toolbar"
 
 
-export function AssetDataTable({ data }: { data: AssetGetAllItem[] }) {
+export function AssetDataTable({
+  data,
+  className,
+}: {
+  data: AssetGetAllItem[],
+  className?: string
+}) {
   const intl = useTranslations('TicketDataTable');
   const columns: ColumnDef<AssetGetAllItem>[] = useMemo(() => [
     {
@@ -103,6 +109,7 @@ export function AssetDataTable({ data }: { data: AssetGetAllItem[] }) {
       columns={columns}
       data={data}
       toolbar={(table) => <AssetDataTableToolbar table={table} />}
+      className={className}
     />
   )
 }
