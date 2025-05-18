@@ -12,6 +12,7 @@ import {
 } from "@tanstack/react-table"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
+import { DataTableViewOptions } from "./data-table-view-options";
 
 
 interface DataTableProps<TData, TValue> {
@@ -54,7 +55,10 @@ export function DataTable<TData, TValue>({
 
   return (
     <div>
-      {toolbar?.(table)}
+      <div className="flex items-center py-4">
+        {toolbar?.(table)}
+        <DataTableViewOptions table={table} />
+      </div>
       <ScrollArea className="rounded-md border">
         <Table>
           <TableHeader>

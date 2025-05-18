@@ -8,7 +8,7 @@ export function AssetDataTableToolbar<TData>({
   table: Table<TData>
 }) {
   return (
-    <div className="flex items-center py-4">
+    <>
       <Input
         placeholder="Filter by name..."
         value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
@@ -17,6 +17,6 @@ export function AssetDataTableToolbar<TData>({
         }
         className="max-w-sm"
       />
-    </div>
+    </>
   );
 }
