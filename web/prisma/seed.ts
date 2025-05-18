@@ -1,25 +1,35 @@
 import { PrismaClient } from '@prisma/client'
+import { faker } from '@faker-js/faker'
+
+import { AssetType } from '@prisma/client'
+
 const prisma = new PrismaClient()
 async function main() {
-  const asset = await prisma.asset.create({
-    data: {
-      type: 'hardware',
-      subtype: 'laptop',
-      name: 'MacBook Pro 16"',
-      serialNumber: 'MBP2025-XYZ123',
-      purchaseDate: new Date('2024-01-15'),
-      purchasePrice: 2999.99,
+  const assets = [];
+  for (let i = 0; i < 20; i++) {
+    assets.push({
+      type: faker.helpers.arrayElement<AssetType>(Object.values(AssetType)),
+      subtype: faker.helpers.arrayElement(['laptop', 'desktop', 'monitor', 'printer']),
+      name: faker.commerce.productName(),
+      serialNumber: faker.string.alphanumeric(12).toUpperCase(),
+      purchaseDate: faker.date.past({ years: 3 }),
+      purchasePrice: Number(faker.commerce.price({ min: 500, max: 4000, dec: 2 })),
       currency: 'USD',
-      warrantyExpires: new Date('2027-01-15'),
-      status: 'active',
-      assignedTo: null, // or a valid UUID if you want to assign
-      customFields: { color: 'Space Gray', ram: '32GB', storage: '1TB SSD' },
+      warrantyExpires: faker.date.future({ years: 3 }),
+      status: faker.helpers.arrayElement(['active', 'inactive', 'retired', 'maintenance']),
+      assignedTo: null,
+      customFields: {
+        color: faker.color.human(),
+        ram: faker.helpers.arrayElement(['8GB', '16GB', '32GB', '64GB']),
+        storage: faker.helpers.arrayElement(['256GB SSD', '512GB SSD', '1TB SSD', '2TB HDD'])
+      },
       createdAt: new Date(),
       updatedAt: new Date(),
       deletedAt: null,
-    },
-  })
-  console.log({ asset })
+    });
+  }
+  const createdAssets = await prisma.asset.createMany({ data: assets });
+  console.log({ createdAssets });
 }
 main()
   .then(async () => {
