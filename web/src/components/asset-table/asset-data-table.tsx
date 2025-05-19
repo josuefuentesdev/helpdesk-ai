@@ -12,9 +12,11 @@ import { AssetDataTableToolbar } from "@/components/asset-table/asset-data-table
 export function AssetDataTable({
   data,
   className,
+  initialColumnVisibility,
 }: {
   data: AssetGetAllItem[],
-  className?: string
+  className?: string,
+  initialColumnVisibility?: Partial<Record<keyof AssetGetAllItem, boolean>>
 }) {
   const intl = useTranslations('TicketDataTable');
   const columns: ColumnDef<AssetGetAllItem>[] = useMemo(() => [
@@ -110,6 +112,7 @@ export function AssetDataTable({
       data={data}
       toolbar={(table) => <AssetDataTableToolbar table={table} />}
       className={className}
+      initialColumnVisibility={initialColumnVisibility}
     />
   )
 }
