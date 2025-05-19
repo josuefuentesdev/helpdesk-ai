@@ -1,11 +1,38 @@
+import { z } from "zod";
 import {
   createTRPCRouter,
   protectedProcedure,
 } from "@/server/api/trpc";
+import { AssetType } from "@prisma/client";
 
 export const assetRouter = createTRPCRouter({
+  getOne: protectedProcedure
+    .input(z.object({ id: z.string() }))
+    .query(({ ctx, input }) => {
+      return ctx.db.asset.findUnique({
+        where: { id: input.id },
+      })
+    }),
+
   getAll: protectedProcedure
     .query(({ ctx }) => {
       return ctx.db.asset.findMany()
     }),
+
+  updateOne: protectedProcedure
+    .input(z.object({
+      id: z.string(),
+      name: z.string(),
+      type: z.nativeEnum(AssetType).nullish(),
+    }))
+    .mutation(({ ctx, input }) => {
+      return ctx.db.asset.update({
+        where: { id: input.id },
+        data: {
+          name: input.name,
+          type: input.type ?? undefined,
+        },
+      })
+    }
+    ),
 });
