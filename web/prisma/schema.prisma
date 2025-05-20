@@ -66,20 +66,26 @@ enum AssetType {
     OTHER
 }
 
+enum AssetStatus {
+    ACTIVE
+    INACTIVE
+    DECOMMISSIONED
+}
+
 model Asset {
-    id              String    @id @default(cuid())
+    id              String      @id @default(cuid())
     type            AssetType
     subtype         String?
     name            String
     serialNumber    String?
     purchaseDate    DateTime?
     purchasePrice   Float?
-    currency        String?   @db.Char(3)
+    currency        String?     @db.Char(3)
     warrantyExpires DateTime?
-    status          String
-    assignedTo      String?   @db.Uuid
+    status          AssetStatus
+    assignedTo      String?     @db.Uuid
     customFields    Json?
-    createdAt       DateTime  @default(now())
+    createdAt       DateTime    @default(now())
     updatedAt       DateTime?
     deletedAt       DateTime?
     // TODO: tags

@@ -1,7 +1,6 @@
-import { PrismaClient } from '@prisma/client'
+import { AssetType, AssetStatus, PrismaClient } from '@prisma/client'
 import { faker } from '@faker-js/faker'
 
-import { AssetType } from '@prisma/client'
 
 const prisma = new PrismaClient()
 async function main() {
@@ -16,7 +15,7 @@ async function main() {
       purchasePrice: Number(faker.commerce.price({ min: 500, max: 4000, dec: 2 })),
       currency: 'USD',
       warrantyExpires: faker.date.future({ years: 3 }),
-      status: faker.helpers.arrayElement(['active', 'inactive', 'retired', 'maintenance']),
+      status: faker.helpers.arrayElement<AssetStatus>(Object.values(AssetStatus)),
       assignedTo: null,
       customFields: {
         color: faker.color.human(),

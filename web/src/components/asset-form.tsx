@@ -16,10 +16,11 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import type { AssetGetOne } from "@/types"
-import { AssetType } from "@prisma/client"
+import { AssetStatus, AssetType } from "@prisma/client"
 import { api } from "@/trpc/react"
 import { useRouter } from "next/navigation"
 import { AssetTypeFormField } from "./asset-type-form-field"
+import { AssetStatusFormField } from "./asset-status-form-field"
 
 const formSchema = z.object({
   type: z.nativeEnum(AssetType)
@@ -28,6 +29,9 @@ const formSchema = z.object({
   name: z.string().min(1, {
     message: "Name is required.",
   }),
+  status: z.nativeEnum(AssetStatus)
+    .default(AssetStatus.ACTIVE)
+    .nullish(),
 })
 
 
@@ -44,6 +48,7 @@ export function AssetForm({
     defaultValues: {
       type: asset.type,
       name: asset.name,
+      status: asset.status,
     },
   })
 
@@ -83,6 +88,7 @@ export function AssetForm({
           )}
         />
         <AssetTypeFormField control={form.control} name="type" />
+        <AssetStatusFormField control={form.control} name="status" />
         <Button type="submit">Submit</Button>
       </form>
     </Form>

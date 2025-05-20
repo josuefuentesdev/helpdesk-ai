@@ -3,7 +3,7 @@ import {
   createTRPCRouter,
   protectedProcedure,
 } from "@/server/api/trpc";
-import { AssetType } from "@prisma/client";
+import { AssetStatus, AssetType } from "@prisma/client";
 
 export const assetRouter = createTRPCRouter({
   getOne: protectedProcedure
@@ -24,6 +24,7 @@ export const assetRouter = createTRPCRouter({
       id: z.string(),
       name: z.string(),
       type: z.nativeEnum(AssetType).nullish(),
+      status: z.nativeEnum(AssetStatus).nullish(),
     }))
     .mutation(({ ctx, input }) => {
       return ctx.db.asset.update({
@@ -31,6 +32,7 @@ export const assetRouter = createTRPCRouter({
         data: {
           name: input.name,
           type: input.type ?? undefined,
+          status: input.status ?? undefined,
         },
       })
     }
