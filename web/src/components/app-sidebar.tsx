@@ -10,17 +10,23 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
+
 const items = [
   {
     title: "Home",
-    url: "#",
+    url: "/",
     icon: Icons.home,
   },
   {
     title: "Tickets",
-    url: "#",
+    url: "/tickets",
     icon: Icons.ticket,
   },
+  {
+    title: "Assets",
+    url: "/assets",
+    icon: Icons.assets,
+  }
 ]
 
 export function AppSidebar() {
