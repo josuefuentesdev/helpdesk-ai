@@ -5,10 +5,12 @@ import { api } from "@/trpc/server"
 export default async function AssetPage({
   params,
 }: {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }) {
+  const { id } = await params
+
   const asset = await api.asset.getOne({
-    id: params.id,
+    id: id,
   })
 
   if (!asset) {

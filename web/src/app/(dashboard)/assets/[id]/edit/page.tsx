@@ -5,10 +5,12 @@ import { EditAssetForm } from "@/components/edit-asset-form"
 export default async function EditAssetPage({
   params,
 }: {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }) {
+  const { id } = await params
+
   const asset = await api.asset.getOne({
-    id: params.id,
+    id: id,
   })
 
   if (!asset) {
