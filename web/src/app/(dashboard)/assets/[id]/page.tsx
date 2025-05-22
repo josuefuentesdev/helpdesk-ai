@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation"
+import { AssetForm } from "@/components/asset-form"
 import { api } from "@/trpc/server"
-import { EditAssetForm } from "@/components/edit-asset-form"
 
-export default async function EditAssetPage({
+export default async function AssetPage({
   params,
 }: {
   params: { id: string }
@@ -15,11 +15,9 @@ export default async function EditAssetPage({
     notFound()
   }
 
-
-
   return (
     <div className="max-w-2xl px-6 py-8">
-      <EditAssetForm asset={asset} />
+      <AssetForm asset={asset} disabled={true} />
     </div>
   )
 }

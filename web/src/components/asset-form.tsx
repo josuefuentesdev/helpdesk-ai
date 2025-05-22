@@ -1,8 +1,7 @@
 "use client"
 
-import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { type z } from "zod"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -16,61 +15,31 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import type { AssetGetOne } from "@/types"
-import { AssetStatus, AssetType } from "@prisma/client"
-import { api } from "@/trpc/react"
-import { useRouter } from "next/navigation"
 import { AssetTypeFormField } from "./asset-type-form-field"
 import { AssetStatusFormField } from "./asset-status-form-field"
-
-const formSchema = z.object({
-  type: z.nativeEnum(AssetType)
-    .default(AssetType.OTHER)
-    .nullish(),
-  name: z.string().min(1, {
-    message: "Name is required.",
-  }),
-  status: z.nativeEnum(AssetStatus)
-    .default(AssetStatus.ACTIVE)
-    .nullish(),
-})
+import { type editFormSchema, type createFormSchema } from "./asset-form-schemas"
 
 
+type createEditFormSchema = z.infer<typeof createFormSchema> & z.infer<typeof editFormSchema>
 
 export function AssetForm({
   asset,
+  onSubmit,
+  disabled = false,
 }: {
-  asset: AssetGetOne
+  asset?: Partial<AssetGetOne> | null,
+  onSubmit?: (values: createEditFormSchema) => void,
+  disabled?: boolean,
 }) {
-  const router = useRouter();
-
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<createEditFormSchema>({
     defaultValues: {
-      type: asset.type,
-      name: asset.name,
-      status: asset.status,
+      ...asset,
     },
   })
-
-  const mutation = api.asset.updateOne.useMutation({
-    onSuccess: () => {
-      router.refresh();
-    },
-    onError: (error) => {
-      console.error("Error updating asset:", error)
-    },
-  })
-
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    mutation.mutate({
-      ...values,
-      id: asset.id,
-    })
-  }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={onSubmit && form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
           name="name"
@@ -78,7 +47,7 @@ export function AssetForm({
             <FormItem>
               <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input placeholder="black printer" {...field} />
+                <Input placeholder="black printer" {...field} disabled={disabled} />
               </FormControl>
               <FormDescription>
                 This is your public display name.
@@ -87,9 +56,9 @@ export function AssetForm({
             </FormItem>
           )}
         />
-        <AssetTypeFormField control={form.control} name="type" />
-        <AssetStatusFormField control={form.control} name="status" />
-        <Button type="submit">Submit</Button>
+        <AssetTypeFormField control={form.control} name="type" disabled={disabled} />
+        <AssetStatusFormField control={form.control} name="status" disabled={disabled} />
+        {!disabled && <Button type="submit">Submit</Button>}
       </form>
     </Form>
   )

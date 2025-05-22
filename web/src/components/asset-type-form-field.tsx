@@ -35,6 +35,7 @@ type AssetTypeFormFieldProps<
 > = {
   control: Control<TFieldValues>
   name: TName
+  disabled: boolean
 }
 
 export function AssetTypeFormField<
@@ -42,7 +43,8 @@ export function AssetTypeFormField<
   TName extends FieldPath<TFieldValues>
 >({
   control,
-  name
+  name,
+  disabled = false,
 }: AssetTypeFormFieldProps<TFieldValues, TName>) {
   const options = Object.values(AssetType)
     .map((type) => ({
@@ -58,7 +60,7 @@ export function AssetTypeFormField<
         <FormItem className="flex flex-col">
           <FormLabel>Asset Type</FormLabel>
           <Popover>
-            <PopoverTrigger asChild>
+            <PopoverTrigger asChild disabled={disabled}>
               <FormControl>
                 <Button
                   variant="outline"

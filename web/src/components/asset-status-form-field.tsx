@@ -36,6 +36,7 @@ type AssetStatusFormFieldProps<
 > = {
   control: Control<TFieldValues>
   name: TName
+  disabled: boolean
 }
 
 export function AssetStatusFormField<
@@ -43,7 +44,8 @@ export function AssetStatusFormField<
   TName extends FieldPath<TFieldValues>
 >({
   control,
-  name
+  name,
+  disabled = false,
 }: AssetStatusFormFieldProps<TFieldValues, TName>) {
   const options = Object.values(AssetStatus)
     .map((status) => ({
@@ -59,7 +61,7 @@ export function AssetStatusFormField<
         <FormItem className="flex flex-col">
           <FormLabel>Asset Status</FormLabel>
           <Popover>
-            <PopoverTrigger asChild>
+            <PopoverTrigger asChild disabled={disabled}>
               <FormControl>
                 <Button
                   variant="outline"

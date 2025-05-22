@@ -37,4 +37,20 @@ export const assetRouter = createTRPCRouter({
       })
     }
     ),
+
+  create: protectedProcedure
+    .input(z.object({
+      name: z.string(),
+      type: z.nativeEnum(AssetType),
+      status: z.nativeEnum(AssetStatus),
+    }))
+    .mutation(({ ctx, input }) => {
+      return ctx.db.asset.create({
+        data: {
+          name: input.name,
+          type: input.type,
+          status: input.status,
+        },
+      })
+    }),
 });
