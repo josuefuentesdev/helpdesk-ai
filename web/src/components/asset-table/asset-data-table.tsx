@@ -7,6 +7,8 @@ import { DataTable } from "@/components/data-table/data-table"
 import { useTranslations } from "next-intl"
 import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header"
 import { AssetDataTableToolbar } from "@/components/asset-table/asset-data-table-toolbar"
+import Link from "next/link"
+import { Icons } from "../icons"
 
 
 export function AssetDataTable({
@@ -103,6 +105,23 @@ export function AssetDataTable({
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={intl('deletedAt')} />
       ),
+    },
+    {
+      id: "actions",
+      cell: ({ row }) =>
+        <div className="flex items-center space-x-2">
+          <Link
+            href={`/assets/${row.original.id}`}
+          >
+            <Icons.view className="h-4 w-4" />
+          </Link>
+          <Link
+            href={`/assets/${row.original.id}/edit`}
+          >
+            <Icons.edit className="h-4 w-4" />
+          </Link>
+        </div>,
+      size: 50,
     },
   ], [intl])
 
