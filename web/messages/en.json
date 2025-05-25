@@ -51,5 +51,28 @@
       "INACTIVE": "Inactive",
       "DECOMMISSIONED": "Decommissioned"
     }
+  },
+  "AssetForm": {
+    "title": {
+      "edit": "Edit Asset",
+      "create": "Add New Asset"
+    },
+    "description": {
+      "edit": "Update the details of your asset",
+      "create": "Fill in the details below to add a new asset"
+    },
+    "form": {
+      "name": {
+        "label": "Asset Name",
+        "placeholder": "e.g., Black Printer, Conference Laptop",
+        "description": "Enter a descriptive name for this asset."
+      },
+      "submit": {
+        "create": "Create Asset",
+        "update": "Update Asset",
+        "creating": "Creating...",
+        "updating": "Updating..."
+      }
+    }
   }
 }
