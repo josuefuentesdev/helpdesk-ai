@@ -27,6 +27,7 @@ import {
 } from "@/components/ui/popover"
 import { AssetType } from "@prisma/client"
 import { Icons } from "@/components/icons"
+import { useTranslations } from "next-intl"
 
 
 type AssetTypeFormFieldProps<
@@ -46,9 +47,11 @@ export function AssetTypeFormField<
   name,
   disabled = false,
 }: AssetTypeFormFieldProps<TFieldValues, TName>) {
+  const intl = useTranslations('AssetTypeFormField');
+
   const options = Object.values(AssetType)
     .map((type) => ({
-      label: type.charAt(0).toUpperCase() + type.slice(1),
+      label: intl(`types.${type}`),
       value: type,
     }))
 
@@ -58,7 +61,7 @@ export function AssetTypeFormField<
       name={name}
       render={({ field }) => (
         <FormItem className="flex flex-col">
-          <FormLabel>Asset Type</FormLabel>
+          <FormLabel>{intl('label')}</FormLabel>
           <Popover>
             <PopoverTrigger asChild disabled={disabled}>
               <FormControl>
@@ -74,7 +77,7 @@ export function AssetTypeFormField<
                     ? options.find(
                       (option) => option.value === field.value
                     )?.label
-                    : "Select type"}
+                    : intl('placeholder')}
                   <Icons.chevronsUpDown className="opacity-50" />
                 </Button>
               </FormControl>
@@ -82,11 +85,11 @@ export function AssetTypeFormField<
             <PopoverContent className="w-[200px] p-0">
               <Command>
                 <CommandInput
-                  placeholder="Search type..."
+                  placeholder={intl('searchPlaceholder')}
                   className="h-9"
                 />
                 <CommandList>
-                  <CommandEmpty>No type found.</CommandEmpty>
+                  <CommandEmpty>{intl('noResults')}</CommandEmpty>
                   <CommandGroup>
                     {options.map((option) => (
                       <CommandItem
@@ -113,7 +116,7 @@ export function AssetTypeFormField<
             </PopoverContent>
           </Popover>
           <FormDescription>
-            Select the type of asset.
+            {intl('description')}
           </FormDescription>
           <FormMessage />
         </FormItem>

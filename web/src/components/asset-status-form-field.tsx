@@ -1,6 +1,7 @@
 "use client"
 
 import type { Control, FieldValues, FieldPath } from "react-hook-form"
+import { useTranslations } from "next-intl"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -25,7 +26,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-// import { AssetType } from "@prisma/client"
 import { AssetStatus } from "@prisma/client"
 import { Icons } from "@/components/icons"
 
@@ -47,9 +47,11 @@ export function AssetStatusFormField<
   name,
   disabled = false,
 }: AssetStatusFormFieldProps<TFieldValues, TName>) {
+  const intl = useTranslations('AssetStatusFormField');
+
   const options = Object.values(AssetStatus)
     .map((status) => ({
-      label: status.charAt(0).toUpperCase() + status.slice(1),
+      label: intl(`statuses.${status}`),
       value: status,
     }))
 
@@ -59,7 +61,7 @@ export function AssetStatusFormField<
       name={name}
       render={({ field }) => (
         <FormItem className="flex flex-col">
-          <FormLabel>Asset Status</FormLabel>
+          <FormLabel>{intl('label')}</FormLabel>
           <Popover>
             <PopoverTrigger asChild disabled={disabled}>
               <FormControl>
@@ -75,7 +77,7 @@ export function AssetStatusFormField<
                     ? options.find(
                       (option) => option.value === field.value
                     )?.label
-                    : "Select status"}
+                    : intl('placeholder')}
                   <Icons.chevronsUpDown className="opacity-50" />
                 </Button>
               </FormControl>
@@ -83,11 +85,11 @@ export function AssetStatusFormField<
             <PopoverContent className="w-[200px] p-0">
               <Command>
                 <CommandInput
-                  placeholder="Search status..."
+                  placeholder={intl('searchPlaceholder')}
                   className="h-9"
                 />
                 <CommandList>
-                  <CommandEmpty>No status found.</CommandEmpty>
+                  <CommandEmpty>{intl('noResults')}</CommandEmpty>
                   <CommandGroup>
                     {options.map((option) => (
                       <CommandItem
@@ -114,7 +116,7 @@ export function AssetStatusFormField<
             </PopoverContent>
           </Popover>
           <FormDescription>
-            Select the status of the asset.
+            {intl('description')}
           </FormDescription>
           <FormMessage />
         </FormItem>

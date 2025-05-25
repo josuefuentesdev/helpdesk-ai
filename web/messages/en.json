@@ -26,5 +26,30 @@
     "createdAt": "Created At",
     "updatedAt": "Updated At",
     "deletedAt": "Deleted At"
+  },
+  "AssetTypeFormField": {
+    "label": "Asset Type",
+    "placeholder": "Select type",
+    "searchPlaceholder": "Search type...",
+    "noResults": "No type found.",
+    "description": "Select the type of asset.",
+    "types": {
+      "HARDWARE": "Hardware",
+      "SOFTWARE": "Software",
+      "SAAS": "SaaS",
+      "OTHER": "Other"
+    }
+  },
+  "AssetStatusFormField": {
+    "label": "Asset Status",
+    "placeholder": "Select status",
+    "searchPlaceholder": "Search status...",
+    "noResults": "No status found.",
+    "description": "Select the status of the asset.",
+    "statuses": {
+      "ACTIVE": "Active",
+      "INACTIVE": "Inactive",
+      "DECOMMISSIONED": "Decommissioned"
+    }
   }
 }
