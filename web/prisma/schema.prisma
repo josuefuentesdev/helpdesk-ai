@@ -63,6 +63,7 @@ model VerificationToken {
 enum AssetType {
     HARDWARE
     SOFTWARE
+    SAAS
     OTHER
 }
 
@@ -77,10 +78,11 @@ model Asset {
     type            AssetType
     subtype         String?
     name            String
+    vendor          String?
+    identifier      String?
+    model           String?
     serialNumber    String?
     purchaseDate    DateTime?
-    purchasePrice   Float?
-    currency        String?     @db.Char(3)
     warrantyExpires DateTime?
     status          AssetStatus
     assignedTo      String?     @db.Uuid

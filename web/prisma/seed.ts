@@ -1,30 +1,44 @@
 import { AssetType, AssetStatus, PrismaClient } from '@prisma/client'
 import { faker } from '@faker-js/faker'
-
+import { randomUUID } from 'crypto';
 
 const prisma = new PrismaClient()
+
 async function main() {
   const assets = [];
+  const vendors = ['Dell', 'HP', 'Lenovo', 'Apple', 'Microsoft', 'Samsung', 'Acer', 'Asus'];
+  
   for (let i = 0; i < 20; i++) {
+    const type = faker.helpers.arrayElement<AssetType>(Object.values(AssetType));
+    const model = `${faker.helpers.arrayElement(['Pro', 'Elite', 'Business', 'Essential'])} ${faker.number.int({ min: 1000, max: 9999 })}`;
+    
     assets.push({
-      type: faker.helpers.arrayElement<AssetType>(Object.values(AssetType)),
-      subtype: faker.helpers.arrayElement(['laptop', 'desktop', 'monitor', 'printer']),
-      name: faker.commerce.productName(),
+      type: type,
+      subtype: type === AssetType.HARDWARE 
+        ? faker.helpers.arrayElement(['laptop', 'desktop', 'monitor', 'printer']) 
+        : type === AssetType.SOFTWARE 
+          ? faker.helpers.arrayElement(['os', 'application', 'utility']) 
+          : type === AssetType.SAAS 
+            ? faker.helpers.arrayElement(['cloud', 'subscription', 'license']) 
+            : 'other',
+      name: `${faker.helpers.arrayElement(vendors)} ${model}`,
+      vendor: faker.helpers.arrayElement(vendors),
+      identifier: `AST-${faker.string.alphanumeric(8).toUpperCase()}`,
+      model: model,
       serialNumber: faker.string.alphanumeric(12).toUpperCase(),
       purchaseDate: faker.date.past({ years: 3 }),
-      purchasePrice: Number(faker.commerce.price({ min: 500, max: 4000, dec: 2 })),
-      currency: 'USD',
       warrantyExpires: faker.date.future({ years: 3 }),
-      status: faker.helpers.arrayElement<AssetStatus>(Object.values(AssetStatus)),
-      assignedTo: null,
+      status: faker.helpers.arrayElement<AssetStatus>([AssetStatus.ACTIVE, AssetStatus.ACTIVE, AssetStatus.INACTIVE]), // Weighted towards ACTIVE
+      assignedTo: Math.random() > 0.7 ? randomUUID() : null, // 30% chance of being assigned
       customFields: {
         color: faker.color.human(),
         ram: faker.helpers.arrayElement(['8GB', '16GB', '32GB', '64GB']),
-        storage: faker.helpers.arrayElement(['256GB SSD', '512GB SSD', '1TB SSD', '2TB HDD'])
+        storage: faker.helpers.arrayElement(['256GB SSD', '512GB SSD', '1TB SSD', '2TB HDD']),
+        notes: faker.lorem.sentence()
       },
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      deletedAt: null,
+      createdAt: faker.date.past({ years: 1 }),
+      updatedAt: faker.date.recent(),
+      deletedAt: Math.random() > 0.9 ? faker.date.recent() : null // 10% chance of being soft-deleted
     });
   }
   const createdAssets = await prisma.asset.createMany({ data: assets });
