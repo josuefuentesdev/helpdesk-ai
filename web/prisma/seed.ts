@@ -1,13 +1,24 @@
 import { AssetType, AssetStatus, PrismaClient } from '@prisma/client'
 import { faker } from '@faker-js/faker'
-import { randomUUID } from 'crypto';
 
 const prisma = new PrismaClient()
 
 async function main() {
   const assets = [];
   const vendors = ['Dell', 'HP', 'Lenovo', 'Apple', 'Microsoft', 'Samsung', 'Acer', 'Asus'];
-  
+ 
+  // seed users
+  const createdUsers = await prisma.user.createMany({
+    data: Array.from({ length: 10 }, () => ({
+      name: faker.person.firstName(),
+      email: faker.internet.email(),
+    })),
+  });
+
+  console.log({ createdUsers });
+
+  const users = await prisma.user.findMany();
+
   for (let i = 0; i < 20; i++) {
     const type = faker.helpers.arrayElement<AssetType>(Object.values(AssetType));
     const model = `${faker.helpers.arrayElement(['Pro', 'Elite', 'Business', 'Essential'])} ${faker.number.int({ min: 1000, max: 9999 })}`;
@@ -29,7 +40,7 @@ async function main() {
       purchaseDate: faker.date.past({ years: 3 }),
       warrantyExpires: faker.date.future({ years: 3 }),
       status: faker.helpers.arrayElement<AssetStatus>([AssetStatus.ACTIVE, AssetStatus.ACTIVE, AssetStatus.INACTIVE]), // Weighted towards ACTIVE
-      assignedTo: Math.random() > 0.7 ? randomUUID() : null, // 30% chance of being assigned
+      assignedToId: users?.[Math.floor(Math.random() * users.length)]?.id,
       customFields: {
         color: faker.color.human(),
         ram: faker.helpers.arrayElement(['8GB', '16GB', '32GB', '64GB']),
