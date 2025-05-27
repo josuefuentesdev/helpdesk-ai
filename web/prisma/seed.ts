@@ -12,6 +12,7 @@ async function main() {
     data: Array.from({ length: 10 }, () => ({
       name: faker.person.firstName(),
       email: faker.internet.email(),
+      image: faker.image.avatar(),
     })),
   });
 
