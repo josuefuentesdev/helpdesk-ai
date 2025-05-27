@@ -11,20 +11,30 @@ export function CreateAssetForm() {
   const router = useRouter();
 
   const mutation = api.asset.create.useMutation({
-    onSuccess: () => {
-      router.refresh();
+    onSuccess: (data) => {
+      router.push(`/assets/${data.id}`)
     },
     onError: (error) => {
-      console.error("Error updating asset:", error)
+      console.error("Error creating asset:", error)
     },
   })
 
   return (
     <AssetForm
+      variant="create"
       asset={{
+        id: "",
         name: "",
         type: "HARDWARE",
         status: "ACTIVE",
+        model: null,
+        subtype: null,
+        vendor: null,
+        identifier: null,
+        serialNumber: null,
+        purchaseDate: null,
+        warrantyExpires: null,
+        assignedToId: null,
       }}
       onSubmit={function (values: z.infer<typeof createFormSchema>) {
         mutation.mutate({

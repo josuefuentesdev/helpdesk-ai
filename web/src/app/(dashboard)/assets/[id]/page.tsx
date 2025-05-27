@@ -19,7 +19,7 @@ export default async function AssetPage({
 
   return (
     <div className="max-w-2xl px-6 py-8">
-      <AssetForm asset={asset} disabled={true} />
+      <AssetForm asset={asset} variant="view"/>
     </div>
   )
 }

@@ -1,8 +1,9 @@
 "use client"
 
+import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { type z } from "zod"
 import { Button } from "@/components/ui/button"
+import { AssetDateFormField } from "@/components/asset-date-form-field"
 import {
   Form,
   FormControl,
@@ -15,30 +16,54 @@ import {
 import { Input } from "@/components/ui/input"
 import { Icons } from "@/components/icons"
 import type { AssetGetOne } from "@/types"
+import { useTranslations } from "next-intl"
+import Link from "next/link"
 import { AssetTypeFormField } from "./asset-type-form-field"
 import { AssetStatusFormField } from "./asset-status-form-field"
-import { type editFormSchema, type createFormSchema } from "./asset-form-schemas"
-import { useTranslations } from "next-intl"
+import { baseFormSchema, type AssetFormValues } from "./asset-form-schemas"
+import { UserFormField } from "./user-form-field"
 
 
-type createEditFormSchema = z.infer<typeof createFormSchema> & z.infer<typeof editFormSchema>
+type AssetFormProps =
+  | {
+    variant: "view";
+    asset: AssetGetOne;
+    onSubmit?: never;
+  }
+  | {
+    variant: "edit";
+    asset: AssetGetOne;
+    onSubmit: (values: AssetFormValues) => void;
+  }
+  | {
+    variant: "create";
+    asset?: AssetGetOne | null;
+    onSubmit: (values: AssetFormValues) => void;
+  };
 
 export function AssetForm({
   asset,
+  variant,
   onSubmit,
-  disabled = false,
-}: {
-  asset?: Partial<AssetGetOne> | null,
-  onSubmit?: (values: createEditFormSchema) => void,
-  disabled?: boolean,
-}) {
-  const form = useForm<createEditFormSchema>({
+}: AssetFormProps) {
+  const form = useForm<AssetFormValues>({
+    resolver: zodResolver(baseFormSchema),
     defaultValues: {
-      ...asset,
+      type: asset?.type ?? undefined,
+      name: asset?.name ?? "",
+      status: asset?.status ?? undefined,
+      subtype: asset?.subtype ?? "",
+      vendor: asset?.vendor ?? "",
+      identifier: asset?.identifier ?? "",
+      model: asset?.model ?? "",
+      serialNumber: asset?.serialNumber ?? "",
+      purchaseDate: asset?.purchaseDate ?? undefined,
+      warrantyExpires: asset?.warrantyExpires ?? undefined,
+      assignedToId: asset?.assignedToId ?? undefined,
     },
   })
 
-  const intl = useTranslations("AssetForm")
+  const t = useTranslations("AssetForm")
 
   return (
     <div className="mx-auto max-w-2xl space-y-6">
@@ -46,14 +71,24 @@ export function AssetForm({
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-2xl font-bold tracking-tight">
-              {asset?.id ? intl('title.edit') : intl('title.create')}
+              {t(`title.${variant}`)}
             </h2>
             <p className="text-muted-foreground">
-              {asset?.id ? intl('description.edit') : intl('description.create')}
+              {t(`description.${variant}`)}
             </p>
           </div>
-          <div className="rounded-lg bg-primary/10 p-3">
-            <Icons.assets className="h-6 w-6 text-primary" />
+          <div className="flex items-center gap-2">
+            {variant === "view" && (
+              <Button asChild variant="outline" size="sm">
+                <Link href={`/assets/${asset.id}/edit`} className="flex items-center">
+                  <Icons.edit className="mr-2 h-4 w-4" />
+                  {t('actions.edit')}
+                </Link>
+              </Button>
+            )}
+            <div className="rounded-lg bg-primary/10 p-3">
+              <Icons.assets className="h-6 w-6 text-primary" />
+            </div>
           </div>
         </div>
         <div className="border-t border-border/40 my-4" />
@@ -67,51 +102,183 @@ export function AssetForm({
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-foreground/80">
-                    {intl('form.name.label')}
+                    {t('form.name.label')}
                   </FormLabel>
                   <FormControl>
-                    <Input 
-                      placeholder={intl('form.name.placeholder')}
+                    <Input
+                      placeholder={t('form.name.placeholder')}
                       className="bg-background/50"
-                      {...field} 
-                      disabled={disabled} 
+                      {...field}
+                      disabled={variant === "view"}
                     />
                   </FormControl>
                   <FormDescription className="text-muted-foreground/70">
-                    {intl('form.name.description')}
+                    {t('form.name.description')}
                   </FormDescription>
                   <FormMessage className="text-xs" />
                 </FormItem>
               )}
             />
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <AssetTypeFormField 
-                control={form.control} 
-                name="type" 
-                disabled={disabled} 
+              <AssetTypeFormField
+                control={form.control}
+                name="type"
+                disabled={variant === "view"}
               />
-              <AssetStatusFormField 
-                control={form.control} 
-                name="status" 
-                disabled={disabled} 
+              <AssetStatusFormField
+                control={form.control}
+                name="status"
+                disabled={variant === "view"}
+              />
+              <FormField
+                control={form.control}
+                name="subtype"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-foreground/80">
+                      {t('form.subtype.label')}
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder={t('form.subtype.placeholder')}
+                        className="bg-background/50"
+                        {...field}
+                        disabled={variant === "view"}
+                      />
+                    </FormControl>
+                    <FormDescription className="text-muted-foreground/70">
+                      {t('form.subtype.description')}
+                    </FormDescription>
+                    <FormMessage className="text-xs" />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="vendor"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-foreground/80">
+                      {t('form.vendor.label')}
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder={t('form.vendor.placeholder')}
+                        className="bg-background/50"
+                        {...field}
+                        disabled={variant === "view"}
+                      />
+                    </FormControl>
+                    <FormDescription className="text-muted-foreground/70">
+                      {t('form.vendor.description')}
+                    </FormDescription>
+                    <FormMessage className="text-xs" />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="identifier"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-foreground/80">
+                      {t('form.identifier.label')}
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder={t('form.identifier.placeholder')}
+                        className="bg-background/50"
+                        {...field}
+                        disabled={variant === "view"}
+                      />
+                    </FormControl>
+                    <FormDescription className="text-muted-foreground/70">
+                      {t('form.identifier.description')}
+                    </FormDescription>
+                    <FormMessage className="text-xs" />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="model"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-foreground/80">
+                      {t('form.model.label')}
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder={t('form.model.placeholder')}
+                        className="bg-background/50"
+                        {...field}
+                        disabled={variant === "view"}
+                      />
+                    </FormControl>
+                    <FormDescription className="text-muted-foreground/70">
+                      {t('form.model.description')}
+                    </FormDescription>
+                    <FormMessage className="text-xs" />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="serialNumber"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-foreground/80">
+                      {t('form.serialNumber.label')}
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder={t('form.serialNumber.placeholder')}
+                        className="bg-background/50"
+                        {...field}
+                        disabled={variant === "view"}
+                      />
+                    </FormControl>
+                    <FormDescription className="text-muted-foreground/70">
+                      {t('form.serialNumber.description')}
+                    </FormDescription>
+                    <FormMessage className="text-xs" />
+                  </FormItem>
+                )}
+              />
+              <AssetDateFormField
+                control={form.control}
+                name="purchaseDate"
+                label={t('form.purchaseDate.label')}
+                placeholder={t('form.purchaseDate.placeholder')}
+                description={t('form.purchaseDate.description')}
+                disabled={variant === "view"}
+              />
+              <AssetDateFormField
+                control={form.control}
+                name="warrantyExpires"
+                label={t('form.warrantyExpires.label')}
+                placeholder={t('form.warrantyExpires.placeholder')}
+                description={t('form.warrantyExpires.description')}
+                disabled={variant === "view"}
+              />
+              <UserFormField
+                control={form.control}
+                name="assignedToId"
+                disabled={variant === "view"}
               />
             </div>
           </div>
-          
-          {!disabled && (
+
+          {(variant === "edit" || variant === "create") && (
             <div className="flex justify-end pt-4">
-              <Button 
-                type="submit" 
-                className="min-w-[120px]"
-                disabled={form.formState.isSubmitting}
-              >
+              <Button type="submit" className="min-w-[120px]">
                 {form.formState.isSubmitting ? (
                   <>
                     <div className="h-4 w-4 mr-2 border-2 border-background border-t-2 border-t-primary rounded-full animate-spin" />
-                    {asset?.id ? intl('form.submit.updating') : intl('form.submit.creating')}
+                    {t(`form.submit.loading.${variant}`)}
                   </>
-                ) : asset?.id ? intl('form.submit.update') : intl('form.submit.create')}
+                ) : t(`form.submit.${variant}`)}
               </Button>
             </div>
           )}

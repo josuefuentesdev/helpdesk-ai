@@ -26,6 +26,7 @@ export function EditAssetForm({
 
   return (
     <AssetForm
+      variant="edit"
       asset={asset}
       onSubmit={function (values: z.infer<typeof editFormSchema>) {
         mutation.mutate({

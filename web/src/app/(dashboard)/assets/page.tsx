@@ -22,8 +22,6 @@ export default async function AssetsPage() {
           id: false,
           serialNumber: false,
           purchaseDate: false,
-          purchasePrice: false,
-          currency: false,
           warrantyExpires: false,
           createdAt: false,
           updatedAt: false,

@@ -11,6 +11,20 @@ export const assetRouter = createTRPCRouter({
     .query(({ ctx, input }) => {
       return ctx.db.asset.findUnique({
         where: { id: input.id },
+        select: {
+          id: true,
+          name: true,
+          type: true,
+          subtype: true,
+          vendor: true,
+          identifier: true,
+          model: true,
+          serialNumber: true,
+          purchaseDate: true,
+          warrantyExpires: true,
+          status: true,
+          assignedToId: true,
+        },
       })
     }),
 
@@ -22,35 +36,45 @@ export const assetRouter = createTRPCRouter({
   updateOne: protectedProcedure
     .input(z.object({
       id: z.string(),
-      name: z.string(),
-      type: z.nativeEnum(AssetType).nullish(),
-      status: z.nativeEnum(AssetStatus).nullish(),
+      name: z.string().min(1, 'Name is required'),
+      type: z.nativeEnum(AssetType),
+      subtype: z.string().optional(),
+      vendor: z.string().optional(),
+      identifier: z.string().optional(),
+      model: z.string().optional(),
+      serialNumber: z.string().optional(),
+      purchaseDate: z.date().optional(),
+      warrantyExpires: z.date().optional(),
+      status: z.nativeEnum(AssetStatus),
+      assignedToId: z.string().optional(),
     }))
     .mutation(({ ctx, input }) => {
+      const { id, ...data } = input;
       return ctx.db.asset.update({
-        where: { id: input.id },
+        where: { id },
         data: {
-          name: input.name,
-          type: input.type ?? undefined,
-          status: input.status ?? undefined,
+          ...data,
         },
-      })
-    }
-    ),
+      });
+    }),
 
   create: protectedProcedure
     .input(z.object({
-      name: z.string(),
+      name: z.string().min(1, 'Name is required'),
       type: z.nativeEnum(AssetType),
+      subtype: z.string().optional(),
+      vendor: z.string().optional(),
+      identifier: z.string().optional(),
+      model: z.string().optional(),
+      serialNumber: z.string().optional(),
+      purchaseDate: z.date().optional(),
+      warrantyExpires: z.date().optional(),
       status: z.nativeEnum(AssetStatus),
+      assignedToId: z.string().optional(),
     }))
     .mutation(({ ctx, input }) => {
       return ctx.db.asset.create({
-        data: {
-          name: input.name,
-          type: input.type,
-          status: input.status,
-        },
-      })
+        data: input,
+      });
     }),
 });

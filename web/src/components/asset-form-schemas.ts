@@ -1,25 +1,27 @@
 import { z } from "zod"
 import { AssetStatus, AssetType } from "@prisma/client"
 
-const createFormSchema = z.object({
-  type: z.nativeEnum(AssetType),
+export const baseFormSchema = z.object({
+  type: z.nativeEnum(AssetType, {
+    required_error: "Type is required.",
+  }),
   name: z.string().min(1, {
     message: "Name is required.",
   }),
-  status: z.nativeEnum(AssetStatus),
-})
-
-const editFormSchema = z.object({
-  type: z.nativeEnum(AssetType)
-    .nullish(),
-  name: z.string().min(1, {
-    message: "Name is required.",
+  status: z.nativeEnum(AssetStatus, {
+    required_error: "Status is required.",
   }),
-  status: z.nativeEnum(AssetStatus)
-    .nullish(),
+  subtype: z.string().optional(),
+  vendor: z.string().optional(),
+  identifier: z.string().optional(),
+  model: z.string().optional(),
+  serialNumber: z.string().optional(),
+  purchaseDate: z.date().optional(),
+  warrantyExpires: z.date().optional(),
+  assignedToId: z.string().optional()
 })
 
-export {
-  editFormSchema,
-  createFormSchema
-}
+export const editFormSchema = baseFormSchema
+export const createFormSchema = baseFormSchema
+
+export type AssetFormValues = z.infer<typeof baseFormSchema>

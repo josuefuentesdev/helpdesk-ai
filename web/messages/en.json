@@ -54,12 +54,17 @@
   },
   "AssetForm": {
     "title": {
+      "view": "Asset Details",
       "edit": "Edit Asset",
       "create": "Add New Asset"
     },
     "description": {
-      "edit": "Update the details of your asset",
+      "view": "View the details of your asset",
+      "edit": "Edit the details of your asset",
       "create": "Fill in the details below to add a new asset"
+    },
+    "actions": {
+      "edit": "Edit"
     },
     "form": {
       "name": {
@@ -67,12 +72,62 @@
         "placeholder": "e.g., Black Printer, Conference Laptop",
         "description": "Enter a descriptive name for this asset."
       },
+      "subtype": {
+        "label": "Subtype",
+        "placeholder": "e.g., Laptop, Monitor, Printer",
+        "description": "Enter the specific type or model category."
+      },
+      "vendor": {
+        "label": "Vendor",
+        "placeholder": "e.g., Dell, Apple, HP",
+        "description": "Enter the manufacturer or vendor name."
+      },
+      "identifier": {
+        "label": "Asset Tag/ID",
+        "placeholder": "e.g., AST-001, IT-2023-001",
+        "description": "Enter a unique identifier for this asset."
+      },
+      "model": {
+        "label": "Model",
+        "placeholder": "e.g., MacBook Pro 16",
+        "description": "Enter the specific model of the asset."
+      },
+      "serialNumber": {
+        "label": "Serial Number",
+        "placeholder": "e.g., C02X12345678",
+        "description": "Enter the manufacturer's serial number."
+      },
+      "purchaseDate": {
+        "label": "Purchase Date",
+        "placeholder": "Select purchase date",
+        "description": "Select the purchase date of the asset."
+      },
+      "warrantyExpires": {
+        "label": "Warranty Expiration",
+        "placeholder": "Select warranty expiration date",
+        "description": "Select the warranty expiration date of the asset."
+      },
       "submit": {
+        "view": "View Asset",
         "create": "Create Asset",
-        "update": "Update Asset",
-        "creating": "Creating...",
-        "updating": "Updating..."
+        "edit": "Edit Asset",
+        "loading": {
+          "create": "Creating...",
+          "edit": "Editing..."
+        }
       }
     }
+  },
+  "AssetDateFormField": {
+    "placeholder": "Select a date...",
+    "description": "Select a date"
+  },
+  "UserFormField": {
+    "label": "User",
+    "placeholder": "Select user...",
+    "searchPlaceholder": "Search users...",
+    "noResults": "No users found.",
+    "description": "Select a user",
+    "loading": "Loading users..."
   }
 }
