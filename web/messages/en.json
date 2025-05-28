@@ -17,10 +17,10 @@
     "subtype": "SubType",
     "name": "Name",
     "serialNumber": "Serial Number",
-    "purchaseDate": "Purchase Date",
+    "purchaseAt": "Purchase Date",
     "purchasePrice": "Purchase Price",
     "currency": "",
-    "warrantyExpires": "Warranty Expires",
+    "warrantyExpiresAt": "Warranty Expires",
     "status": "Status",
     "assignedTo": "Assigned To",
     "createdAt": "Created At",
@@ -97,12 +97,12 @@
         "placeholder": "e.g., C02X12345678",
         "description": "Enter the manufacturer's serial number."
       },
-      "purchaseDate": {
+      "purchaseAt": {
         "label": "Purchase Date",
         "placeholder": "Select purchase date",
         "description": "Select the purchase date of the asset."
       },
-      "warrantyExpires": {
+      "warrantyExpiresAt": {
         "label": "Warranty Expiration",
         "placeholder": "Select warranty expiration date",
         "description": "Select the warranty expiration date of the asset."

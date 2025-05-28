@@ -38,8 +38,8 @@ async function main() {
       identifier: `AST-${faker.string.alphanumeric(8).toUpperCase()}`,
       model: model,
       serialNumber: faker.string.alphanumeric(12).toUpperCase(),
-      purchaseDate: faker.date.past({ years: 3 }),
-      warrantyExpires: faker.date.future({ years: 3 }),
+      purchaseAt: faker.date.past({ years: 3 }),
+      warrantyExpiresAt: faker.date.future({ years: 3 }),
       status: faker.helpers.arrayElement<AssetStatus>([AssetStatus.ACTIVE, AssetStatus.ACTIVE, AssetStatus.INACTIVE]), // Weighted towards ACTIVE
       assignedToId: users?.[Math.floor(Math.random() * users.length)]?.id,
       customFields: {

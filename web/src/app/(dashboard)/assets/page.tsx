@@ -21,8 +21,8 @@ export default async function AssetsPage() {
         initialColumnVisibility={{
           id: false,
           serialNumber: false,
-          purchaseDate: false,
-          warrantyExpires: false,
+          purchaseAt: false,
+          warrantyExpiresAt: false,
           createdAt: false,
           updatedAt: false,
         }}

@@ -57,8 +57,8 @@ export function AssetForm({
       identifier: asset?.identifier ?? "",
       model: asset?.model ?? "",
       serialNumber: asset?.serialNumber ?? "",
-      purchaseDate: asset?.purchaseDate ?? undefined,
-      warrantyExpires: asset?.warrantyExpires ?? undefined,
+      purchaseAt: asset?.purchaseAt ?? undefined,
+      warrantyExpiresAt: asset?.warrantyExpiresAt ?? undefined,
       assignedToId: asset?.assignedToId ?? undefined,
     },
   })
@@ -248,18 +248,18 @@ export function AssetForm({
               />
               <AssetDateFormField
                 control={form.control}
-                name="purchaseDate"
-                label={t('form.purchaseDate.label')}
-                placeholder={t('form.purchaseDate.placeholder')}
-                description={t('form.purchaseDate.description')}
+                name="purchaseAt"
+                label={t('form.purchaseAt.label')}
+                placeholder={t('form.purchaseAt.placeholder')}
+                description={t('form.purchaseAt.description')}
                 disabled={variant === "view"}
               />
               <AssetDateFormField
                 control={form.control}
-                name="warrantyExpires"
-                label={t('form.warrantyExpires.label')}
-                placeholder={t('form.warrantyExpires.placeholder')}
-                description={t('form.warrantyExpires.description')}
+                name="warrantyExpiresAt"
+                label={t('form.warrantyExpiresAt.label')}
+                placeholder={t('form.warrantyExpiresAt.placeholder')}
+                description={t('form.warrantyExpiresAt.description')}
                 disabled={variant === "view"}
               />
               <UserFormField

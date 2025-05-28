@@ -50,23 +50,23 @@ export function AssetDataTable({
         <DataTableColumnHeader column={column} title={intl('serialNumber')} />
       ),
     }),
-    columnHelper.accessor("purchaseDate", {
+    columnHelper.accessor("purchaseAt", {
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title={intl('purchaseDate')} />
+        <DataTableColumnHeader column={column} title={intl('purchaseAt')} />
       ),
-      cell: (purchaseDate) => {
-        const dateValue = purchaseDate.getValue();
+      cell: (purchaseAt) => {
+        const dateValue = purchaseAt.getValue();
         return (
           <div>{dateValue ? format(dateValue, 'yyyy-MM-dd') : '-'}</div>
         );
       },
     }),
-    columnHelper.accessor("warrantyExpires", {
+    columnHelper.accessor("warrantyExpiresAt", {
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title={intl('warrantyExpires')} />
+        <DataTableColumnHeader column={column} title={intl('warrantyExpiresAt')} />
       ),
-      cell: (warrantyExpires) => {
-        const dateValue = warrantyExpires.getValue();
+      cell: (warrantyExpiresAt) => {
+        const dateValue = warrantyExpiresAt.getValue();
         return (
           <div>{dateValue ? format(dateValue, 'yyyy-MM-dd') : '-'}</div>
         );

@@ -75,22 +75,22 @@ enum AssetStatus {
 }
 
 model Asset {
-  id              String      @id @default(cuid())
-  type            AssetType
-  subtype         String?
-  name            String
-  vendor          String?
-  identifier      String?
-  model           String?
-  serialNumber    String?
-  purchaseDate    DateTime?
-  warrantyExpires DateTime?
-  status          AssetStatus
-  assignedToId    String?
-  customFields    Json?
-  createdAt       DateTime    @default(now())
-  updatedAt       DateTime    @updatedAt
-  deletedAt       DateTime?
+  id                String      @id @default(cuid())
+  type              AssetType
+  subtype           String?
+  name              String
+  vendor            String?
+  identifier        String?
+  model             String?
+  serialNumber      String?
+  purchaseAt        DateTime?
+  warrantyExpiresAt DateTime?
+  status            AssetStatus
+  assignedToId      String?
+  customFields      Json?
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+  deletedAt         DateTime?
 
   assignedTo User? @relation(name: "AssetAssignedTo", fields: [assignedToId], references: [id])
   // TODO: tags

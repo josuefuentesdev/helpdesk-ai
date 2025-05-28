@@ -16,8 +16,8 @@ export const baseFormSchema = z.object({
   identifier: z.string().optional(),
   model: z.string().optional(),
   serialNumber: z.string().optional(),
-  purchaseDate: z.date().optional(),
-  warrantyExpires: z.date().optional(),
+  purchaseAt: z.date().optional(),
+  warrantyExpiresAt: z.date().optional(),
   assignedToId: z.string().optional()
 })
 
