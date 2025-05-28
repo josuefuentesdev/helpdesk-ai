@@ -8,7 +8,8 @@ import { useTranslations } from "next-intl"
 import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header"
 import { AssetDataTableToolbar } from "@/components/asset-table/asset-data-table-toolbar"
 import Link from "next/link"
-import { Icons } from "../icons"
+import { Icons } from "@/components/icons"
+import { format } from "date-fns"
 
 
 export function AssetDataTable({
@@ -53,11 +54,23 @@ export function AssetDataTable({
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={intl('purchaseDate')} />
       ),
+      cell: (purchaseDate) => {
+        const dateValue = purchaseDate.getValue();
+        return (
+          <div>{dateValue ? format(dateValue, 'yyyy-MM-dd') : '-'}</div>
+        );
+      },
     }),
     columnHelper.accessor("warrantyExpires", {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={intl('warrantyExpires')} />
       ),
+      cell: (warrantyExpires) => {
+        const dateValue = warrantyExpires.getValue();
+        return (
+          <div>{dateValue ? format(dateValue, 'yyyy-MM-dd') : '-'}</div>
+        );
+      },
     }),
     columnHelper.accessor("status", {
       header: ({ column }) => (
@@ -73,11 +86,23 @@ export function AssetDataTable({
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={intl('createdAt')} />
       ),
+      cell: (createdAt) => {
+        const dateValue = createdAt.getValue();
+        return (
+          <div>{format(dateValue, 'PPpp')}</div>
+        );
+      },
     }),
     columnHelper.accessor("updatedAt", {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={intl('updatedAt')} />
       ),
+      cell: (updatedAt) => {
+        const dateValue = updatedAt.getValue();
+        return (
+          <div>{format(dateValue, 'PPpp')}</div>
+        );
+      },
     }),
     columnHelper.display({
       id: "actions",
