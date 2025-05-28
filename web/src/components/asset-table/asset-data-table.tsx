@@ -1,7 +1,7 @@
 "use client"
 
 import { useMemo } from "react"
-import type { ColumnDef } from "@tanstack/react-table"
+import { createColumnHelper, type ColumnDef } from "@tanstack/react-table"
 import type { AssetGetAllItem } from "@/types"
 import { DataTable } from "@/components/data-table/data-table"
 import { useTranslations } from "next-intl"
@@ -21,109 +21,81 @@ export function AssetDataTable({
   initialColumnVisibility?: Partial<Record<keyof AssetGetAllItem, boolean>>
 }) {
   const intl = useTranslations('TicketDataTable');
-  const columns: ColumnDef<AssetGetAllItem>[] = useMemo(() => [
-    {
-      accessorKey: "id",
+
+  const columnHelper = createColumnHelper<AssetGetAllItem>()
+  const columns = useMemo(() => [
+    columnHelper.accessor("id", {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={intl('id')} />
       ),
-    },
-    {
-      accessorKey: "type",
+    }),
+    columnHelper.accessor("type", {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={intl('type')} />
       ),
-    },
-    {
-      accessorKey: "subtype",
+    }),
+    columnHelper.accessor("subtype", {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={intl('subtype')} />
       ),
-    },
-    {
-      accessorKey: "name",
+    }),
+    columnHelper.accessor("name", {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={intl('name')} />
       ),
-    },
-    {
-      accessorKey: "serialNumber",
+    }),
+    columnHelper.accessor("serialNumber", {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={intl('serialNumber')} />
       ),
-    },
-    {
-      accessorKey: "purchaseDate",
+    }),
+    columnHelper.accessor("purchaseDate", {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={intl('purchaseDate')} />
       ),
-    },
-    {
-      accessorKey: "purchasePrice",
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title={intl('purchasePrice')} />
-      ),
-    },
-    {
-      accessorKey: "currency",
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title={intl('currency')} />
-      ),
-    },
-    {
-      accessorKey: "warrantyExpires",
+    }),
+    columnHelper.accessor("warrantyExpires", {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={intl('warrantyExpires')} />
       ),
-    },
-    {
-      accessorKey: "status",
+    }),
+    columnHelper.accessor("status", {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={intl('status')} />
       ),
-    },
-    {
-      accessorKey: "assignedTo",
+    }),
+    columnHelper.accessor("assignedToId", {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={intl('assignedTo')} />
       ),
-    },
-    {
-      accessorKey: "createdAt",
+    }),
+    columnHelper.accessor("createdAt", {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={intl('createdAt')} />
       ),
-    },
-    {
-      accessorKey: "updatedAt",
+    }),
+    columnHelper.accessor("updatedAt", {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={intl('updatedAt')} />
       ),
-    },
-    {
-      accessorKey: "deletedAt",
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title={intl('deletedAt')} />
-      ),
-    },
-    {
+    }),
+    columnHelper.display({
       id: "actions",
-      cell: ({ row }) =>
+      cell: ({ row }) => (
         <div className="flex items-center space-x-2">
-          <Link
-            href={`/assets/${row.original.id}`}
-          >
+          <Link href={`/assets/${row.original.id}`}>
             <Icons.view className="h-4 w-4" />
           </Link>
-          <Link
-            href={`/assets/${row.original.id}/edit`}
-          >
+          <Link href={`/assets/${row.original.id}/edit`}>
             <Icons.edit className="h-4 w-4" />
           </Link>
-        </div>,
+        </div>
+      ),
       size: 50,
-    },
-  ], [intl])
+    }),
+    // dirty fix as https://github.com/TanStack/table/issues/4302
+  ] as ColumnDef<AssetGetAllItem, unknown>[],
+  [columnHelper, intl])
 
   return (
     <DataTable
