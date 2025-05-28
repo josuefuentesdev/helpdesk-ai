@@ -10,7 +10,10 @@ export const assetRouter = createTRPCRouter({
     .input(z.object({ id: z.string() }))
     .query(({ ctx, input }) => {
       return ctx.db.asset.findUnique({
-        where: { id: input.id },
+        where: {
+          id: input.id,
+          deletedAt: null,
+        },
         select: {
           id: true,
           name: true,
@@ -24,13 +27,35 @@ export const assetRouter = createTRPCRouter({
           warrantyExpires: true,
           status: true,
           assignedToId: true,
+          createdAt: true,
+          updatedAt: true,
         },
       })
     }),
 
   getAll: protectedProcedure
     .query(({ ctx }) => {
-      return ctx.db.asset.findMany()
+      return ctx.db.asset.findMany({
+        where: {
+          deletedAt: null,
+        },
+        select: {
+          id: true,
+          name: true,
+          type: true,
+          subtype: true,
+          vendor: true,
+          identifier: true,
+          model: true,
+          serialNumber: true,
+          purchaseDate: true,
+          warrantyExpires: true,
+          status: true,
+          assignedToId: true,
+          createdAt: true,
+          updatedAt: true,
+        },
+      })
     }),
 
   updateOne: protectedProcedure
@@ -51,7 +76,10 @@ export const assetRouter = createTRPCRouter({
     .mutation(({ ctx, input }) => {
       const { id, ...data } = input;
       return ctx.db.asset.update({
-        where: { id },
+        where: {
+          id,
+          deletedAt: null,
+        },
         data: {
           ...data,
         },

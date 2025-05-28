@@ -37,7 +37,7 @@ type AssetFormProps =
   }
   | {
     variant: "create";
-    asset?: AssetGetOne | null;
+    asset?: never;
     onSubmit: (values: AssetFormValues) => void;
   };
 

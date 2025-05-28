@@ -22,20 +22,6 @@ export function CreateAssetForm() {
   return (
     <AssetForm
       variant="create"
-      asset={{
-        id: "",
-        name: "",
-        type: "HARDWARE",
-        status: "ACTIVE",
-        model: null,
-        subtype: null,
-        vendor: null,
-        identifier: null,
-        serialNumber: null,
-        purchaseDate: null,
-        warrantyExpires: null,
-        assignedToId: null,
-      }}
       onSubmit={function (values: z.infer<typeof createFormSchema>) {
         mutation.mutate({
           ...values,
