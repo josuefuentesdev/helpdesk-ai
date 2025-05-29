@@ -40,7 +40,7 @@ async function main() {
       serialNumber: faker.string.alphanumeric(12).toUpperCase(),
       purchaseAt: faker.date.past({ years: 3 }),
       warrantyExpiresAt: faker.date.future({ years: 3 }),
-      status: faker.helpers.arrayElement<AssetStatus>([AssetStatus.ACTIVE, AssetStatus.ACTIVE, AssetStatus.INACTIVE]), // Weighted towards ACTIVE
+      status: faker.helpers.arrayElement<AssetStatus>([AssetStatus.ACTIVE, AssetStatus.ACTIVE, AssetStatus.INACTIVE, AssetStatus.DECOMMISSIONED]), // Weighted towards ACTIVE
       assignedToId: users?.[Math.floor(Math.random() * users.length)]?.id,
       customFields: {
         color: faker.color.human(),
