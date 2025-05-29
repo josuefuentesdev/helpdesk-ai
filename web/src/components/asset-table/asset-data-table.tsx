@@ -11,6 +11,7 @@ import Link from "next/link"
 import { Icons } from "@/components/icons"
 import { format } from "date-fns"
 import { UserWithAvatar } from "../user-with-avatar"
+import { AssetStatusBadge } from "@/components/asset-table/asset-status-badge"
 
 
 export function AssetDataTable({
@@ -77,6 +78,10 @@ export function AssetDataTable({
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={t('status')} />
       ),
+      cell: (status) => {
+        const statusValue = status.getValue();
+        return <AssetStatusBadge status={statusValue} />;
+      },
     }),
     columnHelper.accessor("assignedToId", {
       header: ({ column }) => (

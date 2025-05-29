@@ -134,5 +134,10 @@
   "UserWithAvatar": {
     "error": "Error",
     "unknown": "Unknown"
+  },
+  "AssetStatus": {
+    "active": "Active",
+    "inactive": "Inactive",
+    "decommissioned": "Decommissioned"
   }
 }
