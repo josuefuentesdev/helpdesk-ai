@@ -10,6 +10,7 @@ import { AssetDataTableToolbar } from "@/components/asset-table/asset-data-table
 import Link from "next/link"
 import { Icons } from "@/components/icons"
 import { format } from "date-fns"
+import { UserWithAvatar } from "../user-with-avatar"
 
 
 export function AssetDataTable({
@@ -81,6 +82,12 @@ export function AssetDataTable({
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={intl('assignedTo')} />
       ),
+      cell: (assignedToId) => {
+        const userId = assignedToId.getValue();
+        return (
+          userId ? <UserWithAvatar userId={userId} /> : intl('noAssigned')
+        );
+      },
     }),
     columnHelper.accessor("createdAt", {
       header: ({ column }) => (

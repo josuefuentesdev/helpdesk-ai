@@ -23,6 +23,7 @@
     "warrantyExpiresAt": "Warranty Expires",
     "status": "Status",
     "assignedTo": "Assigned To",
+    "noAssigned": "No assigned",
     "createdAt": "Created At",
     "updatedAt": "Updated At",
     "deletedAt": "Deleted At"
@@ -129,5 +130,9 @@
     "noResults": "No users found.",
     "description": "Select a user",
     "loading": "Loading users..."
+  },
+  "UserWithAvatar": {
+    "error": "Error",
+    "unknown": "Unknown"
   }
 }
