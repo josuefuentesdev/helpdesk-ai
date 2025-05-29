@@ -47,11 +47,11 @@ export function AssetStatusFormField<
   name,
   disabled = false,
 }: AssetStatusFormFieldProps<TFieldValues, TName>) {
-  const intl = useTranslations('AssetStatusFormField');
+  const t = useTranslations('AssetStatusFormField');
 
   const options = Object.values(AssetStatus)
     .map((status) => ({
-      label: intl(`statuses.${status}`),
+      label: t(`statuses.${status}`),
       value: status,
     }))
 
@@ -61,7 +61,7 @@ export function AssetStatusFormField<
       name={name}
       render={({ field }) => (
         <FormItem className="flex flex-col">
-          <FormLabel>{intl('label')}</FormLabel>
+          <FormLabel>{t('label')}</FormLabel>
           <Popover>
             <PopoverTrigger asChild disabled={disabled}>
               <FormControl>
@@ -77,7 +77,7 @@ export function AssetStatusFormField<
                     ? options.find(
                       (option) => option.value === field.value
                     )?.label
-                    : intl('placeholder')}
+                    : t('placeholder')}
                   <Icons.chevronsUpDown className="opacity-50" />
                 </Button>
               </FormControl>
@@ -85,11 +85,11 @@ export function AssetStatusFormField<
             <PopoverContent className="w-[200px] p-0">
               <Command>
                 <CommandInput
-                  placeholder={intl('searchPlaceholder')}
+                  placeholder={t('searchPlaceholder')}
                   className="h-9"
                 />
                 <CommandList>
-                  <CommandEmpty>{intl('noResults')}</CommandEmpty>
+                  <CommandEmpty>{t('noResults')}</CommandEmpty>
                   <CommandGroup>
                     {options.map((option) => (
                       <CommandItem
@@ -116,7 +116,7 @@ export function AssetStatusFormField<
             </PopoverContent>
           </Popover>
           <FormDescription>
-            {intl('description')}
+            {t('description')}
           </FormDescription>
           <FormMessage />
         </FormItem>

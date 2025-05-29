@@ -47,11 +47,11 @@ export function AssetTypeFormField<
   name,
   disabled = false,
 }: AssetTypeFormFieldProps<TFieldValues, TName>) {
-  const intl = useTranslations('AssetTypeFormField');
+  const t = useTranslations('AssetTypeFormField');
 
   const options = Object.values(AssetType)
     .map((type) => ({
-      label: intl(`types.${type}`),
+      label: t(`types.${type}`),
       value: type,
     }))
 
@@ -61,7 +61,7 @@ export function AssetTypeFormField<
       name={name}
       render={({ field }) => (
         <FormItem className="flex flex-col">
-          <FormLabel>{intl('label')}</FormLabel>
+          <FormLabel>{t('label')}</FormLabel>
           <Popover>
             <PopoverTrigger asChild disabled={disabled}>
               <FormControl>
@@ -77,7 +77,7 @@ export function AssetTypeFormField<
                     ? options.find(
                       (option) => option.value === field.value
                     )?.label
-                    : intl('placeholder')}
+                    : t('placeholder')}
                   <Icons.chevronsUpDown className="opacity-50" />
                 </Button>
               </FormControl>
@@ -85,11 +85,11 @@ export function AssetTypeFormField<
             <PopoverContent className="w-[200px] p-0">
               <Command>
                 <CommandInput
-                  placeholder={intl('searchPlaceholder')}
+                  placeholder={t('searchPlaceholder')}
                   className="h-9"
                 />
                 <CommandList>
-                  <CommandEmpty>{intl('noResults')}</CommandEmpty>
+                  <CommandEmpty>{t('noResults')}</CommandEmpty>
                   <CommandGroup>
                     {options.map((option) => (
                       <CommandItem
@@ -116,7 +116,7 @@ export function AssetTypeFormField<
             </PopoverContent>
           </Popover>
           <FormDescription>
-            {intl('description')}
+            {t('description')}
           </FormDescription>
           <FormMessage />
         </FormItem>

@@ -22,38 +22,38 @@ export function AssetDataTable({
   className?: string,
   initialColumnVisibility?: Partial<Record<keyof AssetGetAllItem, boolean>>
 }) {
-  const intl = useTranslations('TicketDataTable');
+  const t = useTranslations('TicketDataTable');
 
   const columnHelper = createColumnHelper<AssetGetAllItem>()
   const columns = useMemo(() => [
     columnHelper.accessor("id", {
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title={intl('id')} />
+        <DataTableColumnHeader column={column} title={t('id')} />
       ),
     }),
     columnHelper.accessor("type", {
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title={intl('type')} />
+        <DataTableColumnHeader column={column} title={t('type')} />
       ),
     }),
     columnHelper.accessor("subtype", {
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title={intl('subtype')} />
+        <DataTableColumnHeader column={column} title={t('subtype')} />
       ),
     }),
     columnHelper.accessor("name", {
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title={intl('name')} />
+        <DataTableColumnHeader column={column} title={t('name')} />
       ),
     }),
     columnHelper.accessor("serialNumber", {
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title={intl('serialNumber')} />
+        <DataTableColumnHeader column={column} title={t('serialNumber')} />
       ),
     }),
     columnHelper.accessor("purchaseAt", {
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title={intl('purchaseAt')} />
+        <DataTableColumnHeader column={column} title={t('purchaseAt')} />
       ),
       cell: (purchaseAt) => {
         const dateValue = purchaseAt.getValue();
@@ -64,7 +64,7 @@ export function AssetDataTable({
     }),
     columnHelper.accessor("warrantyExpiresAt", {
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title={intl('warrantyExpiresAt')} />
+        <DataTableColumnHeader column={column} title={t('warrantyExpiresAt')} />
       ),
       cell: (warrantyExpiresAt) => {
         const dateValue = warrantyExpiresAt.getValue();
@@ -75,23 +75,23 @@ export function AssetDataTable({
     }),
     columnHelper.accessor("status", {
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title={intl('status')} />
+        <DataTableColumnHeader column={column} title={t('status')} />
       ),
     }),
     columnHelper.accessor("assignedToId", {
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title={intl('assignedTo')} />
+        <DataTableColumnHeader column={column} title={t('assignedTo')} />
       ),
       cell: (assignedToId) => {
         const userId = assignedToId.getValue();
         return (
-          userId ? <UserWithAvatar userId={userId} /> : intl('noAssigned')
+          userId ? <UserWithAvatar userId={userId} /> : t('noAssigned')
         );
       },
     }),
     columnHelper.accessor("createdAt", {
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title={intl('createdAt')} />
+        <DataTableColumnHeader column={column} title={t('createdAt')} />
       ),
       cell: (createdAt) => {
         const dateValue = createdAt.getValue();
@@ -102,7 +102,7 @@ export function AssetDataTable({
     }),
     columnHelper.accessor("updatedAt", {
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title={intl('updatedAt')} />
+        <DataTableColumnHeader column={column} title={t('updatedAt')} />
       ),
       cell: (updatedAt) => {
         const dateValue = updatedAt.getValue();
@@ -127,7 +127,7 @@ export function AssetDataTable({
     }),
     // dirty fix as https://github.com/TanStack/table/issues/4302
   ] as ColumnDef<AssetGetAllItem, unknown>[],
-  [columnHelper, intl])
+  [columnHelper, t])
 
   return (
     <DataTable
