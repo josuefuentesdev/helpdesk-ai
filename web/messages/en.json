@@ -139,5 +139,11 @@
     "active": "Active",
     "inactive": "Inactive",
     "decommissioned": "Decommissioned"
+  },
+  "AssetType": {
+    "hardware": "Hardware",
+    "software": "Software",
+    "saas": "SaaS",
+    "other": "Other"
   }
 }

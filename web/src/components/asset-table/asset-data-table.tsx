@@ -12,6 +12,7 @@ import { Icons } from "@/components/icons"
 import { format } from "date-fns"
 import { UserWithAvatar } from "../user-with-avatar"
 import { AssetStatusBadge } from "@/components/asset-table/asset-status-badge"
+import { AssetTypeBadge } from "@/components/asset-table/asset-type-badge"
 
 
 export function AssetDataTable({
@@ -36,6 +37,10 @@ export function AssetDataTable({
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={t('type')} />
       ),
+      cell: (type) => {
+        const typeValue = type.getValue();
+        return <AssetTypeBadge type={typeValue} />;
+      },
     }),
     columnHelper.accessor("subtype", {
       header: ({ column }) => (
