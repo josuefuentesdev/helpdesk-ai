@@ -16,7 +16,7 @@ export function AssetTypeBadge({ type }: AssetTypeBadgeProps) {
   return (
     <Badge>
       <Icon className="mr-2 h-4 w-4" />
-      {t(type.toLowerCase())}
+      {t(type)}
     </Badge>
   )
 }

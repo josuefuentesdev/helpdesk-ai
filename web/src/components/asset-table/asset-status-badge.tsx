@@ -19,7 +19,7 @@ export function AssetStatusBadge({ status }: AssetStatusBadgeProps) {
 
   return (
     <Badge className={statusClassMap[status]}>
-      {t(status.toLowerCase())}
+      {t(status)}
     </Badge>
   )
 }

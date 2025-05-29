@@ -136,14 +136,14 @@
     "unknown": "Unknown"
   },
   "AssetStatus": {
-    "active": "Active",
-    "inactive": "Inactive",
-    "decommissioned": "Decommissioned"
+    "ACTIVE": "Active",
+    "INACTIVE": "Inactive",
+    "DECOMMISSIONED": "Decommissioned"
   },
   "AssetType": {
-    "hardware": "Hardware",
-    "software": "Software",
-    "saas": "SaaS",
-    "other": "Other"
+    "HARDWARE": "Hardware",
+    "SOFTWARE": "Software",
+    "SAAS": "SaaS",
+    "OTHER": "Other"
   }
 }
