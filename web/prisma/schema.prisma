@@ -51,6 +51,9 @@ model User {
   accounts      Account[]
   sessions      Session[]
   assets        Asset[]   @relation(name: "AssetAssignedTo")
+
+  createdAssets Asset[]   @relation(name: "AssetCreatedBy")
+  updatedAssets Asset[]   @relation(name: "AssetUpdatedBy")
 }
 
 model VerificationToken {
@@ -89,9 +92,13 @@ model Asset {
   assignedToId      String?
   customFields      Json?
   createdAt         DateTime    @default(now())
+  createdById       String?
   updatedAt         DateTime    @updatedAt
+  updatedById       String?
   deletedAt         DateTime?
 
+  createdBy User? @relation(name: "AssetCreatedBy", fields: [createdById], references: [id])
+  updatedBy User? @relation(name: "AssetUpdatedBy", fields: [updatedById], references: [id])
   assignedTo User? @relation(name: "AssetAssignedTo", fields: [assignedToId], references: [id])
   // TODO: tags
   // TODO: location
