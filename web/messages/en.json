@@ -147,5 +147,13 @@
     "SOFTWARE": "Software",
     "SAAS": "SaaS",
     "OTHER": "Other"
+  },
+  "AuditFields": {
+    "createdBy": "Created by",
+    "createdAt": "Created at",
+    "updatedBy": "Updated by",
+    "updatedAt": "Updated at",
+    "auditTitle": "Audit Information",
+    "noUpdates": "No updates yet"
   }
 }

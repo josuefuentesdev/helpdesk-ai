@@ -22,6 +22,7 @@ import { AssetTypeFormField } from "./asset-type-form-field"
 import { AssetStatusFormField } from "./asset-status-form-field"
 import { baseFormSchema, type AssetFormValues } from "./asset-form-schemas"
 import { UserFormField } from "./user-form-field"
+import { AuditFieldsDisplay } from "./audit-fields-display"
 
 
 type AssetFormProps =
@@ -269,6 +270,15 @@ export function AssetForm({
               />
             </div>
           </div>
+
+          {(variant === "view" || variant === "edit") && asset && (
+            <AuditFieldsDisplay
+                createdById={asset.createdById}
+                createdAt={asset.createdAt}
+                updatedAt={asset.updatedAt}
+                updatedById={asset.updatedById}
+              />
+          )}
 
           {(variant === "edit" || variant === "create") && (
             <div className="flex justify-end pt-4">
