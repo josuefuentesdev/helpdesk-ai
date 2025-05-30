@@ -1,12 +1,20 @@
-import { AssetType, AssetStatus, PrismaClient } from '@prisma/client'
+import { AssetType, AssetStatus, PrismaClient, UserType, type Prisma } from '@prisma/client'
 import { faker } from '@faker-js/faker'
 
 const prisma = new PrismaClient()
 
+type CreateAssetData = Prisma.AssetCreateManyInput
+
 async function main() {
-  const assets = [];
-  const vendors = ['Dell', 'HP', 'Lenovo', 'Apple', 'Microsoft', 'Samsung', 'Acer', 'Asus'];
- 
+  const systemUser = await prisma.user.create({
+    data: {
+      name: 'System',
+      email: 'system@localhost',
+      image: 'system.svg',
+      type: UserType.SYSTEM,
+    },
+  });
+
   // seed users
   const createdUsers = await prisma.user.createMany({
     data: Array.from({ length: 10 }, () => ({
@@ -18,12 +26,22 @@ async function main() {
 
   console.log({ createdUsers });
 
-  const users = await prisma.user.findMany();
+  const users = await prisma.user.findMany({
+    where: {
+      type: UserType.USER,
+    },
+  });
+
+  // seed assets
+  const assets: CreateAssetData[] = [];
+  const vendors = ['Dell', 'HP', 'Lenovo', 'Apple', 'Microsoft', 'Samsung', 'Acer', 'Asus'];  
 
   for (let i = 0; i < 20; i++) {
     const type = faker.helpers.arrayElement<AssetType>(Object.values(AssetType));
     const model = `${faker.helpers.arrayElement(['Pro', 'Elite', 'Business', 'Essential'])} ${faker.number.int({ min: 1000, max: 9999 })}`;
     
+    const toUpdate = faker.datatype.boolean({ probability: 0.5 });
+
     assets.push({
       type: type,
       subtype: type === AssetType.HARDWARE 
@@ -49,8 +67,11 @@ async function main() {
         notes: faker.lorem.sentence()
       },
       createdAt: faker.date.past({ years: 1 }),
-      updatedAt: faker.date.recent(),
-      deletedAt: Math.random() > 0.9 ? faker.date.recent() : null // 10% chance of being soft-deleted
+      createdById: systemUser.id,
+      // ! when updatedAt is undefined prisma will assign current date, many issues in the prisma repository without solutions
+      updatedAt: toUpdate ? faker.date.recent() : undefined,
+      updatedById: toUpdate ? faker.helpers.arrayElement(users).id : undefined,
+      deletedAt: Math.random() > 0.9 ? faker.date.recent() : undefined // 10% chance of being soft-deleted
     });
   }
   const createdAssets = await prisma.asset.createMany({ data: assets });

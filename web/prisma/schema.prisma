@@ -42,18 +42,24 @@ model Session {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+enum UserType {
+  USER
+  SYSTEM
+}
+
 model User {
   id            String    @id @default(cuid())
   name          String?
   email         String?   @unique
   emailVerified DateTime?
   image         String?
+  type          UserType  @default(USER)
   accounts      Account[]
   sessions      Session[]
   assets        Asset[]   @relation(name: "AssetAssignedTo")
 
-  createdAssets Asset[]   @relation(name: "AssetCreatedBy")
-  updatedAssets Asset[]   @relation(name: "AssetUpdatedBy")
+  createdAssets Asset[] @relation(name: "AssetCreatedBy")
+  updatedAssets Asset[] @relation(name: "AssetUpdatedBy")
 }
 
 model VerificationToken {
@@ -92,13 +98,13 @@ model Asset {
   assignedToId      String?
   customFields      Json?
   createdAt         DateTime    @default(now())
-  createdById       String?
+  createdById       String
   updatedAt         DateTime    @updatedAt
   updatedById       String?
   deletedAt         DateTime?
 
-  createdBy User? @relation(name: "AssetCreatedBy", fields: [createdById], references: [id])
-  updatedBy User? @relation(name: "AssetUpdatedBy", fields: [updatedById], references: [id])
+  createdBy  User  @relation(name: "AssetCreatedBy", fields: [createdById], references: [id])
+  updatedBy  User? @relation(name: "AssetUpdatedBy", fields: [updatedById], references: [id])
   assignedTo User? @relation(name: "AssetAssignedTo", fields: [assignedToId], references: [id])
   // TODO: tags
   // TODO: location
