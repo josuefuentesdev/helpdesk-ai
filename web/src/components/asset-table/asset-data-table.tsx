@@ -32,6 +32,10 @@ export function AssetDataTable({
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={t('id')} />
       ),
+      meta: {
+        title: t('id'),
+        csv: true
+      }
     }),
     columnHelper.accessor("type", {
       header: ({ column }) => (
@@ -41,21 +45,37 @@ export function AssetDataTable({
         const typeValue = type.getValue();
         return <AssetTypeBadge type={typeValue} />;
       },
+      meta: {
+        title: t('type'),
+        csv: true
+      }
     }),
     columnHelper.accessor("subtype", {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={t('subtype')} />
       ),
+      meta: {
+        title: t('subtype'),
+        csv: true
+      }
     }),
     columnHelper.accessor("name", {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={t('name')} />
       ),
+      meta: {
+        title: t('name'),
+        csv: true
+      }
     }),
     columnHelper.accessor("serialNumber", {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={t('serialNumber')} />
       ),
+      meta: {
+        title: t('serialNumber'),
+        csv: true
+      }
     }),
     columnHelper.accessor("purchaseAt", {
       header: ({ column }) => (
@@ -67,6 +87,10 @@ export function AssetDataTable({
           <div>{dateValue ? format(dateValue, 'yyyy-MM-dd') : '-'}</div>
         );
       },
+      meta: {
+        title: t('purchaseAt'),
+        csv: true
+      }
     }),
     columnHelper.accessor("warrantyExpiresAt", {
       header: ({ column }) => (
@@ -78,6 +102,10 @@ export function AssetDataTable({
           <div>{dateValue ? format(dateValue, 'yyyy-MM-dd') : '-'}</div>
         );
       },
+      meta: {
+        title: t('warrantyExpiresAt'),
+        csv: true
+      }
     }),
     columnHelper.accessor("status", {
       header: ({ column }) => (
@@ -87,6 +115,10 @@ export function AssetDataTable({
         const statusValue = status.getValue();
         return <AssetStatusBadge status={statusValue} />;
       },
+      meta: {
+        title: t('status'),
+        csv: true
+      }
     }),
     columnHelper.accessor("assignedToId", {
       header: ({ column }) => (
@@ -98,6 +130,10 @@ export function AssetDataTable({
           userId ? <UserWithAvatar userId={userId} /> : t('noAssigned')
         );
       },
+      meta: {
+        title: t('assignedTo'),
+        csv: true
+      }
     }),
     columnHelper.accessor("createdAt", {
       header: ({ column }) => (
@@ -109,6 +145,9 @@ export function AssetDataTable({
           <div>{format(dateValue, 'PPpp')}</div>
         );
       },
+      meta: {
+        title: t('createdAt')
+      }
     }),
     columnHelper.accessor("createdById", {
       header: ({ column }) => (
@@ -120,6 +159,10 @@ export function AssetDataTable({
           <UserWithAvatar userId={userId} />
         );
       },
+      meta: {
+        title: t('createdBy'),
+        csv: true
+      }
     }),
     columnHelper.accessor("updatedAt", {
       header: ({ column }) => (
@@ -131,6 +174,10 @@ export function AssetDataTable({
           <div>{format(dateValue, 'PPpp')}</div>
         );
       },
+      meta: {
+        title: t('updatedAt'),
+        csv: true
+      }
     }),
     columnHelper.accessor("updatedById", {
       header: ({ column }) => (
@@ -142,6 +189,10 @@ export function AssetDataTable({
           userId ? <UserWithAvatar userId={userId} /> : t('neverUpdated')
         );
       },
+      meta: {
+        title: t('updatedBy'),
+        csv: true
+      }
     }),
     columnHelper.display({
       id: "actions",

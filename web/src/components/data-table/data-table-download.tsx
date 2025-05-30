@@ -7,36 +7,32 @@ interface DataTableDownloadProps<TData> {
   table: Table<TData>
 }
 
-// Define the accepted data types for the CSV export
 type AcceptedDataValue = string | number | boolean | null | undefined;
 
 export function DataTableDownload<TData>({ table }: DataTableDownloadProps<TData>) {
   const handleDownload = () => {
-    // Get only the visible rows and columns
     const visibleColumns = table.getVisibleFlatColumns();
     const visibleRows = table.getFilteredRowModel().rows;
     
-    // Create data rows from visible cells
+    const csvColumns = visibleColumns
+      .filter(column => column.columnDef.meta?.csv);
+    
     const csvData = visibleRows.map(row => {
       const rowData: Record<string, AcceptedDataValue> = {};
       
-      visibleColumns.forEach(column => {
-        // Get the cell value for this column in this row
+      csvColumns.forEach(column => {
         const cell = row.getVisibleCells().find(cell => cell.column.id === column.id);
         let value = cell?.getValue();
         
-        // Ensure the value is an accepted type for CSV export
         if (value !== null && value !== undefined && typeof value !== 'string' && 
             typeof value !== 'number' && typeof value !== 'boolean') {
-          // Convert complex objects to string representation
           // eslint-disable-next-line @typescript-eslint/no-base-to-string
           value = String(value);
         }
         
-        // Use the column header or ID as the key
-        const key = (typeof column.columnDef.header === 'string')
-          ? column.columnDef.header
-          : column.id;
+        const meta = column.columnDef.meta;
+        const key = meta?.title ?? 
+          (typeof column.columnDef.header === 'string' ? column.columnDef.header : column.id);
           
         rowData[key] = value as AcceptedDataValue;
       });
@@ -44,7 +40,6 @@ export function DataTableDownload<TData>({ table }: DataTableDownloadProps<TData
       return rowData;
     });
     
-    // Configure the CSV export
     const csvConfig = mkConfig({
       filename: `table-export-${new Date().toISOString().split('T')[0]}`,
       fieldSeparator: ',',
@@ -52,7 +47,6 @@ export function DataTableDownload<TData>({ table }: DataTableDownloadProps<TData
       useKeysAsHeaders: true,
     });
     
-    // Generate and download the CSV
     const csv = generateCsv(csvConfig)(csvData);
     download(csvConfig)(csv);
   };
