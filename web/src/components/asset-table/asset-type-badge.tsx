@@ -14,7 +14,7 @@ export function AssetTypeBadge({ type }: AssetTypeBadgeProps) {
   const Icon = Icons[type]
 
   return (
-    <Badge>
+    <Badge variant="outline">
       <Icon className="mr-2 h-4 w-4" />
       {t(type)}
     </Badge>
