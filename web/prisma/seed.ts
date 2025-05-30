@@ -10,7 +10,7 @@ async function main() {
     data: {
       name: 'System',
       email: 'system@localhost',
-      image: 'system.svg',
+      image: '/users/system.svg',
       type: UserType.SYSTEM,
     },
   });
