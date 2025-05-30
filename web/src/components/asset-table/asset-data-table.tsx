@@ -110,6 +110,17 @@ export function AssetDataTable({
         );
       },
     }),
+    columnHelper.accessor("createdById", {
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title={t('createdBy')} />
+      ),
+      cell: (createdById) => {
+        const userId = createdById.getValue();
+        return (
+          <UserWithAvatar userId={userId} />
+        );
+      },
+    }),
     columnHelper.accessor("updatedAt", {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={t('updatedAt')} />
@@ -118,6 +129,17 @@ export function AssetDataTable({
         const dateValue = updatedAt.getValue();
         return (
           <div>{format(dateValue, 'PPpp')}</div>
+        );
+      },
+    }),
+    columnHelper.accessor("updatedById", {
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title={t('updatedBy')} />
+      ),
+      cell: (updatedById) => {
+        const userId = updatedById.getValue();
+        return (
+          userId ? <UserWithAvatar userId={userId} /> : t('neverUpdated')
         );
       },
     }),

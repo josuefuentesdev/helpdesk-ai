@@ -25,8 +25,10 @@
     "assignedTo": "Assigned To",
     "noAssigned": "No assigned",
     "createdAt": "Created At",
+    "createdBy": "Created By",
     "updatedAt": "Updated At",
-    "deletedAt": "Deleted At"
+    "updatedBy": "Updated By",
+    "neverUpdated": "Never updated"
   },
   "AssetTypeFormField": {
     "label": "Asset Type",

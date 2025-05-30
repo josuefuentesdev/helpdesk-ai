@@ -28,7 +28,9 @@ export const assetRouter = createTRPCRouter({
           status: true,
           assignedToId: true,
           createdAt: true,
+          createdById: true,
           updatedAt: true,
+          updatedById: true,
         },
       })
     }),
@@ -53,7 +55,9 @@ export const assetRouter = createTRPCRouter({
           status: true,
           assignedToId: true,
           createdAt: true,
+          createdById: true,
           updatedAt: true,
+          updatedById: true,
         },
       })
     }),
@@ -82,6 +86,7 @@ export const assetRouter = createTRPCRouter({
         },
         data: {
           ...data,
+          updatedById: ctx.session?.user.id,
         },
       });
     }),
@@ -102,7 +107,10 @@ export const assetRouter = createTRPCRouter({
     }))
     .mutation(({ ctx, input }) => {
       return ctx.db.asset.create({
-        data: input,
+        data: {
+          ...input,
+          createdById: ctx.session?.user.id,
+        },
       });
     }),
 });
