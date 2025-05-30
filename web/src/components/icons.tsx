@@ -1,6 +1,6 @@
 import { Home } from "lucide-react"
 import { IoTicketOutline } from "react-icons/io5";
-import { LuBox, LuCloud, LuCode, LuCpu, LuUser } from "react-icons/lu"
+import { LuBox, LuCloud, LuCode, LuCpu, LuDownload, LuUser } from "react-icons/lu"
 import { MdDevices } from "react-icons/md";
 import { Check, ChevronsUpDown } from "lucide-react"
 import { LuEye } from "react-icons/lu";
@@ -15,6 +15,7 @@ export const Icons = {
   chevronsUpDown: ChevronsUpDown,
   view: LuEye,
   edit: LuSquarePen,
+  download: LuDownload,
 
   // asset types
   HARDWARE: LuCpu,         // Represents physical computing hardware

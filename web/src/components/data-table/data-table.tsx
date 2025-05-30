@@ -15,6 +15,7 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { DataTableViewOptions } from "./data-table-view-options";
 import { DataTablePagination } from "./data-table-pagination"
 import { cn } from "@/lib/utils"
+import { DataTableDownload } from "./data-table-download"
 
 
 interface DataTableProps<TData, TValue> {
@@ -63,7 +64,10 @@ export function DataTable<TData, TValue>({
     <div className={cn("space-y-4 flex flex-col h-full min-h-0", className)}>
       <div className="flex items-center">
         {toolbar?.(table)}
-        <DataTableViewOptions table={table} />
+        <div className="flex items-center gap-2 ml-auto">
+          <DataTableViewOptions table={table} />
+          <DataTableDownload table={table} />
+        </div>
       </div>
       <ScrollArea className="rounded-md border flex-1 min-h-0">
         <Table>
