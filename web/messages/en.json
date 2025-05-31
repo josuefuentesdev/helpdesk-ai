@@ -137,6 +137,22 @@
     "error": "Error",
     "unknown": "Unknown"
   },
+  "AssetDataTableToolbar": {
+    "columns": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Filter by name..."
+      },
+      "status": {
+        "label": "Status",
+        "placeholder": "Filter by status..."
+      },
+      "type": {
+        "label": "Type",
+        "placeholder": "Filter by type..."
+      }
+    }
+  },
   "AssetStatus": {
     "ACTIVE": "Active",
     "INACTIVE": "Inactive",

@@ -45,6 +45,9 @@ export function AssetDataTable({
         const typeValue = type.getValue();
         return <AssetTypeBadge type={typeValue} />;
       },
+      filterFn: (row, id, value: string) => {
+        return value.includes(row.getValue<string>(id))
+      },
       meta: {
         title: t('type'),
         csv: true
@@ -114,6 +117,9 @@ export function AssetDataTable({
       cell: (status) => {
         const statusValue = status.getValue();
         return <AssetStatusBadge status={statusValue} />;
+      },
+      filterFn: (row, id, value: string) => {
+        return value.includes(row.getValue<string>(id))
       },
       meta: {
         title: t('status'),
