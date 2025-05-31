@@ -13,7 +13,7 @@ import { format } from "date-fns"
 import { UserWithAvatar } from "../user-with-avatar"
 import { AssetStatusBadge } from "@/components/asset-table/asset-status-badge"
 import { AssetTypeBadge } from "@/components/asset-table/asset-type-badge"
-
+import { useRouter } from "next/navigation"
 
 export function AssetDataTable({
   data,
@@ -25,6 +25,8 @@ export function AssetDataTable({
   initialColumnVisibility?: Partial<Record<keyof AssetGetAllItem, boolean>>
 }) {
   const t = useTranslations('TicketDataTable');
+
+  const router = useRouter();
 
   const columnHelper = createColumnHelper<AssetGetAllItem>()
   const columns = useMemo(() => [
@@ -228,6 +230,7 @@ export function AssetDataTable({
       toolbar={(table) => <AssetDataTableToolbar table={table} />}
       className={className}
       initialColumnVisibility={initialColumnVisibility}
+      onRowDoubleClick={(row) => router.push(`/assets/${row.id}`)}
     />
   )
 }

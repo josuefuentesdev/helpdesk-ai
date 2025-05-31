@@ -24,6 +24,7 @@ interface DataTableProps<TData, TValue> {
   toolbar?: (table: TableType<TData>) => React.ReactNode,
   className?: string,
   initialColumnVisibility?: Record<string, boolean>
+  onRowDoubleClick?: (row: TData) => void
 }
 
 export function DataTable<TData, TValue>({
@@ -32,6 +33,7 @@ export function DataTable<TData, TValue>({
   toolbar,
   className,
   initialColumnVisibility = {},
+  onRowDoubleClick,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
@@ -105,6 +107,7 @@ export function DataTable<TData, TValue>({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
+                  onDoubleClick={() => onRowDoubleClick?.(row.original)}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell
