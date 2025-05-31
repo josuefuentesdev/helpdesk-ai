@@ -154,6 +154,12 @@
     },
     "reset": "Reset"
   },
+  "DataTableViewOptions": {
+    "view": "View",
+    "selectAll": "Select All",
+    "noColumnsFound": "No columns found",
+    "searchColumns": "Search columns..."
+  },
   "AssetStatus": {
     "ACTIVE": "Active",
     "INACTIVE": "Inactive",
