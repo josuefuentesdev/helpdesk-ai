@@ -9,11 +9,11 @@ import { DataTableColumnHeader } from "@/components/data-table/data-table-column
 import { AssetDataTableToolbar } from "@/components/asset-table/asset-data-table-toolbar"
 import Link from "next/link"
 import { Icons } from "@/components/icons"
-import { format } from "date-fns"
 import { UserWithAvatar } from "../user-with-avatar"
 import { AssetStatusBadge } from "@/components/asset-table/asset-status-badge"
 import { AssetTypeBadge } from "@/components/asset-table/asset-type-badge"
 import { useRouter } from "next/navigation"
+import { useFormatter } from "next-intl"
 
 export function AssetDataTable({
   data,
@@ -25,6 +25,7 @@ export function AssetDataTable({
   initialColumnVisibility?: Partial<Record<keyof AssetGetAllItem, boolean>>
 }) {
   const t = useTranslations('TicketDataTable');
+  const formatter = useFormatter()
 
   const router = useRouter();
 
@@ -89,7 +90,7 @@ export function AssetDataTable({
       cell: (purchaseAt) => {
         const dateValue = purchaseAt.getValue();
         return (
-          <div>{dateValue ? format(dateValue, 'yyyy-MM-dd') : '-'}</div>
+          <div>{dateValue ? formatter.dateTime(dateValue) : '-'}</div>
         );
       },
       meta: {
@@ -104,7 +105,7 @@ export function AssetDataTable({
       cell: (warrantyExpiresAt) => {
         const dateValue = warrantyExpiresAt.getValue();
         return (
-          <div>{dateValue ? format(dateValue, 'yyyy-MM-dd') : '-'}</div>
+          <div>{dateValue ? formatter.dateTime(dateValue) : '-'}</div>
         );
       },
       meta: {
@@ -150,7 +151,7 @@ export function AssetDataTable({
       cell: (createdAt) => {
         const dateValue = createdAt.getValue();
         return (
-          <div>{format(dateValue, 'PPpp')}</div>
+          <div>{formatter.dateTime(dateValue, 'fullShort')}</div>
         );
       },
       meta: {
@@ -179,7 +180,7 @@ export function AssetDataTable({
       cell: (updatedAt) => {
         const dateValue = updatedAt.getValue();
         return (
-          <div>{format(dateValue, 'PPpp')}</div>
+          <div>{formatter.dateTime(dateValue, 'fullShort')}</div>
         );
       },
       meta: {

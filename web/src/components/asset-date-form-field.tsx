@@ -1,6 +1,5 @@
 "use client"
 
-import { format } from "date-fns"
 import { CalendarIcon } from "lucide-react"
 import type { Control, FieldValues, FieldPath } from "react-hook-form"
 
@@ -20,6 +19,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
+import { useFormatter } from "next-intl"
 
 type AssetDateFormFieldProps<
   TFieldValues extends FieldValues,
@@ -44,6 +44,8 @@ export function AssetDateFormField<
   description,
   disabled = false,
 }: AssetDateFormFieldProps<TFieldValues, TName>) {
+  const formatter = useFormatter();
+
   return (
     <FormField
       control={control}
@@ -65,7 +67,7 @@ export function AssetDateFormField<
                   disabled={disabled}
                 >
                   {field.value ? (
-                    format(new Date(field.value), "PPP")
+                    formatter.dateTime(new Date(field.value), 'fullShort')
                   ) : (
                     <span>{placeholder}</span>
                   )}
