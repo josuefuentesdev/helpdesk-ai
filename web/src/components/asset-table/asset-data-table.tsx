@@ -202,6 +202,9 @@ export function AssetDataTable({
     }),
     columnHelper.display({
       id: "actions",
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title={""} />
+      ),
       cell: ({ row }) => (
         <div className="flex items-center space-x-2">
           <Link href={`/assets/${row.original.id}`}>
@@ -212,7 +215,7 @@ export function AssetDataTable({
           </Link>
         </div>
       ),
-      size: 50,
+      enableResizing: false,
     }),
     // dirty fix as https://github.com/TanStack/table/issues/4302
   ] as ColumnDef<AssetGetAllItem, unknown>[],

@@ -58,6 +58,11 @@ export function DataTable<TData, TValue>({
       columnVisibility,
       rowSelection,
     },
+    initialState: {
+      columnPinning: {
+        right: ['actions'],
+      },
+    },
   })
 
   return (
@@ -76,7 +81,12 @@ export function DataTable<TData, TValue>({
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id}>
+                    <TableHead 
+                      key={header.id}
+                      className={header.column.getIsPinned() ?
+                        "sticky right-0 z-0 bg-accent shadow-md" : ""
+                      }
+                    >
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -97,7 +107,12 @@ export function DataTable<TData, TValue>({
                   data-state={row.getIsSelected() && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
+                    <TableCell
+                      key={cell.id}
+                      className={cell.column.getIsPinned() ?
+                        "sticky right-0 z-0 bg-background shadow-md" : ""
+                      }
+                    >
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </TableCell>
                   ))}
