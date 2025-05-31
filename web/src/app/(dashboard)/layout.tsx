@@ -7,6 +7,7 @@ import { Separator } from "@/components/ui/separator"
 import { BreadcrumbNav } from "@/components/breadcrumb-nav"
 import { UserAccountNav } from "@/components/user-account-nav"
 import { ModeToggle } from "@/components/mode-toggle"
+import { LanguageToggle } from "@/components/language-toggle"
 
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
@@ -25,6 +26,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
           <Separator orientation="vertical" className="mr-2 h-4" />
           <BreadcrumbNav />
           <div className="flex-1" />
+          <LanguageToggle />
           <ModeToggle />
           <UserAccountNav user={session.user} />
         </header>

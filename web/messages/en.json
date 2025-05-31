@@ -204,5 +204,10 @@
     "updatedAt": "Updated at",
     "auditTitle": "Audit Information",
     "noUpdates": "No updates yet"
+  },
+  "LanguageToggle": {
+    "label": "Language",
+    "en": "English",
+    "es": "Español"
   }
 }

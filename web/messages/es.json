@@ -1,0 +1,213 @@
+{
+  "HomePage": {},
+  "SignInPage": {
+    "title": "Inicia sesión en tu cuenta",
+    "subtitle": "Ingresa tu correo electrónico para iniciar sesión en tu cuenta",
+    "emailLabel": "Correo electrónico",
+    "emailPlaceholder": "m@ejemplo.com",
+    "loginButton": "Iniciar sesión",
+    "orContinueWith": "O continuar con",
+    "signInWith": "Iniciar sesión con",
+    "noAccount": "¿No tienes una cuenta?",
+    "signUpLink": "Regístrate"
+  },
+  "TicketDataTable": {
+    "id": "ID",
+    "type": "Tipo",
+    "subtype": "Subtipo",
+    "name": "Nombre",
+    "serialNumber": "Número de serie",
+    "purchaseAt": "Fecha de compra",
+    "purchasePrice": "Precio de compra",
+    "currency": "",
+    "warrantyExpiresAt": "Garantía vence",
+    "status": "Estado",
+    "assignedTo": "Asignado a",
+    "noAssigned": "Sin asignar",
+    "createdAt": "Creado el",
+    "createdBy": "Creado por",
+    "updatedAt": "Actualizado el",
+    "updatedBy": "Actualizado por",
+    "neverUpdated": "Nunca actualizado"
+  },
+  "AssetTypeFormField": {
+    "label": "Tipo de activo",
+    "placeholder": "Seleccionar tipo",
+    "searchPlaceholder": "Buscar tipo...",
+    "noResults": "No se encontró ningún tipo.",
+    "description": "Selecciona el tipo de activo.",
+    "types": {
+      "HARDWARE": "Hardware",
+      "SOFTWARE": "Software",
+      "SAAS": "SaaS",
+      "OTHER": "Otro"
+    }
+  },
+  "AssetStatusFormField": {
+    "label": "Estado del activo",
+    "placeholder": "Seleccionar estado",
+    "searchPlaceholder": "Buscar estado...",
+    "noResults": "No se encontró ningún estado.",
+    "description": "Selecciona el estado del activo.",
+    "statuses": {
+      "ACTIVE": "Activo",
+      "INACTIVE": "Inactivo",
+      "DECOMMISSIONED": "Fuera de servicio"
+    }
+  },
+  "AssetForm": {
+    "title": {
+      "view": "Detalles del activo",
+      "edit": "Editar activo",
+      "create": "Añadir nuevo activo"
+    },
+    "description": {
+      "view": "Ver los detalles de tu activo",
+      "edit": "Editar los detalles de tu activo",
+      "create": "Completa los detalles a continuación para añadir un nuevo activo"
+    },
+    "actions": {
+      "edit": "Editar"
+    },
+    "form": {
+      "name": {
+        "label": "Nombre del activo",
+        "placeholder": "ej., Impresora negra, Portátil de conferencia",
+        "description": "Introduce un nombre descriptivo para este activo."
+      },
+      "subtype": {
+        "label": "Subtipo",
+        "placeholder": "ej., Portátil, Monitor, Impresora",
+        "description": "Introduce el tipo específico o categoría del modelo."
+      },
+      "vendor": {
+        "label": "Proveedor",
+        "placeholder": "ej., Dell, Apple, HP",
+        "description": "Introduce el nombre del fabricante o proveedor."
+      },
+      "identifier": {
+        "label": "Etiqueta/ID del activo",
+        "placeholder": "ej., AST-001, IT-2023-001",
+        "description": "Introduce un identificador único para este activo."
+      },
+      "model": {
+        "label": "Modelo",
+        "placeholder": "ej., MacBook Pro 16",
+        "description": "Introduce el modelo específico del activo."
+      },
+      "serialNumber": {
+        "label": "Número de serie",
+        "placeholder": "ej., C02X12345678",
+        "description": "Introduce el número de serie del fabricante."
+      },
+      "purchaseAt": {
+        "label": "Fecha de compra",
+        "placeholder": "Seleccionar fecha de compra",
+        "description": "Selecciona la fecha de compra del activo."
+      },
+      "warrantyExpiresAt": {
+        "label": "Vencimiento de garantía",
+        "placeholder": "Seleccionar fecha de vencimiento de garantía",
+        "description": "Selecciona la fecha de vencimiento de la garantía del activo."
+      },
+      "submit": {
+        "view": "Ver activo",
+        "create": "Crear activo",
+        "edit": "Editar activo",
+        "loading": {
+          "create": "Creando...",
+          "edit": "Editando..."
+        }
+      }
+    }
+  },
+  "AssetDateFormField": {
+    "placeholder": "Seleccionar una fecha...",
+    "description": "Seleccionar una fecha"
+  },
+  "UserFormField": {
+    "label": "Usuario",
+    "placeholder": "Seleccionar usuario...",
+    "searchPlaceholder": "Buscar usuarios...",
+    "noResults": "No se encontraron usuarios.",
+    "description": "Seleccionar un usuario",
+    "loading": "Cargando usuarios..."
+  },
+  "UserWithAvatar": {
+    "error": "Error",
+    "unknown": "Desconocido"
+  },
+  "AssetDataTableToolbar": {
+    "columns": {
+      "name": {
+        "label": "Nombre",
+        "placeholder": "Filtrar por nombre..."
+      },
+      "status": {
+        "label": "Estado",
+        "placeholder": "Filtrar por estado..."
+      },
+      "type": {
+        "label": "Tipo",
+        "placeholder": "Filtrar por tipo..."
+      }
+    },
+    "reset": "Reiniciar"
+  },
+  "DataTable": {
+    "noResults": "No se encontraron resultados"
+  },
+  "DataTableViewOptions": {
+    "view": "Ver",
+    "selectAll": "Seleccionar todo",
+    "noColumnsFound": "No se encontraron columnas",
+    "searchColumns": "Buscar columnas...",
+    "toggleColumns": "Alternar columnas"
+  },
+  "DataTableColumnHeader": {
+    "asc": "Asc",
+    "desc": "Desc",
+    "hide": "Ocultar"
+  },
+  "DataTableDownload": {
+    "export": "Exportar"
+  },
+  "DataTableFacetedFilter": {
+    "selected": "seleccionado",
+    "noResults": "No se encontraron resultados.",
+    "clearFilters": "Limpiar filtros"
+  },
+  "DataTablePagination": {
+    "rowsPerPage": "Filas por página",
+    "page": "Página {page} de {pageCount}",
+    "rowsSelected": "{selected} de {total} fila(s) seleccionada(s)",
+    "goToFirstPage": "Ir a la primera página",
+    "goToPreviousPage": "Ir a la página anterior",
+    "goToNextPage": "Ir a la página siguiente",
+    "goToLastPage": "Ir a la última página"
+  },
+  "AssetStatus": {
+    "ACTIVE": "Activo",
+    "INACTIVE": "Inactivo",
+    "DECOMMISSIONED": "Fuera de servicio"
+  },
+  "AssetType": {
+    "HARDWARE": "Hardware",
+    "SOFTWARE": "Software",
+    "SAAS": "SaaS",
+    "OTHER": "Otro"
+  },
+  "AuditFields": {
+    "createdBy": "Creado por",
+    "createdAt": "Creado el",
+    "updatedBy": "Actualizado por",
+    "updatedAt": "Actualizado el",
+    "auditTitle": "Información de auditoría",
+    "noUpdates": "Sin actualizaciones aún"
+  },
+  "LanguageToggle": {
+    "label": "Idioma",
+    "en": "English",
+    "es": "Español"
+  }
+}

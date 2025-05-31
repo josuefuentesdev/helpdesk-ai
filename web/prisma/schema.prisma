@@ -54,6 +54,7 @@ model User {
   emailVerified DateTime?
   image         String?
   type          UserType  @default(USER)
+  locale        String    @default("en")
   accounts      Account[]
   sessions      Session[]
   assets        Asset[]   @relation(name: "AssetAssignedTo")
