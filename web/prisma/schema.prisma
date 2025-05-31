@@ -47,6 +47,11 @@ enum UserType {
   SYSTEM
 }
 
+enum Locale {
+  en
+  es
+}
+
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -54,7 +59,7 @@ model User {
   emailVerified DateTime?
   image         String?
   type          UserType  @default(USER)
-  locale        String    @default("en")
+  locale        Locale    @default(en)
   accounts      Account[]
   sessions      Session[]
   assets        Asset[]   @relation(name: "AssetAssignedTo")
