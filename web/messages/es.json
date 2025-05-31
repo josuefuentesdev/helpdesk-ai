@@ -11,6 +11,10 @@
     "noAccount": "¿No tienes una cuenta?",
     "signUpLink": "Regístrate"
   },
+  "AssetsPage": {
+    "title": "Activos",
+    "newAsset": "Nuevo Activo"
+  },
   "TicketDataTable": {
     "id": "ID",
     "type": "Tipo",
@@ -107,8 +111,8 @@
       },
       "warrantyExpiresAt": {
         "label": "Vencimiento de garantía",
-        "placeholder": "Seleccionar fecha de vencimiento de garantía",
-        "description": "Selecciona la fecha de vencimiento de la garantía del activo."
+        "placeholder": "Seleccionar el vencimiento de garantía",
+        "description": "Selecciona el vencimiento de la garantía."
       },
       "submit": {
         "view": "Ver activo",

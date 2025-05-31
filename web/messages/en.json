@@ -11,6 +11,10 @@
     "noAccount": "Don't have an account?",
     "signUpLink": "Sign up"
   },
+  "AssetsPage": {
+    "title": "Assets",
+    "newAsset": "New Asset"
+  },
   "TicketDataTable": {
     "id": "ID",
     "type": "Type",

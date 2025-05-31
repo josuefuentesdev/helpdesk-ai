@@ -3,15 +3,17 @@ import { api } from "@/trpc/server"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { PageLayout } from "@/components/page-layout"
+import { getTranslations } from "next-intl/server"
 
 export default async function AssetsPage() {
+  const t = await getTranslations('AssetsPage')
   const assets = await api.asset.getAll()
   return (
     <PageLayout
-      title="Assets"
+      title={t('title')}
       actions={
         <Button asChild>
-          <Link href="/assets/new">New Asset</Link>
+          <Link href="/assets/new">{t('newAsset')}</Link>
         </Button>
       }
     >
