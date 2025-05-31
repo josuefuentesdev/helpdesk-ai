@@ -151,7 +151,8 @@
         "label": "Type",
         "placeholder": "Filter by type..."
       }
-    }
+    },
+    "reset": "Reset"
   },
   "AssetStatus": {
     "ACTIVE": "Active",
