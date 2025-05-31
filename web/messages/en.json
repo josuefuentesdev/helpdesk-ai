@@ -158,7 +158,8 @@
     "view": "View",
     "selectAll": "Select All",
     "noColumnsFound": "No columns found",
-    "searchColumns": "Search columns..."
+    "searchColumns": "Search columns...",
+    "toggleColumns": "Toggle Columns"
   },
   "AssetStatus": {
     "ACTIVE": "Active",

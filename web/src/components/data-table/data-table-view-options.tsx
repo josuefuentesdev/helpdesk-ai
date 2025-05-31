@@ -43,9 +43,10 @@ export function DataTableViewOptions<TData>({
   const someColumnsVisible = columns.some((column) => column.getIsVisible())
 
   // Filter columns based on search query
-  const filteredColumns = columns.filter((column) => 
-    column.id.toLowerCase().includes(searchQuery.toLowerCase())
-  )
+  const filteredColumns = columns.filter((column) => {
+    const title = column.columnDef.meta?.title ?? column.id
+    return title.toLowerCase().includes(searchQuery.toLowerCase())
+  })
 
   return (
     <DropdownMenu>
@@ -68,7 +69,7 @@ export function DataTableViewOptions<TData>({
             onValueChange={setSearchQuery}
           />
           <CommandList className="max-h-[300px] overflow-auto">
-            <CommandGroup className="p-1.5" heading="Toggle columns">
+            <CommandGroup className="p-1.5" heading={t('toggleColumns')}>
               <CommandItem
                 onSelect={() => {
                   columns.forEach((column) => column.toggleVisibility(!!(!allColumnsVisible)))
@@ -109,7 +110,7 @@ export function DataTableViewOptions<TData>({
                       ) : (
                         <EyeOff className="h-4 w-4 text-muted-foreground" />
                       )}
-                      <span>{column.id}</span>
+                      <span>{column.columnDef.meta?.title ?? column.id}</span>
                     </div>
                     <Check 
                       className={`h-4 w-4 ${column.getIsVisible() ? "opacity-100 text-primary" : "opacity-0"}`}
