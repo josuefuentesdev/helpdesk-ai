@@ -16,6 +16,7 @@ import { DataTableViewOptions } from "./data-table-view-options";
 import { DataTablePagination } from "./data-table-pagination"
 import { cn } from "@/lib/utils"
 import { DataTableDownload } from "./data-table-download"
+import { useTranslations } from "next-intl"
 
 
 interface DataTableProps<TData, TValue> {
@@ -35,6 +36,8 @@ export function DataTable<TData, TValue>({
   initialColumnVisibility = {},
   onRowDoubleClick,
 }: DataTableProps<TData, TValue>) {
+  const t = useTranslations('DataTable');
+
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
     []
@@ -124,7 +127,7 @@ export function DataTable<TData, TValue>({
             ) : (
               <TableRow>
                 <TableCell colSpan={columns.length} className="h-24 text-center">
-                  No results.
+                  {t('noResults')}
                 </TableCell>
               </TableRow>
             )}

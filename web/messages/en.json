@@ -154,12 +154,37 @@
     },
     "reset": "Reset"
   },
+  "DataTable": {
+    "noResults": "No results found"
+  },
   "DataTableViewOptions": {
     "view": "View",
     "selectAll": "Select All",
     "noColumnsFound": "No columns found",
     "searchColumns": "Search columns...",
     "toggleColumns": "Toggle Columns"
+  },
+  "DataTableColumnHeader": {
+    "asc": "Asc",
+    "desc": "Desc",
+    "hide": "Hide"
+  },
+  "DataTableDownload": {
+    "export": "Export"
+  },
+  "DataTableFacetedFilter": {
+    "selected": "selected",
+    "noResults": "No results found.",
+    "clearFilters": "Clear filters"
+  },
+  "DataTablePagination": {
+    "rowsPerPage": "Rows per page",
+    "page": "Page {page} of {pageCount}",
+    "rowsSelected": "{selected} of {total} row(s) selected",
+    "goToFirstPage": "Go to first page",
+    "goToPreviousPage": "Go to previous page",
+    "goToNextPage": "Go to next page",
+    "goToLastPage": "Go to last page"
   },
   "AssetStatus": {
     "ACTIVE": "Active",

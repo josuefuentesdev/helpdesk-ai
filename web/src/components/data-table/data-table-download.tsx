@@ -2,6 +2,7 @@ import type { Table } from "@tanstack/react-table"
 import { mkConfig, generateCsv, download } from "export-to-csv";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
+import { useTranslations } from "next-intl";
 
 interface DataTableDownloadProps<TData> {
   table: Table<TData>
@@ -10,6 +11,8 @@ interface DataTableDownloadProps<TData> {
 type AcceptedDataValue = string | number | boolean | null | undefined;
 
 export function DataTableDownload<TData>({ table }: DataTableDownloadProps<TData>) {
+  const t = useTranslations('DataTableDownload');
+
   const handleDownload = () => {
     const visibleColumns = table.getVisibleFlatColumns();
     const visibleRows = table.getFilteredRowModel().rows;
@@ -59,7 +62,7 @@ export function DataTableDownload<TData>({ table }: DataTableDownloadProps<TData
       className="h-8 px-2 lg:px-3"
     >
       <Icons.download className="mr-2 h-4 w-4" />
-      Export
+      {t('export')}
     </Button>
   )
 }
