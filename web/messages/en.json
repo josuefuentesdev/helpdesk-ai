@@ -209,7 +209,8 @@
     "id": "ID",
     "name": "Name",
     "email": "Email",
-    "avatar": "Avatar"
+    "avatar": "Avatar",
+    "department": "Department"
   },
   "UserDataTableToolbar": {
     "columns": {
@@ -223,7 +224,7 @@
       }
     },
     "reset": "Reset"
-  },  
+  },
   "AuditFields": {
     "createdBy": "Created by",
     "createdAt": "Created at",

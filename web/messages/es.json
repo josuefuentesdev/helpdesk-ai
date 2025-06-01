@@ -209,7 +209,8 @@
     "id": "ID",
     "name": "Nombre",
     "email": "Email",
-    "avatar": "Avatar"
+    "avatar": "Avatar",
+    "department": "Departamento"
   },
   "UserDataTableToolbar": {
     "columns": {

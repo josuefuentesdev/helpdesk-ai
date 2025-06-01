@@ -77,6 +77,16 @@ export function UserDataTable({
         csv: false
       }
     }),
+    columnHelper.accessor(row => row.department?.name, {
+      id: "department",
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title={t('department')} />
+      ),
+      meta: {
+        title: t('department'),
+        csv: true
+      }
+    }),
     columnHelper.display({
       id: "actions",
       header: ({ column }) => (
