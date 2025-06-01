@@ -15,6 +15,10 @@
     "title": "Activos",
     "newAsset": "Nuevo Activo"
   },
+  "UsersPage": {
+    "title": "Usuarios",
+    "newUser": "Nuevo Usuario"
+  },
   "TicketDataTable": {
     "id": "ID",
     "type": "Tipo",
@@ -200,6 +204,25 @@
     "SOFTWARE": "Software",
     "SAAS": "SaaS",
     "OTHER": "Otro"
+  },
+  "UserDataTable": {
+    "id": "ID",
+    "name": "Nombre",
+    "email": "Email",
+    "avatar": "Avatar"
+  },
+  "UserDataTableToolbar": {
+    "columns": {
+      "name": {
+        "label": "Nombre",
+        "placeholder": "Filtrar por nombre..."
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Filtrar por email..."
+      }
+    },
+    "reset": "Reiniciar"
   },
   "AuditFields": {
     "createdBy": "Creado por",

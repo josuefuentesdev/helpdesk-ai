@@ -15,6 +15,10 @@
     "title": "Assets",
     "newAsset": "New Asset"
   },
+  "UsersPage": {
+    "title": "Users",
+    "newUser": "New User"
+  },
   "TicketDataTable": {
     "id": "ID",
     "type": "Type",
@@ -201,6 +205,25 @@
     "SAAS": "SaaS",
     "OTHER": "Other"
   },
+  "UserDataTable": {
+    "id": "ID",
+    "name": "Name",
+    "email": "Email",
+    "avatar": "Avatar"
+  },
+  "UserDataTableToolbar": {
+    "columns": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Filter by name..."
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Filter by email..."
+      }
+    },
+    "reset": "Reset"
+  },  
   "AuditFields": {
     "createdBy": "Created by",
     "createdAt": "Created at",
