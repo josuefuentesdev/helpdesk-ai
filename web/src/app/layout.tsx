@@ -7,6 +7,7 @@ import { TRPCReactProvider } from "@/trpc/react";
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale } from 'next-intl/server';
 import { ThemeProvider } from "next-themes";
+import { Toaster } from "@/components/ui/sonner"
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -36,6 +37,7 @@ export default async function RootLayout({
               disableTransitionOnChange
             >
               {children}
+              <Toaster />
             </ThemeProvider>
           </TRPCReactProvider>
         </NextIntlClientProvider>

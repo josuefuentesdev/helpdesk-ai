@@ -10,5 +10,208 @@
     "signInWith": "Sign in with",
     "noAccount": "Don't have an account?",
     "signUpLink": "Sign up"
+  },
+  "AssetsPage": {
+    "title": "Assets",
+    "newAsset": "New Asset"
+  },
+  "TicketDataTable": {
+    "id": "ID",
+    "type": "Type",
+    "subtype": "SubType",
+    "name": "Name",
+    "serialNumber": "Serial Number",
+    "purchaseAt": "Purchase Date",
+    "purchasePrice": "Purchase Price",
+    "currency": "",
+    "warrantyExpiresAt": "Warranty Expires",
+    "status": "Status",
+    "assignedTo": "Assigned To",
+    "noAssigned": "No assigned",
+    "createdAt": "Created At",
+    "createdBy": "Created By",
+    "updatedAt": "Updated At",
+    "updatedBy": "Updated By",
+    "neverUpdated": "Never updated"
+  },
+  "AssetTypeFormField": {
+    "label": "Asset Type",
+    "placeholder": "Select type",
+    "searchPlaceholder": "Search type...",
+    "noResults": "No type found.",
+    "description": "Select the type of asset.",
+    "types": {
+      "HARDWARE": "Hardware",
+      "SOFTWARE": "Software",
+      "SAAS": "SaaS",
+      "OTHER": "Other"
+    }
+  },
+  "AssetStatusFormField": {
+    "label": "Asset Status",
+    "placeholder": "Select status",
+    "searchPlaceholder": "Search status...",
+    "noResults": "No status found.",
+    "description": "Select the status of the asset.",
+    "statuses": {
+      "ACTIVE": "Active",
+      "INACTIVE": "Inactive",
+      "DECOMMISSIONED": "Decommissioned"
+    }
+  },
+  "AssetForm": {
+    "title": {
+      "view": "Asset Details",
+      "edit": "Edit Asset",
+      "create": "Add New Asset"
+    },
+    "description": {
+      "view": "View the details of your asset",
+      "edit": "Edit the details of your asset",
+      "create": "Fill in the details below to add a new asset"
+    },
+    "actions": {
+      "edit": "Edit"
+    },
+    "form": {
+      "name": {
+        "label": "Asset Name",
+        "placeholder": "e.g., Black Printer, Conference Laptop",
+        "description": "Enter a descriptive name for this asset."
+      },
+      "subtype": {
+        "label": "Subtype",
+        "placeholder": "e.g., Laptop, Monitor, Printer",
+        "description": "Enter the specific type or model category."
+      },
+      "vendor": {
+        "label": "Vendor",
+        "placeholder": "e.g., Dell, Apple, HP",
+        "description": "Enter the manufacturer or vendor name."
+      },
+      "identifier": {
+        "label": "Asset Tag/ID",
+        "placeholder": "e.g., AST-001, IT-2023-001",
+        "description": "Enter a unique identifier for this asset."
+      },
+      "model": {
+        "label": "Model",
+        "placeholder": "e.g., MacBook Pro 16",
+        "description": "Enter the specific model of the asset."
+      },
+      "serialNumber": {
+        "label": "Serial Number",
+        "placeholder": "e.g., C02X12345678",
+        "description": "Enter the manufacturer's serial number."
+      },
+      "purchaseAt": {
+        "label": "Purchase Date",
+        "placeholder": "Select purchase date",
+        "description": "Select the purchase date of the asset."
+      },
+      "warrantyExpiresAt": {
+        "label": "Warranty Expiration",
+        "placeholder": "Select warranty expiration date",
+        "description": "Select the warranty expiration date of the asset."
+      },
+      "submit": {
+        "view": "View Asset",
+        "create": "Create Asset",
+        "edit": "Edit Asset",
+        "loading": {
+          "create": "Creating...",
+          "edit": "Editing..."
+        }
+      }
+    }
+  },
+  "AssetDateFormField": {
+    "placeholder": "Select a date...",
+    "description": "Select a date"
+  },
+  "UserFormField": {
+    "label": "User",
+    "placeholder": "Select user...",
+    "searchPlaceholder": "Search users...",
+    "noResults": "No users found.",
+    "description": "Select a user",
+    "loading": "Loading users..."
+  },
+  "UserWithAvatar": {
+    "error": "Error",
+    "unknown": "Unknown"
+  },
+  "AssetDataTableToolbar": {
+    "columns": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Filter by name..."
+      },
+      "status": {
+        "label": "Status",
+        "placeholder": "Filter by status..."
+      },
+      "type": {
+        "label": "Type",
+        "placeholder": "Filter by type..."
+      }
+    },
+    "reset": "Reset"
+  },
+  "DataTable": {
+    "noResults": "No results found"
+  },
+  "DataTableViewOptions": {
+    "view": "View",
+    "selectAll": "Select All",
+    "noColumnsFound": "No columns found",
+    "searchColumns": "Search columns...",
+    "toggleColumns": "Toggle Columns"
+  },
+  "DataTableColumnHeader": {
+    "asc": "Asc",
+    "desc": "Desc",
+    "hide": "Hide"
+  },
+  "DataTableDownload": {
+    "export": "Export"
+  },
+  "DataTableFacetedFilter": {
+    "selected": "selected",
+    "noResults": "No results found.",
+    "clearFilters": "Clear filters"
+  },
+  "DataTablePagination": {
+    "rowsPerPage": "Rows per page",
+    "page": "Page {page} of {pageCount}",
+    "rowsSelected": "{selected} of {total} row(s) selected",
+    "goToFirstPage": "Go to first page",
+    "goToPreviousPage": "Go to previous page",
+    "goToNextPage": "Go to next page",
+    "goToLastPage": "Go to last page"
+  },
+  "AssetStatus": {
+    "ACTIVE": "Active",
+    "INACTIVE": "Inactive",
+    "DECOMMISSIONED": "Decommissioned"
+  },
+  "AssetType": {
+    "HARDWARE": "Hardware",
+    "SOFTWARE": "Software",
+    "SAAS": "SaaS",
+    "OTHER": "Other"
+  },
+  "AuditFields": {
+    "createdBy": "Created by",
+    "createdAt": "Created at",
+    "updatedBy": "Updated by",
+    "updatedAt": "Updated at",
+    "auditTitle": "Audit Information",
+    "noUpdates": "No updates yet"
+  },
+  "LanguageToggle": {
+    "label": "Language",
+    "en": "English",
+    "es": "Español"
   }
 }

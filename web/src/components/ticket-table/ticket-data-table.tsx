@@ -1,7 +1,7 @@
 "use client"
 
 import { useMemo } from "react"
-import { DataTable } from "./data-table"
+import { DataTable } from "@/components/data-table/data-table"
 import type { ColumnDef } from "@tanstack/react-table"
 import { temporalTicketSampleData } from "./temporal-ticket-sample-data"
 
