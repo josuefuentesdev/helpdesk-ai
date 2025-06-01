@@ -15,12 +15,12 @@ export function DataTableDownload<TData>({ table }: DataTableDownloadProps<TData
 
   const handleDownload = () => {
     const visibleColumns = table.getVisibleFlatColumns();
-    const visibleRows = table.getFilteredRowModel().rows;
+    const allRows = table.getCoreRowModel().rows;
     
     const csvColumns = visibleColumns
       .filter(column => column.columnDef.meta?.csv);
     
-    const csvData = visibleRows.map(row => {
+    const csvData = allRows.map(row => {
       const rowData: Record<string, AcceptedDataValue> = {};
       
       csvColumns.forEach(column => {
