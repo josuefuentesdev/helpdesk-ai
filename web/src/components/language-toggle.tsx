@@ -13,7 +13,7 @@ import { Globe } from "lucide-react";
 import { api } from "@/trpc/react";
 import { useRouter } from "next/navigation";
 import { locales, type Locale } from "@/i18n/config";
-
+import { toast } from "sonner"
 
 export function LanguageToggle() {
   const t = useTranslations("LanguageToggle");
@@ -24,6 +24,7 @@ export function LanguageToggle() {
   // Use the updateLocale mutation
   const { mutate: updateLocale } = api.user.updateLocale.useMutation({
     onSuccess: () => {
+      toast.success("Locale updated successfully")
       // Reload the page to apply the new locale
       router.refresh();
     },
