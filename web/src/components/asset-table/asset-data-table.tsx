@@ -155,7 +155,8 @@ export function AssetDataTable({
         );
       },
       meta: {
-        title: t('createdAt')
+        title: t('createdAt'),
+        csv: true
       }
     }),
     columnHelper.accessor("createdById", {
@@ -222,7 +223,7 @@ export function AssetDataTable({
     }),
     // dirty fix as https://github.com/TanStack/table/issues/4302
   ] as ColumnDef<AssetGetAllItem, unknown>[],
-  [columnHelper, t])
+  [columnHelper, formatter, t])
 
   return (
     <DataTable
