@@ -31,6 +31,7 @@ type AssetDateFormFieldProps<
   placeholder: string
   description: string
   disabled?: boolean
+  disabledDates?: (date: Date) => boolean
 }
 
 export function AssetDateFormField<
@@ -43,6 +44,7 @@ export function AssetDateFormField<
   placeholder,
   description,
   disabled = false,
+  disabledDates,
 }: AssetDateFormFieldProps<TFieldValues, TName>) {
   const formatter = useFormatter();
 
@@ -80,11 +82,7 @@ export function AssetDateFormField<
                 mode="single"
                 selected={field.value ? new Date(field.value) : undefined}
                 onSelect={field.onChange}
-                disabled={(date) => {
-                  const today = new Date()
-                  today.setHours(0, 0, 0, 0)
-                  return date > today || date < new Date("1900-01-01")
-                }}
+                disabled={disabledDates}
                 initialFocus
               />
             </PopoverContent>
