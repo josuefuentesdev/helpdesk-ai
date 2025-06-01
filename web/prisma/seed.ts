@@ -15,13 +15,42 @@ async function main() {
     },
   });
 
+  // seed departments
+  const departments = [
+    'IT',
+    'HR',
+    'Finance',
+    'Marketing',
+    'Sales',
+    'Operations',
+    'Customer Support'
+  ];
+
+  await prisma.department.createMany({
+    data: departments.map(name => ({
+      name
+    })),
+  });
+
+  // fetch created departments to get their IDs
+  const departmentRecords = await prisma.department.findMany();
+
   // seed users
   const createdUsers = await prisma.user.createMany({
-    data: Array.from({ length: 10 }, () => ({
-      name: faker.person.firstName(),
-      email: faker.internet.email(),
-      image: faker.image.avatar(),
-    })),
+    data: Array.from({ length: 20 }, () => {
+      // Randomly assign a department to each user
+      const randomDepartmentIndex = Math.floor(Math.random() * departmentRecords.length);
+      const randomDepartment = departmentRecords[randomDepartmentIndex];
+      
+      return {
+        name: faker.person.firstName(),
+        email: faker.internet.email(),
+        image: faker.image.avatar(),
+        departmentId: randomDepartment?.id,
+        // Use string enum value instead of direct enum reference
+        locale: 'en'
+      };
+    }),
   });
 
   console.log({ createdUsers });

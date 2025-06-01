@@ -60,12 +60,21 @@ model User {
   image         String?
   type          UserType  @default(USER)
   locale        Locale    @default(en)
+  departmentId  String?
+  department    Department? @relation(fields: [departmentId], references: [id])
   accounts      Account[]
   sessions      Session[]
   assets        Asset[]   @relation(name: "AssetAssignedTo")
 
   createdAssets Asset[] @relation(name: "AssetCreatedBy")
   updatedAssets Asset[] @relation(name: "AssetUpdatedBy")
+}
+
+model Department {
+  id   String @id @default(cuid())
+  name String @unique
+
+  users User[]
 }
 
 model VerificationToken {
