@@ -6,7 +6,7 @@ import { api } from '@/trpc/server';
 export async function getUserLocale() {
   try {
     return (await api.user.getLocale())?.locale ?? defaultLocale;
-  } catch (error) {
+  } catch {
     // If the user is not logged in, return the default locale
     return defaultLocale;
   }
