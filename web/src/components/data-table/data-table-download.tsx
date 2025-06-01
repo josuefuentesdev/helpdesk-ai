@@ -1,8 +1,10 @@
+"use client"
+
 import type { Table } from "@tanstack/react-table"
 import { mkConfig, generateCsv, download } from "export-to-csv";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
-import { useTranslations } from "next-intl";
+import { useFormatter, useTranslations } from "next-intl";
 
 interface DataTableDownloadProps<TData> {
   table: Table<TData>
@@ -12,6 +14,7 @@ type AcceptedDataValue = string | number | boolean | null | undefined;
 
 export function DataTableDownload<TData>({ table }: DataTableDownloadProps<TData>) {
   const t = useTranslations('DataTableDownload');
+  const formatter = useFormatter()
 
   const handleDownload = () => {
     const visibleColumns = table.getVisibleFlatColumns();
@@ -27,10 +30,13 @@ export function DataTableDownload<TData>({ table }: DataTableDownloadProps<TData
         const cell = row.getVisibleCells().find(cell => cell.column.id === column.id);
         let value = cell?.getValue();
         
-        if (value !== null && value !== undefined && typeof value !== 'string' && 
-            typeof value !== 'number' && typeof value !== 'boolean') {
-          // eslint-disable-next-line @typescript-eslint/no-base-to-string
-          value = String(value);
+        if (value !== null && value !== undefined) {
+          if (value instanceof Date) {
+            value = formatter.dateTime(value, 'excel');
+          } else if (typeof value !== 'string' && typeof value !== 'number' && typeof value !== 'boolean') {
+            // eslint-disable-next-line @typescript-eslint/no-base-to-string
+            value = String(value);
+          }
         }
         
         const meta = column.columnDef.meta;
