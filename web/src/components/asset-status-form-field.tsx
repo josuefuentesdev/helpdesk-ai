@@ -49,10 +49,18 @@ export function AssetStatusFormField<
 }: AssetStatusFormFieldProps<TFieldValues, TName>) {
   const t = useTranslations('AssetStatusFormField');
 
+  // Status color mapping using the same variables as asset-status-badge
+  const statusColorMap: Record<AssetStatus, string> = {
+    "ACTIVE": "var(--status-success)",
+    "INACTIVE": "var(--status-warning)",
+    "DECOMMISSIONED": "var(--status-inactive)"
+  }
+
   const options = Object.values(AssetStatus)
     .map((status) => ({
       label: t(`statuses.${status}`),
       value: status,
+      color: statusColorMap[status]
     }))
 
   return (
@@ -73,11 +81,21 @@ export function AssetStatusFormField<
                     !field.value && "text-muted-foreground"
                   )}
                 >
-                  {field.value
-                    ? options.find(
-                      (option) => option.value === field.value
-                    )?.label
-                    : t('placeholder')}
+                  <div className="flex items-center gap-2">
+                    {field.value && (
+                      <div 
+                        className="w-3 h-3 rounded-sm flex-shrink-0" 
+                        style={{ backgroundColor: options.find(option => option.value === field.value)?.color }}
+                      />
+                    )}
+                    <span>
+                      {field.value
+                        ? options.find(
+                          (option) => option.value === field.value
+                        )?.label
+                        : t('placeholder')}
+                    </span>
+                  </div>
                   <Icons.chevronsUpDown className="opacity-50" />
                 </Button>
               </FormControl>
@@ -99,7 +117,13 @@ export function AssetStatusFormField<
                           field.onChange(option.value)
                         }}
                       >
-                        {option.label}
+                        <div className="flex items-center gap-2">
+                          <div 
+                            className="w-3 h-3 rounded-sm flex-shrink-0" 
+                            style={{ backgroundColor: option.color }}
+                          />
+                          <span>{option.label}</span>
+                        </div>
                         <Icons.check
                           className={cn(
                             "ml-auto",
