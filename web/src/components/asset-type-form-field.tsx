@@ -1,5 +1,6 @@
 "use client"
 
+import React from "react"
 import type { Control, FieldValues, FieldPath } from "react-hook-form"
 
 import { cn } from "@/lib/utils"
@@ -28,6 +29,7 @@ import {
 import { AssetType } from "@prisma/client"
 import { Icons } from "@/components/icons"
 import { useTranslations } from "next-intl"
+import type { IconType } from "react-icons/lib"
 
 
 type AssetTypeFormFieldProps<
@@ -37,6 +39,10 @@ type AssetTypeFormFieldProps<
   control: Control<TFieldValues>
   name: TName
   disabled: boolean
+}
+
+function IconWrapper({ icon }: { icon: IconType | undefined }) {
+  return icon && React.createElement(icon, { className: "mr-2 h-4 w-4" })
 }
 
 export function AssetTypeFormField<
@@ -53,6 +59,7 @@ export function AssetTypeFormField<
     .map((type) => ({
       label: t(`types.${type}`),
       value: type,
+      icon: Icons[type]
     }))
 
   return (
@@ -73,12 +80,18 @@ export function AssetTypeFormField<
                     !field.value && "text-muted-foreground"
                   )}
                 >
-                  {field.value
-                    ? options.find(
-                      (option) => option.value === field.value
-                    )?.label
-                    : t('placeholder')}
-                  <Icons.chevronsUpDown className="opacity-50" />
+                  {field.value ?
+                    (
+                    <>
+                      {options.find((option) => option.value === field.value)?.icon && (
+                        <IconWrapper icon={options.find((option) => option.value === field.value)?.icon} />
+                      )}
+                      {options.find((option) => option.value === field.value)?.label}
+                    </>
+                  ) : (
+                    t('placeholder')
+                  )}
+                  <Icons.chevronsUpDown className="ml-auto opacity-50" />
                 </Button>
               </FormControl>
             </PopoverTrigger>
@@ -99,7 +112,10 @@ export function AssetTypeFormField<
                           field.onChange(option.value)
                         }}
                       >
-                        {option.label}
+                        <div className="flex items-center">
+                          {option.icon && React.createElement(option.icon, { className: "mr-2 h-4 w-4" })}
+                          {option.label}
+                        </div>
                         <Icons.check
                           className={cn(
                             "ml-auto",
