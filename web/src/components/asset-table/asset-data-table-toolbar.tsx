@@ -8,6 +8,8 @@ import { AssetTypeBadge } from "./asset-type-badge";
 import { AssetStatusBadge } from "./asset-status-badge";
 import { Button } from "../ui/button";
 import { Icons } from "../icons";
+import { api } from "@/trpc/react";
+import { Skeleton } from "../ui/skeleton";
 
 export function AssetDataTableToolbar<TData>({
   table,
@@ -15,6 +17,8 @@ export function AssetDataTableToolbar<TData>({
   table: Table<TData>
 }) {
   const isFiltered = table.getState().columnFilters.length > 0
+
+  const { data: departments, isPending, error } = api.department.getDepartments.useQuery()
 
   const tAssetType = useTranslations('AssetType');
   const tAssetStatus = useTranslations('AssetStatus');
@@ -30,6 +34,11 @@ export function AssetDataTableToolbar<TData>({
     node: <AssetStatusBadge status={status} />,
     value: status,
   })), [tAssetStatus]);
+
+  const departmentOptions = useMemo(() => departments?.map((department) => ({
+    label: department.name,
+    value: department.name,
+  })), [departments]);
 
   const t = useTranslations('AssetDataTableToolbar');
 
@@ -56,6 +65,21 @@ export function AssetDataTableToolbar<TData>({
           title={t('columns.type.label')}
           options={typeOptions}
         />
+      )}
+      {table.getColumn("department") && (
+        isPending ? (
+          <Skeleton className="h-8 w-24" />
+        ) : error ? (
+          <div className="h-8 w-24">
+            {error.message}
+          </div>
+        ) : (
+        <DataTableFacetedFilter
+          column={table.getColumn("department")}
+          title={t('columns.department.label')}
+          options={departmentOptions ?? []}
+        />
+        )
       )}
       {isFiltered && (
           <Button

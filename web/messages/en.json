@@ -36,7 +36,8 @@
     "createdBy": "Created By",
     "updatedAt": "Updated At",
     "updatedBy": "Updated By",
-    "neverUpdated": "Never updated"
+    "neverUpdated": "Never updated",
+    "department": "Departament"
   },
   "AssetTypeFormField": {
     "label": "Asset Type",
@@ -158,6 +159,9 @@
       "type": {
         "label": "Type",
         "placeholder": "Filter by type..."
+      },
+      "department": {
+        "label": "Departments"
       }
     },
     "reset": "Reset"

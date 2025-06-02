@@ -129,6 +129,19 @@ export function AssetDataTable({
         csv: true
       }
     }),
+    columnHelper.accessor(row => row.assignedTo?.department?.name, {
+      id: "department",
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title={t('department')} />
+      ),
+      filterFn: (row, id, value: string) => {
+        return value.includes(row.getValue<string>(id))
+      },      
+      meta: {
+        title: t('department'),
+        csv: true
+      }
+    }),    
     columnHelper.accessor("assignedToId", {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={t('assignedTo')} />

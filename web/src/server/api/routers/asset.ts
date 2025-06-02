@@ -54,6 +54,18 @@ export const assetRouter = createTRPCRouter({
           warrantyExpiresAt: true,
           status: true,
           assignedToId: true,
+          assignedTo: {
+            select: {
+              id: true,
+              name: true,
+              department: {
+                select: {
+                  id: true,
+                  name: true,
+                },
+              },
+            },
+          },
           createdAt: true,
           createdById: true,
           updatedAt: true,

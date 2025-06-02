@@ -36,7 +36,8 @@
     "createdBy": "Creado por",
     "updatedAt": "Actualizado el",
     "updatedBy": "Actualizado por",
-    "neverUpdated": "Nunca actualizado"
+    "neverUpdated": "Nunca actualizado",
+    "department": "Departamento" 
   },
   "AssetTypeFormField": {
     "label": "Tipo de activo",
@@ -158,6 +159,9 @@
       "type": {
         "label": "Tipo",
         "placeholder": "Filtrar por tipo..."
+      },
+      "department": {
+        "label": "Departamentos"
       }
     },
     "reset": "Reiniciar"
