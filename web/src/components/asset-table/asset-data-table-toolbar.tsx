@@ -8,17 +8,15 @@ import { AssetTypeBadge } from "./asset-type-badge";
 import { AssetStatusBadge } from "./asset-status-badge";
 import { Button } from "../ui/button";
 import { Icons } from "../icons";
-import { api } from "@/trpc/react";
-import { Skeleton } from "../ui/skeleton";
+import type { AssetGetAllItem } from "@/types";
 
-export function AssetDataTableToolbar<TData>({
+export function AssetDataTableToolbar({
   table,
 }: {
-  table: Table<TData>
+  table: Table<AssetGetAllItem>
 }) {
   const isFiltered = table.getState().columnFilters.length > 0
 
-  const { data: departments, isPending, error } = api.department.getDepartments.useQuery()
 
   const tAssetType = useTranslations('AssetType');
   const tAssetStatus = useTranslations('AssetStatus');
@@ -35,10 +33,21 @@ export function AssetDataTableToolbar<TData>({
     value: status,
   })), [tAssetStatus]);
 
-  const departmentOptions = useMemo(() => departments?.map((department) => ({
-    label: department.name,
-    value: department.name,
-  })), [departments]);
+  const departmentOptions = useMemo(() => {
+    const uniqueDepartments = new Set<string>();
+    
+    table.getRowModel().rows.forEach((row) => {
+      const departmentName = row.original.assignedTo?.department?.name;
+      if (departmentName) {
+        uniqueDepartments.add(departmentName);
+      }
+    });
+    
+    return Array.from(uniqueDepartments).map((name) => ({
+      label: name,
+      value: name,
+    }));
+  }, [table]);
 
   const t = useTranslations('AssetDataTableToolbar');
 
@@ -67,19 +76,11 @@ export function AssetDataTableToolbar<TData>({
         />
       )}
       {table.getColumn("department") && (
-        isPending ? (
-          <Skeleton className="h-8 w-24" />
-        ) : error ? (
-          <div className="h-8 w-24">
-            {error.message}
-          </div>
-        ) : (
         <DataTableFacetedFilter
           column={table.getColumn("department")}
           title={t('columns.department.label')}
-          options={departmentOptions ?? []}
+          options={departmentOptions}
         />
-        )
       )}
       {isFiltered && (
           <Button
