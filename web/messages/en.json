@@ -225,6 +225,9 @@
       "email": {
         "label": "Email",
         "placeholder": "Filter by email..."
+      },
+      "department": {
+        "label": "Departments"
       }
     },
     "reset": "Reset"

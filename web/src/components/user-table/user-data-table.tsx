@@ -11,7 +11,6 @@ import Link from "next/link"
 import { Icons } from "@/components/icons"
 import { UserWithAvatar } from "../user-with-avatar"
 import { useRouter } from "next/navigation"
-import { useFormatter } from "next-intl"
 
 export function UserDataTable({
   data,
@@ -23,7 +22,6 @@ export function UserDataTable({
   initialColumnVisibility?: Partial<Record<keyof UserGetAllItem, boolean>>
 }) {
   const t = useTranslations('UserDataTable');
-  const formatter = useFormatter()
 
   const router = useRouter();
 
@@ -82,6 +80,9 @@ export function UserDataTable({
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={t('department')} />
       ),
+      filterFn: (row, id, value: string) => {
+        return value.includes(row.getValue<string>(id))
+      },
       meta: {
         title: t('department'),
         csv: true
