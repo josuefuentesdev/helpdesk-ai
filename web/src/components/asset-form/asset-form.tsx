@@ -18,11 +18,11 @@ import { Icons } from "@/components/icons"
 import type { AssetGetOne } from "@/types"
 import { useTranslations } from "next-intl"
 import Link from "next/link"
-import { AssetTypeFormField } from "./asset-type-form-field"
-import { AssetStatusFormField } from "./asset-status-form-field"
+import { AssetTypeFormField } from "@/components/asset-type-form-field"
+import { AssetStatusFormField } from "@/components/asset-status-form-field"
 import { baseFormSchema, type AssetFormValues } from "./asset-form-schemas"
-import { UserFormField } from "./user-form-field"
-import { AuditFieldsDisplay } from "./audit-fields-display"
+import { UserFormField } from "@/components/user-form-field"
+import { AuditFieldsDisplay } from "@/components/audit-fields-display"
 
 
 type AssetFormProps =

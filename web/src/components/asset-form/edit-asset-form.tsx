@@ -1,6 +1,6 @@
 "use client"
 
-import { AssetForm } from "@/components/asset-form"
+import { AssetForm } from "@/components/asset-form/asset-form"
 import { useRouter } from "next/navigation";
 import { type z } from "zod"
 

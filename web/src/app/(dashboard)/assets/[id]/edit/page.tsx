@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation"
 import { api } from "@/trpc/server"
-import { EditAssetForm } from "@/components/edit-asset-form"
+import { EditAssetForm } from "@/components/asset-form/edit-asset-form"
 
 export default async function EditAssetPage({
   params,

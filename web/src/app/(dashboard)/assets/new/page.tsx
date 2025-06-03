@@ -1,4 +1,4 @@
-import { CreateAssetForm } from "@/components/create-asset-form"
+import { CreateAssetForm } from "@/components/asset-form/create-asset-form"
 
 export default async function NewAssetPage() {
   return (
