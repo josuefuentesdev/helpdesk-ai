@@ -1,4 +1,4 @@
-import { Home } from "lucide-react"
+import { Home, Loader2 } from "lucide-react"
 import { IoTicketOutline } from "react-icons/io5";
 import { LuBox, LuCloud, LuCode, LuCpu, LuDownload, LuUser, LuX } from "react-icons/lu"
 import { MdDevices } from "react-icons/md";
@@ -23,5 +23,6 @@ export const Icons = {
   SAAS: LuCloud,           // Represents cloud-based services (SaaS)
   OTHER: LuBox,            // A generic container/icon for miscellaneous items
 
+  loader: Loader2,
   x: LuX,
 }

@@ -130,6 +130,31 @@
       }
     }
   },
+  "UserForm": {
+    "title": {
+      "view": "User Details",
+      "edit": "Edit User",
+      "create": "Add New User"
+    },
+    "description": {
+      "view": "View the details of the user",
+      "edit": "Edit the details of the user",
+      "create": "Fill in the details below to add a new user"
+    },
+    "actions": {
+      "edit": "Edit"
+    },
+    "form": {
+      "submit": {
+        "loading": {
+          "edit": "Saving...",
+          "create": "Creating..."
+        },
+        "edit": "Save Changes",
+        "create": "Create User"
+      }
+    }
+  },
   "AssetDateFormField": {
     "placeholder": "Select a date...",
     "description": "Select a date"
@@ -141,6 +166,27 @@
     "noResults": "No users found.",
     "description": "Select a user",
     "loading": "Loading users..."
+  },
+  "DepartmentFormField": {
+    "label": "Department",
+    "placeholder": "Select department...",
+    "searchPlaceholder": "Search departments...",
+    "noResults": "No departments found.",
+    "description": "Select the department.",
+    "loadingPlaceholder": "Loading...",
+    "loadingOptions": "Loading options...",
+    "fetchErrorPlaceholder": "Error fetching departments: {error}"
+  },
+  "LocaleFormField": {
+    "label": "Language",
+    "placeholder": "Select language...",
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No languages found.",
+    "description": "Select the user's preferred language.",
+    "types": {
+      "en": "English",
+      "es": "Spanish"
+    }
   },
   "UserWithAvatar": {
     "error": "Error",

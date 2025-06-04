@@ -19,6 +19,7 @@ export const userRouter = createTRPCRouter({
           email: true,
           image: true,
           locale: true,
+          departmentId: true,
         },
       })
     }),
@@ -36,6 +37,24 @@ export const userRouter = createTRPCRouter({
               name: true,
             },
           },
+        },
+      })
+    }),
+
+  updateOne: protectedProcedure
+    .input(z.object({
+      id: z.string(),
+      locale: z.enum(locales),
+      departmentId: z.string().optional(),
+    }))
+    .mutation(({ ctx, input }) => {
+      return ctx.db.user.update({
+        where: {
+          id: input.id,
+        },
+        data: {
+          locale: input.locale,
+          departmentId: input.departmentId,
         },
       })
     }),

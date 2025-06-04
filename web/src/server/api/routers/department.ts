@@ -4,7 +4,7 @@ import {
 } from "@/server/api/trpc";
 
 export const departmentRouter = createTRPCRouter({
-  getDepartments: protectedProcedure
+  getAll: protectedProcedure
     .query(({ ctx }) => {
       return ctx.db.department.findMany({
         select: {

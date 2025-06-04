@@ -130,6 +130,31 @@
       }
     }
   },
+  "UserForm": {
+    "title": {
+      "view": "Detalles del Usuario",
+      "edit": "Editar Usuario",
+      "create": "Añadir Nuevo Usuario"
+    },
+    "description": {
+      "view": "Ver los detalles del usuario",
+      "edit": "Editar los detalles del usuario",
+      "create": "Completa los detalles a continuación para añadir un nuevo usuario"
+    },
+    "actions": {
+      "edit": "Editar"
+    },
+    "form": {
+      "submit": {
+        "loading": {
+          "edit": "Guardando...",
+          "create": "Creando..."
+        },
+        "edit": "Guardar Cambios",
+        "create": "Crear Usuario"
+      }
+    }
+  },
   "AssetDateFormField": {
     "placeholder": "Seleccionar una fecha...",
     "description": "Seleccionar una fecha"
@@ -141,6 +166,27 @@
     "noResults": "No se encontraron usuarios.",
     "description": "Seleccionar un usuario",
     "loading": "Cargando usuarios..."
+  },
+  "DepartmentFormField": {
+    "label": "Departamento",
+    "placeholder": "Seleccionar departamento...",
+    "searchPlaceholder": "Buscar departamentos...",
+    "noResults": "No se encontraron departamentos.",
+    "description": "Selecciona el departamento.",
+    "loadingPlaceholder": "Cargando...",
+    "loadingOptions": "Cargando opciones...",
+    "fetchErrorPlaceholder": "Error al cargar departamentos: {error}"
+  },
+  "LocaleFormField": {
+    "label": "Idioma",
+    "placeholder": "Seleccionar idioma...",
+    "searchPlaceholder": "Buscar idiomas...",
+    "noResults": "No se encontraron idiomas.",
+    "description": "Selecciona el idioma preferido del usuario.",
+    "types": {
+      "en": "Inglés",
+      "es": "Español"
+    }
   },
   "UserWithAvatar": {
     "error": "Error",
