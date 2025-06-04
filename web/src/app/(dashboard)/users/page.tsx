@@ -1,7 +1,5 @@
 import { UserDataTable } from "@/components/user-table/user-data-table"
 import { api } from "@/trpc/server"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
 import { PageLayout } from "@/components/page-layout"
 import { getTranslations } from "next-intl/server"
 
@@ -11,11 +9,6 @@ export default async function UsersPage() {
   return (
     <PageLayout
       title={t('title')}
-      actions={
-        <Button asChild>
-          <Link href="/users/new">{t('newUser')}</Link>
-        </Button>
-      }
     >
       <UserDataTable
         data={users}
