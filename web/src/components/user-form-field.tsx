@@ -49,7 +49,7 @@ export function UserFormField<
   disabled = false,
 }: UserFormFieldProps<TFieldValues, TName>) {
   
-  const { data: users, isPending, error } = api.user.getAll.useQuery()
+  const { data: users, isPending, error } = api.user.getAllIdentifiers.useQuery()
 
   const t = useTranslations("UserFormField");
   

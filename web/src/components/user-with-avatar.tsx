@@ -10,7 +10,7 @@ interface UserWithAvatarProps {
 }
 
 export function UserWithAvatar({ userId, className }: UserWithAvatarProps) {
-  const { data: user, isPending, error } = api.user.getOne.useQuery({ id: userId })
+  const { data: user, isPending, error } = api.user.getOneAvatar.useQuery({ id: userId })
   const t = useTranslations('UserWithAvatar')
 
   if (isPending) {

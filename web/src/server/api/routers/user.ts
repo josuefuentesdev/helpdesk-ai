@@ -4,6 +4,7 @@ import {
 } from "@/server/api/trpc";
 import { z } from "zod";
 import { locales } from "@/i18n/config";
+import { UserType } from "@prisma/client";
 
 export const userRouter = createTRPCRouter({
   getOne: protectedProcedure
@@ -23,6 +24,20 @@ export const userRouter = createTRPCRouter({
         },
       })
     }),
+
+  getOneAvatar: protectedProcedure
+    .input(z.object({ id: z.string() }))
+    .query(({ ctx, input }) => {
+      return ctx.db.user.findUnique({
+        where: {
+          id: input.id,
+        },
+        select: {
+          image: true,
+          name: true,
+        },
+      })
+    }),
   getAll: protectedProcedure
     .query(({ ctx }) => {
       return ctx.db.user.findMany({
@@ -37,6 +52,28 @@ export const userRouter = createTRPCRouter({
               name: true,
             },
           },
+        },
+        where: {
+          type: {
+            not: UserType.SYSTEM,
+          }
+        },
+      })
+    }),
+
+  getAllIdentifiers: protectedProcedure
+    .query(({ ctx }) => {
+      return ctx.db.user.findMany({
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          image: true,
+        },
+        where: {
+          type: {
+            not: UserType.SYSTEM,
+          }
         },
       })
     }),
