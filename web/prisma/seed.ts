@@ -48,7 +48,8 @@ async function main() {
         image: faker.image.avatar(),
         departmentId: randomDepartment?.id,
         // Use string enum value instead of direct enum reference
-        locale: 'en'
+        locale: 'en',
+        createdById: systemUser.id,
       };
     }),
   });

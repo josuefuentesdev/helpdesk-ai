@@ -53,21 +53,30 @@ enum Locale {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String      @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?     @unique
   emailVerified DateTime?
   image         String?
-  type          UserType  @default(USER)
-  locale        Locale    @default(en)
+  type          UserType    @default(USER)
+  locale        Locale      @default(en)
   departmentId  String?
   department    Department? @relation(fields: [departmentId], references: [id])
-  accounts      Account[]
-  sessions      Session[]
-  assets        Asset[]   @relation(name: "AssetAssignedTo")
+  createdAt         DateTime    @default(now())
+  createdById       String?
+  updatedAt         DateTime    @updatedAt
+  updatedById       String?
+  createdBy     User?      @relation("UserCreatedBy", fields: [createdById], references: [id])
+  updatedBy     User?     @relation("UserUpdatedBy", fields: [updatedById], references: [id])
+
+  accounts Account[]
+  sessions Session[]
+  assets   Asset[]   @relation(name: "AssetAssignedTo")
 
   createdAssets Asset[] @relation(name: "AssetCreatedBy")
   updatedAssets Asset[] @relation(name: "AssetUpdatedBy")
+  createdUsers  User[]  @relation(name: "UserCreatedBy")
+  updatedUsers  User[]  @relation(name: "UserUpdatedBy")
 }
 
 model Department {
