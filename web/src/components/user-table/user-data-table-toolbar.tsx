@@ -3,9 +3,8 @@ import { Input } from "@/components/ui/input";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
-import { DataTableFacetedFilter } from "../data-table/data-table-faceted-filter";
-import { useMemo } from "react";
 import type { UserGetAllItem } from "@/types";
+import { DepartmentFacetedFilter } from "../data-table/department-faceted-filter";
 
 export function UserDataTableToolbar({
   table,
@@ -14,22 +13,6 @@ export function UserDataTableToolbar({
 }) {
   const isFiltered = table.getState().columnFilters.length > 0
   const t = useTranslations('UserDataTableToolbar');
-
-  const departmentOptions = useMemo(() => {
-    const uniqueDepartments = new Set<string>();
-    
-    table.getRowModel().rows.forEach((row) => {
-      const departmentName = row.original.department?.name;
-      if (departmentName) {
-        uniqueDepartments.add(departmentName);
-      }
-    });
-    
-    return Array.from(uniqueDepartments).map((name) => ({
-      label: name,
-      value: name,
-    }));
-  }, [table]);
 
   return (
     <div className="flex items-center space-x-2">
@@ -49,11 +32,11 @@ export function UserDataTableToolbar({
         }
         className="max-w-sm"
       />
-      {table.getColumn("department") && departmentOptions?.length && (
-        <DataTableFacetedFilter
+      {table.getColumn("department") && (
+        <DepartmentFacetedFilter
+          table={table}
           column={table.getColumn("department")}
           title={t('columns.department.label')}
-          options={departmentOptions}
         />
       )}
       {isFiltered && (

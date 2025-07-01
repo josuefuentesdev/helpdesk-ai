@@ -290,5 +290,35 @@
     "label": "Idioma",
     "en": "English",
     "es": "Español"
+  },
+  "DepartmentFacetedFilter": {
+    "selected": "seleccionado",
+    "noResults": "No se encontraron resultados.",
+    "clearFilters": "Limpiar filtros",
+    "filterDepartments": "Filtrar departamentos...",
+    "loading": "Cargando...",
+    "createNew": "Crear nuevo",
+    "newDepartmentName": "Nombre del nuevo departamento",
+    "add": "Agregar",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "toast": {
+      "failedToLoad": "No se pudo cargar los departamentos",
+      "created": "Departamento creado",
+      "failedToCreate": "No se pudo crear el departamento",
+      "updated": "Departamento actualizado",
+      "failedToUpdate": "No se pudo actualizar el departamento",
+      "deleted": "Departamento eliminado",
+      "failedToDelete": "No se pudo eliminar el departamento",
+      "nameCannotBeEmpty": "El nombre del departamento no puede estar vacío"
+    },
+    "alert": {
+      "title": "Eliminar departamento",
+      "description": "¿Estás seguro de que quieres eliminar este departamento?",
+      "affectedUsersWarning": "Este departamento está asignado a {count} usuarios. ¿Estás seguro de que quieres eliminarlo?",
+      "noAffectedUsers": "Este departamento no está asignado a ningún usuario. ¿Estás seguro de que quieres eliminarlo?",
+      "cancel": "Cancelar",
+      "delete": "Eliminar"
+    }
   }
 }
