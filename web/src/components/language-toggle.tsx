@@ -10,32 +10,22 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Globe } from "lucide-react";
-import { api } from "@/trpc/react";
-import { useRouter } from "next/navigation";
 import { locales, type Locale } from "@/i18n/config";
-import { toast } from "sonner"
+import { setUserLocale } from "@/services/locale";
+import { useRouter } from "next/navigation";
 
 export function LanguageToggle() {
   const t = useTranslations("LanguageToggle");
+  const router = useRouter();
   const locale = useLocale();
   const [isPending, startTransition] = useTransition();
-  const router = useRouter();
-  
-  // Use the updateLocale mutation
-  const { mutate: updateLocale } = api.user.updateLocale.useMutation({
-    onSuccess: () => {
-      toast.success("Locale updated successfully")
-      // Reload the page to apply the new locale
-      router.refresh();
-    },
-  });
 
   const handleLocaleChange = (newLocale: Locale) => {
     if (newLocale === locale) return;
     
-    startTransition(() => {
-      // Update the locale using the API
-      updateLocale({ locale: newLocale });
+    startTransition(async () => {
+        await setUserLocale(newLocale);
+        router.refresh();
     });
   };
 

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { getTranslations } from "next-intl/server"
+import { LanguageToggle } from "@/components/language-toggle"
 
 const ERROR_URL = "/error"
 
@@ -80,6 +81,9 @@ export async function SignInForm({
         <a href="/sing-up" className="underline underline-offset-4">
           {t('signUpLink')}
         </a>
+      </div>
+      <div className="flex justify-center">
+        <LanguageToggle />
       </div>
     </div>
   )
