@@ -1,16 +1,27 @@
 {
   "HomePage": {},
-  "SignInPage": {
+  "SignInForm": {
     "title": "Inicia sesión en tu cuenta",
     "subtitle": "Ingresa tu correo electrónico para iniciar sesión en tu cuenta",
     "emailLabel": "Correo electrónico",
-    "emailPlaceholder": "m@ejemplo.com",
+    "emailPlaceholder": "jhon@gmail.com",
     "loginButton": "Iniciar sesión",
     "orContinueWith": "O continuar con",
     "signInWith": "Iniciar sesión con",
     "noAccount": "¿No tienes una cuenta?",
     "signUpLink": "Regístrate"
   },
+  "SignUpForm": {
+    "title": "Regístrate en tu cuenta",
+    "subtitle": "Ingresa tu correo electrónico para iniciar sesión en tu cuenta",
+    "emailLabel": "Correo electrónico",
+    "emailPlaceholder": "jhon@gmail.com",
+    "loginButton": "Regístrate",
+    "orContinueWith": "O continuar con",
+    "signUpWith": "Regístrate con",
+    "haveAccount": "¿Ya tienes una cuenta?",
+    "signInLink": "Inicia sesión"
+  },  
   "AssetsPage": {
     "title": "Activos",
     "newAsset": "Nuevo Activo"

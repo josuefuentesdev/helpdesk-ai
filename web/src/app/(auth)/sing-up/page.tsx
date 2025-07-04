@@ -1,12 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from 'next/image'
-import { getTranslations } from 'next-intl/server';
-import { LoginForm } from "./login-form"
+import { SignUpForm } from "./sign-up-form"
 import { auth } from '@/server/auth';
 import { redirect } from 'next/navigation';
 
 
-export default async function SignInPage({
+export default async function SignupPage({
   searchParams,
 }: {
   searchParams: Promise<{ callbackUrl?: string }>
@@ -18,8 +17,6 @@ export default async function SignInPage({
   if (session?.user) {
     redirect("/");
   }
-
-  const t = await getTranslations('SignInPage');
 
   return (
     <div className="grid min-h-svh lg:grid-cols-2">
@@ -37,7 +34,7 @@ export default async function SignInPage({
         </div>
         <div className="flex flex-1 items-center justify-center">
           <div className="w-full max-w-xs">
-            <LoginForm callbackUrl={resolvedSearchParams.callbackUrl} t={t} />
+            <SignUpForm callbackUrl={resolvedSearchParams.callbackUrl} />
           </div>
         </div>
       </div>

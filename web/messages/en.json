@@ -1,6 +1,6 @@
 {
   "HomePage": {},
-  "SignInPage": {
+  "SignInForm": {
     "title": "Login to your account",
     "subtitle": "Enter your email below to login to your account",
     "emailLabel": "Email",
@@ -10,6 +10,17 @@
     "signInWith": "Sign in with",
     "noAccount": "Don't have an account?",
     "signUpLink": "Sign up"
+  },
+  "SignUpForm": {
+    "title": "Sign up to your account",
+    "subtitle": "Enter your email below to sign up to your account",
+    "emailLabel": "Email",
+    "emailPlaceholder": "m@example.com",
+    "loginButton": "Sign up",
+    "orContinueWith": "Or continue with",
+    "signUpWith": "Sign up with",
+    "haveAccount": "Already have an account?",
+    "signInLink": "Sign in"
   },
   "AssetsPage": {
     "title": "Assets",

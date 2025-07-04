@@ -6,18 +6,19 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { getTranslations } from "next-intl/server"
 
-const SIGNIN_ERROR_URL = "/error"
+const ERROR_URL = "/error"
 
-export function LoginForm({
+export async function SignInForm({
   className,
   callbackUrl = "/",
-  t,
 }: {
   className?: string;
   callbackUrl?: string;
-  t: (key: string) => string
 }) {
+  const t = await getTranslations('SignInForm');
+
   return (
     <div className={cn("flex flex-col gap-6", className)}>
       <form className="flex flex-col gap-6"
@@ -62,7 +63,7 @@ export function LoginForm({
                 })
               } catch (error) {
                 if (error instanceof AuthError) {
-                  return redirect(`${SIGNIN_ERROR_URL}?error=${error.type}`)
+                  return redirect(`${ERROR_URL}?error=${error.type}`)
                 }
                 throw error
               }
@@ -76,7 +77,7 @@ export function LoginForm({
       </div>
       <div className="text-center text-sm">
         {t('noAccount')}{" "}
-        <a href="#" className="underline underline-offset-4">
+        <a href="/sing-up" className="underline underline-offset-4">
           {t('signUpLink')}
         </a>
       </div>
