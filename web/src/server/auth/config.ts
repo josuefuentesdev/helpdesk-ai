@@ -28,8 +28,23 @@ declare module "next-auth" {
   // }
 }
 
-const providers: Provider[] = [
+const oneClickProviders: Provider[] = [
   Google,
+]
+
+const providerMap = oneClickProviders
+  .map((provider) => {
+    if (typeof provider === "function") {
+      const providerData = provider()
+      return { id: providerData.id, name: providerData.name }
+    } else {
+      return { id: provider.id, name: provider.name }
+    }
+  })
+  .filter((provider) => provider.id !== "credentials")
+
+const providers: Provider[] = [
+  ...oneClickProviders,
   Resend({
     from: env.AUTH_RESEND_EMAIL,
   }),
@@ -44,16 +59,6 @@ const providers: Provider[] = [
    */
 ]
 
-const providerMap = providers
-  .map((provider) => {
-    if (typeof provider === "function") {
-      const providerData = provider()
-      return { id: providerData.id, name: providerData.name }
-    } else {
-      return { id: provider.id, name: provider.name }
-    }
-  })
-  .filter((provider) => provider.id !== "credentials")
 
 /**
  * Options for NextAuth.js used to configure adapters, providers, callbacks, etc.
