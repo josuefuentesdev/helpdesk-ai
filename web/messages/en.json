@@ -15,6 +15,10 @@
     "title": "Assets",
     "newAsset": "New Asset"
   },
+  "UsersPage": {
+    "title": "Users",
+    "newUser": "New User"
+  },
   "TicketDataTable": {
     "id": "ID",
     "type": "Type",
@@ -32,7 +36,8 @@
     "createdBy": "Created By",
     "updatedAt": "Updated At",
     "updatedBy": "Updated By",
-    "neverUpdated": "Never updated"
+    "neverUpdated": "Never updated",
+    "department": "Departament"
   },
   "AssetTypeFormField": {
     "label": "Asset Type",
@@ -125,6 +130,31 @@
       }
     }
   },
+  "UserForm": {
+    "title": {
+      "view": "User Details",
+      "edit": "Edit User",
+      "create": "Add New User"
+    },
+    "description": {
+      "view": "View the details of the user",
+      "edit": "Edit the details of the user",
+      "create": "Fill in the details below to add a new user"
+    },
+    "actions": {
+      "edit": "Edit"
+    },
+    "form": {
+      "submit": {
+        "loading": {
+          "edit": "Saving...",
+          "create": "Creating..."
+        },
+        "edit": "Save Changes",
+        "create": "Create User"
+      }
+    }
+  },
   "AssetDateFormField": {
     "placeholder": "Select a date...",
     "description": "Select a date"
@@ -136,6 +166,27 @@
     "noResults": "No users found.",
     "description": "Select a user",
     "loading": "Loading users..."
+  },
+  "DepartmentFormField": {
+    "label": "Department",
+    "placeholder": "Select department...",
+    "searchPlaceholder": "Search departments...",
+    "noResults": "No departments found.",
+    "description": "Select the department.",
+    "loadingPlaceholder": "Loading...",
+    "loadingOptions": "Loading options...",
+    "fetchErrorPlaceholder": "Error fetching departments: {error}"
+  },
+  "LocaleFormField": {
+    "label": "Language",
+    "placeholder": "Select language...",
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No languages found.",
+    "description": "Select the user's preferred language.",
+    "types": {
+      "en": "English",
+      "es": "Spanish"
+    }
   },
   "UserWithAvatar": {
     "error": "Error",
@@ -154,6 +205,9 @@
       "type": {
         "label": "Type",
         "placeholder": "Filter by type..."
+      },
+      "department": {
+        "label": "Departments"
       }
     },
     "reset": "Reset"
@@ -201,6 +255,29 @@
     "SAAS": "SaaS",
     "OTHER": "Other"
   },
+  "UserDataTable": {
+    "id": "ID",
+    "name": "Name",
+    "email": "Email",
+    "avatar": "Avatar",
+    "department": "Department"
+  },
+  "UserDataTableToolbar": {
+    "columns": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Filter by name..."
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Filter by email..."
+      },
+      "department": {
+        "label": "Departments"
+      }
+    },
+    "reset": "Reset"
+  },
   "AuditFields": {
     "createdBy": "Created by",
     "createdAt": "Created at",
@@ -213,5 +290,35 @@
     "label": "Language",
     "en": "English",
     "es": "Español"
+  },
+  "DepartmentFacetedFilter": {
+    "selected": "selected",
+    "noResults": "No results found.",
+    "clearFilters": "Clear filters",
+    "filterDepartments": "Filter departments...",
+    "loading": "Loading...",
+    "createNew": "Create new",
+    "newDepartmentName": "New department name",
+    "add": "Add",
+    "edit": "Edit",
+    "delete": "Delete",
+    "toast": {
+      "failedToLoad": "Failed to load departments",
+      "created": "Department created",
+      "failedToCreate": "Failed to create department",
+      "updated": "Department updated",
+      "failedToUpdate": "Failed to update department",
+      "deleted": "Department deleted",
+      "failedToDelete": "Failed to delete department",
+      "nameCannotBeEmpty": "Department name cannot be empty"
+    },
+    "alert": {
+      "title": "Delete department",
+      "description": "Are you sure you want to delete this department?",
+      "affectedUsersWarning": "This department is assigned to {count} users. Are you sure you want to delete it?",
+      "noAffectedUsers": "This department is not assigned to any users. Are you sure you want to delete it?",
+      "cancel": "Cancel",
+      "delete": "Delete"
+    }
   }
 }

@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation"
-import { AssetForm } from "@/components/asset-form"
+import { AssetForm } from "@/components/asset-form/asset-form"
 import { api } from "@/trpc/server"
 
 export default async function AssetPage({

@@ -1,27 +1,25 @@
 import { notFound } from "next/navigation"
+import { UserForm } from "@/components/user-form/user-form"
 import { api } from "@/trpc/server"
-import { EditAssetForm } from "@/components/asset-form/edit-asset-form"
 
-export default async function EditAssetPage({
+export default async function UserPage({
   params,
 }: {
   params: Promise<{ id: string }>
 }) {
   const { id } = await params
 
-  const asset = await api.asset.getOne({
+  const user = await api.user.getOne({
     id: id,
   })
 
-  if (!asset) {
+  if (!user) {
     notFound()
   }
 
-
-
   return (
     <div className="max-w-2xl px-6 py-8">
-      <EditAssetForm asset={asset} />
+      <UserForm user={user} variant="view"/>
     </div>
   )
 }

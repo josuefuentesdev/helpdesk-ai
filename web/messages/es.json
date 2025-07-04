@@ -15,6 +15,10 @@
     "title": "Activos",
     "newAsset": "Nuevo Activo"
   },
+  "UsersPage": {
+    "title": "Usuarios",
+    "newUser": "Nuevo Usuario"
+  },
   "TicketDataTable": {
     "id": "ID",
     "type": "Tipo",
@@ -32,7 +36,8 @@
     "createdBy": "Creado por",
     "updatedAt": "Actualizado el",
     "updatedBy": "Actualizado por",
-    "neverUpdated": "Nunca actualizado"
+    "neverUpdated": "Nunca actualizado",
+    "department": "Departamento" 
   },
   "AssetTypeFormField": {
     "label": "Tipo de activo",
@@ -125,6 +130,31 @@
       }
     }
   },
+  "UserForm": {
+    "title": {
+      "view": "Detalles del Usuario",
+      "edit": "Editar Usuario",
+      "create": "Añadir Nuevo Usuario"
+    },
+    "description": {
+      "view": "Ver los detalles del usuario",
+      "edit": "Editar los detalles del usuario",
+      "create": "Completa los detalles a continuación para añadir un nuevo usuario"
+    },
+    "actions": {
+      "edit": "Editar"
+    },
+    "form": {
+      "submit": {
+        "loading": {
+          "edit": "Guardando...",
+          "create": "Creando..."
+        },
+        "edit": "Guardar Cambios",
+        "create": "Crear Usuario"
+      }
+    }
+  },
   "AssetDateFormField": {
     "placeholder": "Seleccionar una fecha...",
     "description": "Seleccionar una fecha"
@@ -136,6 +166,27 @@
     "noResults": "No se encontraron usuarios.",
     "description": "Seleccionar un usuario",
     "loading": "Cargando usuarios..."
+  },
+  "DepartmentFormField": {
+    "label": "Departamento",
+    "placeholder": "Seleccionar departamento...",
+    "searchPlaceholder": "Buscar departamentos...",
+    "noResults": "No se encontraron departamentos.",
+    "description": "Selecciona el departamento.",
+    "loadingPlaceholder": "Cargando...",
+    "loadingOptions": "Cargando opciones...",
+    "fetchErrorPlaceholder": "Error al cargar departamentos: {error}"
+  },
+  "LocaleFormField": {
+    "label": "Idioma",
+    "placeholder": "Seleccionar idioma...",
+    "searchPlaceholder": "Buscar idiomas...",
+    "noResults": "No se encontraron idiomas.",
+    "description": "Selecciona el idioma preferido del usuario.",
+    "types": {
+      "en": "Inglés",
+      "es": "Español"
+    }
   },
   "UserWithAvatar": {
     "error": "Error",
@@ -154,6 +205,9 @@
       "type": {
         "label": "Tipo",
         "placeholder": "Filtrar por tipo..."
+      },
+      "department": {
+        "label": "Departamentos"
       }
     },
     "reset": "Reiniciar"
@@ -201,6 +255,29 @@
     "SAAS": "SaaS",
     "OTHER": "Otro"
   },
+  "UserDataTable": {
+    "id": "ID",
+    "name": "Nombre",
+    "email": "Email",
+    "avatar": "Avatar",
+    "department": "Departamento"
+  },
+  "UserDataTableToolbar": {
+    "columns": {
+      "name": {
+        "label": "Nombre",
+        "placeholder": "Filtrar por nombre..."
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Filtrar por email..."
+      },
+      "department": {
+        "label": "Departamentos"
+      }
+    },
+    "reset": "Reiniciar"
+  },
   "AuditFields": {
     "createdBy": "Creado por",
     "createdAt": "Creado el",
@@ -213,5 +290,35 @@
     "label": "Idioma",
     "en": "English",
     "es": "Español"
+  },
+  "DepartmentFacetedFilter": {
+    "selected": "seleccionado",
+    "noResults": "No se encontraron resultados.",
+    "clearFilters": "Limpiar filtros",
+    "filterDepartments": "Filtrar departamentos...",
+    "loading": "Cargando...",
+    "createNew": "Crear nuevo",
+    "newDepartmentName": "Nombre del nuevo departamento",
+    "add": "Agregar",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "toast": {
+      "failedToLoad": "No se pudo cargar los departamentos",
+      "created": "Departamento creado",
+      "failedToCreate": "No se pudo crear el departamento",
+      "updated": "Departamento actualizado",
+      "failedToUpdate": "No se pudo actualizar el departamento",
+      "deleted": "Departamento eliminado",
+      "failedToDelete": "No se pudo eliminar el departamento",
+      "nameCannotBeEmpty": "El nombre del departamento no puede estar vacío"
+    },
+    "alert": {
+      "title": "Eliminar departamento",
+      "description": "¿Estás seguro de que quieres eliminar este departamento?",
+      "affectedUsersWarning": "Este departamento está asignado a {count} usuarios. ¿Estás seguro de que quieres eliminarlo?",
+      "noAffectedUsers": "Este departamento no está asignado a ningún usuario. ¿Estás seguro de que quieres eliminarlo?",
+      "cancel": "Cancelar",
+      "delete": "Eliminar"
+    }
   }
 }

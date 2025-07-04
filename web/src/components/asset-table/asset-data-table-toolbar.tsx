@@ -8,13 +8,15 @@ import { AssetTypeBadge } from "./asset-type-badge";
 import { AssetStatusBadge } from "./asset-status-badge";
 import { Button } from "../ui/button";
 import { Icons } from "../icons";
+import type { AssetGetAllItem } from "@/types";
 
-export function AssetDataTableToolbar<TData>({
+export function AssetDataTableToolbar({
   table,
 }: {
-  table: Table<TData>
+  table: Table<AssetGetAllItem>
 }) {
   const isFiltered = table.getState().columnFilters.length > 0
+
 
   const tAssetType = useTranslations('AssetType');
   const tAssetStatus = useTranslations('AssetStatus');
@@ -30,6 +32,22 @@ export function AssetDataTableToolbar<TData>({
     node: <AssetStatusBadge status={status} />,
     value: status,
   })), [tAssetStatus]);
+
+  const departmentOptions = useMemo(() => {
+    const uniqueDepartments = new Set<string>();
+    
+    table.getRowModel().rows.forEach((row) => {
+      const departmentName = row.original.assignedTo?.department?.name;
+      if (departmentName) {
+        uniqueDepartments.add(departmentName);
+      }
+    });
+    
+    return Array.from(uniqueDepartments).map((name) => ({
+      label: name,
+      value: name,
+    }));
+  }, [table]);
 
   const t = useTranslations('AssetDataTableToolbar');
 
@@ -55,6 +73,13 @@ export function AssetDataTableToolbar<TData>({
           column={table.getColumn("type")}
           title={t('columns.type.label')}
           options={typeOptions}
+        />
+      )}
+      {table.getColumn("department") && (
+        <DataTableFacetedFilter
+          column={table.getColumn("department")}
+          title={t('columns.department.label')}
+          options={departmentOptions}
         />
       )}
       {isFiltered && (
