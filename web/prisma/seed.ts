@@ -49,6 +49,7 @@ async function main() {
         departmentId: randomDepartment?.id,
         // Use string enum value instead of direct enum reference
         locale: 'en',
+        type: UserType.SAMPLE,
         createdById: systemUser.id,
       };
     }),
@@ -58,7 +59,9 @@ async function main() {
 
   const users = await prisma.user.findMany({
     where: {
-      type: UserType.USER,
+      NOT: {
+        type: UserType.SYSTEM,
+      }
     },
   });
 

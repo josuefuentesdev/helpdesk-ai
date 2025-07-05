@@ -44,7 +44,13 @@ model Session {
 
 enum UserType {
   USER
+  SAMPLE
   SYSTEM
+}
+
+enum UserRole {
+  USER
+  ADMIN
 }
 
 enum Locale {
@@ -59,6 +65,7 @@ model User {
   emailVerified DateTime?
   image         String?
   type          UserType    @default(USER)
+  role          UserRole    @default(USER)
   locale        Locale      @default(en)
   departmentId  String?
   department    Department? @relation(fields: [departmentId], references: [id])

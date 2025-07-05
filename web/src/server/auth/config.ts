@@ -3,9 +3,11 @@ import { type DefaultSession, type NextAuthConfig } from "next-auth";
 import Google from "next-auth/providers/google";
 import type { Provider } from "next-auth/providers"
 import Resend from "next-auth/providers/resend"
+import type { Adapter } from 'next-auth/adapters';
 
 import { db } from "@/server/db";
 import { env } from "@/env";
+import type { UserRole } from "@prisma/client";
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -18,14 +20,14 @@ declare module "next-auth" {
     user: {
       id: string;
       // ...other properties
-      // role: UserRole;
+      role: UserRole;
     } & DefaultSession["user"];
   }
 
-  // interface User {
-  //   // ...other properties
-  //   // role: UserRole;
-  // }
+  interface User {
+    // ...other properties
+    role: UserRole;
+  }
 }
 
 const oneClickProviders: Provider[] = [
@@ -67,13 +69,15 @@ const providers: Provider[] = [
  */
 const authConfig = {
   providers,
-  adapter: PrismaAdapter(db),
+  // https://github.com/nextauthjs/next-auth/issues/9493#issuecomment-2247555322
+  adapter: PrismaAdapter(db) as Adapter,
   callbacks: {
     session: ({ session, user }) => ({
       ...session,
       user: {
         ...session.user,
         id: user.id,
+        role: user.role,
       },
     }),
   },

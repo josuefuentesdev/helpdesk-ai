@@ -4,15 +4,28 @@ import {
 } from "@/server/api/trpc";
 import { z } from "zod";
 import { locales } from "@/i18n/config";
-import { UserType } from "@prisma/client";
+import { UserRole, UserType } from "@prisma/client";
+import { type User } from "next-auth"
+
+
+const getHiddenUserTypes = (user: User): UserType[] => {
+  const hiddenTypes: UserType[] = [UserType.SYSTEM];
+  if (user.role !== UserRole.ADMIN) {
+    hiddenTypes.push(UserType.USER);
+  }
+  return hiddenTypes;
+};
 
 export const userRouter = createTRPCRouter({
   getOne: protectedProcedure
     .input(z.object({ id: z.string() }))
     .query(({ ctx, input }) => {
-      return ctx.db.user.findUnique({
+      return ctx.db.user.findFirst({
         where: {
           id: input.id,
+          type: {
+            notIn: getHiddenUserTypes(ctx.session.user),
+          },
         },
         select: {
           id: true,
@@ -22,7 +35,7 @@ export const userRouter = createTRPCRouter({
           locale: true,
           departmentId: true,
         },
-      })
+      });
     }),
 
   getOneAvatar: protectedProcedure
@@ -38,6 +51,7 @@ export const userRouter = createTRPCRouter({
         },
       })
     }),
+
   getAll: protectedProcedure
     .query(({ ctx }) => {
       return ctx.db.user.findMany({
@@ -55,10 +69,10 @@ export const userRouter = createTRPCRouter({
         },
         where: {
           type: {
-            not: UserType.SYSTEM,
-          }
+            notIn: getHiddenUserTypes(ctx.session.user),
+          },
         },
-      })
+      });
     }),
 
   getAllIdentifiers: protectedProcedure
@@ -72,7 +86,7 @@ export const userRouter = createTRPCRouter({
         },
         where: {
           type: {
-            not: UserType.SYSTEM,
+            notIn: getHiddenUserTypes(ctx.session.user),
           }
         },
       })
