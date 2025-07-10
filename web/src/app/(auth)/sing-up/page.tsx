@@ -24,7 +24,7 @@ export default async function SignupPage({
         <div className="flex justify-center gap-2 md:justify-start">
           <a href="#" className="flex items-center gap-2 font-medium">
             <Image
-              src="/helpdesk-ai.png"
+              src="/helpdesk-ai.webp"
               alt="helpdesk-ai logo"
               width={32}
               height={32}
