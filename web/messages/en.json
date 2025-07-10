@@ -90,7 +90,7 @@
       "save": "Save",
       "saving": "Saving..."
     }
-  },  
+  },
   "AssetForm": {
     "title": {
       "view": "Asset Details",
@@ -355,5 +355,10 @@
       "assets": "Assets",
       "users": "Users"
     }
+  },
+  "BreadcrumbNav": {
+    "tickets": "Tickets",
+    "assets": "Assets",
+    "users": "Users"
   }
 }

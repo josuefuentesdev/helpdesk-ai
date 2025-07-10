@@ -1,6 +1,7 @@
 "use client"
 
 import { Fragment } from "react";
+import { useTranslations } from "next-intl";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -10,30 +11,43 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 import { usePathname } from "next/navigation"
+import { api } from "@/trpc/react"
+import { Skeleton } from "@/components/ui/skeleton"
 
 export function BreadcrumbNav() {
   const pathname = usePathname();
-  const segments = pathname.split("/").filter(Boolean);
+  const { data: breadcrumbs, isPending, error } = api.breadcrumb.parseBreadcrumb.useQuery({ path: pathname });
+
+  const t = useTranslations('BreadcrumbNav');
 
   return (
     <Breadcrumb>
       <BreadcrumbList>
-        {segments.map((segment, idx) => {
-          const href = '/' + segments.slice(0, idx + 1).join('/');
-          const isLast = idx === segments.length - 1;
-          return (
-            <Fragment key={href}>
-              {idx > 0 && <BreadcrumbSeparator className="hidden md:block" />}
-              <BreadcrumbItem>
-                {isLast ? (
-                  <BreadcrumbPage>{decodeURIComponent(segment.replace(/-/g, ' '))}</BreadcrumbPage>
-                ) : (
-                  <BreadcrumbLink href={href}>{decodeURIComponent(segment.replace(/-/g, ' '))}</BreadcrumbLink>
-                )}
-              </BreadcrumbItem>
-            </Fragment>
-          );
-        })}
+        {isPending ? (
+          <Skeleton className="inline-block h-4 w-32 align-middle" />
+        ) : error ? (
+          <BreadcrumbItem>
+            <BreadcrumbPage className="text-red-500">Error loading breadcrumbs</BreadcrumbPage>
+          </BreadcrumbItem>
+        ) : breadcrumbs ? (
+          breadcrumbs.map((crumb, idx) => {
+            const isLast = idx === breadcrumbs.length - 1;
+            // Translate only the first segment
+            const displayLabel = idx === 0 ? t(crumb.label) : crumb.label;
+            return (
+              <Fragment key={crumb.href}>
+                {idx > 0 && <BreadcrumbSeparator className="hidden md:block" />}
+                <BreadcrumbItem>
+                  {isLast ? (
+                    <BreadcrumbPage>{displayLabel}</BreadcrumbPage>
+                  ) : (
+                    <BreadcrumbLink href={crumb.href}>{displayLabel}</BreadcrumbLink>
+                  )}
+                </BreadcrumbItem>
+              </Fragment>
+            );
+          })
+        ) : null}
       </BreadcrumbList>
     </Breadcrumb>
   );

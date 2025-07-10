@@ -355,5 +355,10 @@
       "assets": "Activos",
       "users": "Usuarios"
     }
+  },
+  "BreadcrumbNav": {
+    "tickets": "Tickets",
+    "assets": "Activos",
+    "users": "Usuarios"
   }
 }
