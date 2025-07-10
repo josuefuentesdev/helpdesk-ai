@@ -20,12 +20,15 @@ export const userRouter = createTRPCRouter({
   getOne: protectedProcedure
     .input(z.object({ id: z.string() }))
     .query(({ ctx, input }) => {
+      const isSelf = input.id === ctx.session.user.id;
       return ctx.db.user.findFirst({
         where: {
           id: input.id,
-          type: {
-            notIn: getHiddenUserTypes(ctx.session.user),
-          },
+          ...(isSelf ? {} : {
+            type: {
+              notIn: getHiddenUserTypes(ctx.session.user),
+            },
+          }),
         },
         select: {
           id: true,
