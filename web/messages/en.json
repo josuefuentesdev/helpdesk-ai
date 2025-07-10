@@ -347,5 +347,14 @@
       "cancel": "Cancel",
       "delete": "Delete"
     }
+  },
+  "AppSidebar": {
+    "application": "Application",
+    "nav": {
+      "home": "Home",
+      "tickets": "Tickets",
+      "assets": "Assets",
+      "users": "Users"
+    }
   }
 }
