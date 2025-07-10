@@ -349,7 +349,6 @@
     }
   },
   "AppSidebar": {
-    "application": "Application",
     "nav": {
       "home": "Home",
       "tickets": "Tickets",

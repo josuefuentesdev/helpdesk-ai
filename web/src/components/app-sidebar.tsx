@@ -1,15 +1,17 @@
+import Image from 'next/image'
 import { Icons } from "@/components/icons"
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import { useTranslations } from "next-intl"
+import Link from 'next/link'
 
 const itemsData = [
   {
@@ -43,9 +45,28 @@ export function AppSidebar() {
   }))
   return (
     <Sidebar>
+      <SidebarHeader>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              asChild
+              className="data-[slot=sidebar-menu-button]:!p-1.5"
+            >
+              <Link href="/">
+                <Image
+                  src="/helpdesk-ai.webp"
+                  alt="helpdesk-ai logo"
+                  width={32}
+                  height={32}
+                />
+                <span className="text-base font-semibold">HelpdeskAi</span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarHeader>      
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>{t('application')}</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
