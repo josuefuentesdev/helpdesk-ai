@@ -30,6 +30,12 @@
     "title": "Users",
     "newUser": "New User"
   },
+  "UserAccountNav": {
+    "profile": "Profile",
+    "signOut": "Sign out",
+    "editUser": "Edit User",
+    "editProfileDescription": "Edit your profile"
+  },
   "TicketDataTable": {
     "id": "ID",
     "type": "Type",
@@ -75,6 +81,16 @@
       "DECOMMISSIONED": "Decommissioned"
     }
   },
+  "ProfileEditForm": {
+    "toast": {
+      "success": "Profile updated",
+      "error": "Error updating profile"
+    },
+    "button": {
+      "save": "Save",
+      "saving": "Saving..."
+    }
+  },  
   "AssetForm": {
     "title": {
       "view": "Asset Details",

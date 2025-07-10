@@ -30,6 +30,12 @@
     "title": "Usuarios",
     "newUser": "Nuevo Usuario"
   },
+  "UserAccountNav": {
+    "profile": "Perfil",
+    "signOut": "Cerrar sesión",
+    "editUser": "Editar Usuario",
+    "editProfileDescription": "Edita tu perfil"
+  },
   "TicketDataTable": {
     "id": "ID",
     "type": "Tipo",
@@ -169,6 +175,16 @@
   "AssetDateFormField": {
     "placeholder": "Seleccionar una fecha...",
     "description": "Seleccionar una fecha"
+  },
+  "ProfileEditForm": {
+    "toast": {
+      "success": "Perfil actualizado",
+      "error": "Error al actualizar el perfil"
+    },
+    "button": {
+      "save": "Guardar",
+      "saving": "Guardando..."
+    }
   },
   "UserFormField": {
     "label": "Usuario",
