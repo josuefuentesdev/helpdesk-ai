@@ -28,6 +28,7 @@ import {
 import { Locale } from "@prisma/client"
 import { useTranslations } from "next-intl"
 import { Icons } from "./icons"
+import { useState } from "react"
 
 
 type LocaleFormFieldProps<
@@ -36,7 +37,7 @@ type LocaleFormFieldProps<
 > = {
   control: Control<TFieldValues>
   name: TName
-  disabled: boolean
+  disabled?: boolean
 }
 
 export function LocaleFormField<
@@ -48,6 +49,8 @@ export function LocaleFormField<
   disabled = false,
 }: LocaleFormFieldProps<TFieldValues, TName>) {
   const t = useTranslations('LocaleFormField');
+
+  const [open, setOpen] = useState(false) 
 
   const options = Object.values(Locale)
     .map((type) => ({
@@ -62,7 +65,7 @@ export function LocaleFormField<
       render={({ field }) => (
         <FormItem className="flex flex-col">
           <FormLabel>{t('label')}</FormLabel>
-          <Popover>
+          <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild disabled={disabled}>
               <FormControl>
                 <Button
@@ -100,6 +103,7 @@ export function LocaleFormField<
                         key={option.value}
                         onSelect={() => {
                           field.onChange(option.value)
+                          setOpen(false)
                         }}
                       >
                         <div className="flex items-center">
