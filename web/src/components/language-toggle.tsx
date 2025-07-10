@@ -32,7 +32,7 @@ export function LanguageToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" disabled={isPending}>
+        <Button variant="ghost" className="h-8 w-8 px-0" disabled={isPending}>
           <Globe className="h-5 w-5" />
           <span className="sr-only">{t("label")}</span>
         </Button>
