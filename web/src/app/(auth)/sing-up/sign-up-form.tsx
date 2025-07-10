@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { getTranslations } from "next-intl/server"
 import { LanguageToggle } from "@/components/language-toggle"
+import { ModeToggle } from "@/components/mode-toggle"
 
 const ERROR_URL = "/error"
 
@@ -85,6 +86,7 @@ export async function SignUpForm({
       </div>
       <div className="flex justify-center">
         <LanguageToggle />
+        <ModeToggle />
       </div>
     </div>
   )
