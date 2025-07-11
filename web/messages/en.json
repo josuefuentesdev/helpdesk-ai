@@ -38,23 +38,21 @@
   },
   "TicketDataTable": {
     "id": "ID",
-    "type": "Type",
-    "subtype": "SubType",
-    "name": "Name",
-    "serialNumber": "Serial Number",
-    "purchaseAt": "Purchase Date",
-    "purchasePrice": "Purchase Price",
-    "currency": "",
-    "warrantyExpiresAt": "Warranty Expires",
+    "title": "Title",
+    "description": "Description",
+    "priority": "Priority",
     "status": "Status",
-    "assignedTo": "Assigned To",
-    "noAssigned": "No assigned",
+    "agent": "Agent",
+    "unassigned": "Unassigned",
+    "team": "Team",
+    "noTeamAssigned": "No team assigned",
+    "dueAt": "Due At",
+    "closedAt": "Closed At",
     "createdAt": "Created At",
     "createdBy": "Created By",
     "updatedAt": "Updated At",
     "updatedBy": "Updated By",
-    "neverUpdated": "Never updated",
-    "department": "Departament"
+    "neverUpdated": "Never updated"
   },
   "AssetTypeFormField": {
     "label": "Asset Type",
@@ -364,5 +362,119 @@
   "CreateAssetForm": {
     "success": "Asset created successfully",
     "error": "Error creating asset"
+  },
+  "TicketForm": {
+    "title": {
+      "view": "Ticket Details",
+      "edit": "Edit Ticket",
+      "create": "Add New Ticket"
+    },
+    "description": {
+      "view": "View the details of your ticket",
+      "edit": "Edit the details of your ticket",
+      "create": "Fill in the details below to add a new ticket"
+    },
+    "actions": {
+      "edit": "Edit"
+    },
+    "form": {
+      "title": {
+        "label": "Title",
+        "placeholder": "e.g., Printer not working",
+        "description": "Enter a descriptive title for this ticket."
+      },
+      "description": {
+        "label": "Description",
+        "placeholder": "e.g., The printer in the main office is not printing.",
+        "description": "Enter a detailed description of the issue."
+      },
+      "dueAt": {
+        "label": "Due Date",
+        "placeholder": "Select due date",
+        "description": "Select the due date for this ticket."
+      },
+      "submit": {
+        "view": "View Ticket",
+        "create": "Create Ticket",
+        "edit": "Edit Ticket",
+        "loading": {
+          "create": "Creating...",
+          "edit": "Editing..."
+        }
+      }
+    }
+  },
+  "CreateTicketForm": {
+    "success": "Ticket created successfully",
+    "error": "Error creating ticket"
+  },
+  "TicketPriorityFormField": {
+    "label": "Priority",
+    "placeholder": "Select priority",
+    "searchPlaceholder": "Search priority...",
+    "noResults": "No priority found.",
+    "description": "Select the priority of the ticket.",
+    "priorities": {
+      "LOW": "Low",
+      "MEDIUM": "Medium",
+      "HIGH": "High",
+      "URGENT": "Urgent"
+    }
+  },
+  "TicketStatusFormField": {
+    "label": "Status",
+    "placeholder": "Select status",
+    "searchPlaceholder": "Search status...",
+    "noResults": "No status found.",
+    "description": "Select the status of the ticket.",
+    "statuses": {
+      "OPEN": "Open",
+      "IN_PROGRESS": "In Progress",
+      "RESOLVED": "Resolved",
+      "CLOSED": "Closed"
+    }
+  },
+  "TeamFormField": {
+    "label": "Team",
+    "placeholder": "Select team...",
+    "searchPlaceholder": "Search teams...",
+    "noResults": "No teams found.",
+    "description": "Select the team.",
+    "loadingPlaceholder": "Loading...",
+    "loadingOptions": "Loading options...",
+    "fetchErrorPlaceholder": "Error fetching teams: {error}"
+  },
+  "TicketStatus": {
+    "OPEN": "Open",
+    "IN_PROGRESS": "In Progress",
+    "RESOLVED": "Resolved",
+    "CLOSED": "Closed"
+  },
+  "TicketPriority": {
+    "LOW": "Low",
+    "MEDIUM": "Medium",
+    "HIGH": "High",
+    "URGENT": "Urgent"
+  },
+  "TicketDataTableToolbar": {
+    "columns": {
+      "title": {
+        "label": "Title",
+        "placeholder": "Filter by title..."
+      },
+      "status": {
+        "label": "Status",
+        "placeholder": "Filter by status..."
+      },
+      "priority": {
+        "label": "Priority",
+        "placeholder": "Filter by priority..."
+      }
+    },
+    "reset": "Reset"
+  },
+  "TicketsPage": {
+    "title": "Tickets",
+    "newTicket": "New Ticket"
   }
-}
+} 

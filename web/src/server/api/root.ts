@@ -3,6 +3,8 @@ import { assetRouter } from "./routers/asset";
 import { userRouter } from "./routers/user";
 import { departmentRouter } from "./routers/department";
 import { breadcrumbRouter } from "./routers/breadcrumb";
+import { ticketRouter } from "./routers/ticket";
+import { teamRouter } from "./routers/team";
 
 /**
  * This is the primary router for your server.
@@ -14,6 +16,8 @@ export const appRouter = createTRPCRouter({
   user: userRouter,
   department: departmentRouter,
   breadcrumb: breadcrumbRouter,
+  ticket: ticketRouter,
+  team: teamRouter,
 });
 
 // export type definition of API

@@ -11,6 +11,13 @@ export type AssetGetAllItem = AssetGetAll[number];
 export type AssetGetOne = NonNullable<RouterOutput['asset']['getOne']>;
 export type CreateAsset = NonNullable<RouterInputs['asset']['create']>;
 
+// Ticket
+type TicketGetAll = RouterOutput['ticket']['getAll']
+export type TicketGetAllItem = TicketGetAll[number];
+
+export type TicketGetOne = NonNullable<RouterOutput['ticket']['getOne']>;
+export type CreateTicket = NonNullable<RouterInputs['ticket']['create']>;
+
 // User
 type UserGetAll = RouterOutput['user']['getAll']
 export type UserGetAllItem = UserGetAll[number];

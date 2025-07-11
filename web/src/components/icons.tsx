@@ -23,6 +23,12 @@ export const Icons = {
   SAAS: LuCloud,           // Represents cloud-based services (SaaS)
   OTHER: LuBox,            // A generic container/icon for miscellaneous items
 
+  // ticket priorities
+  LOW: LuCpu,
+  MEDIUM: LuCode,
+  HIGH: LuCloud,
+  URGENT: LuBox,
+
   loader: Loader2,
   x: LuX,
   trash: LuTrash,

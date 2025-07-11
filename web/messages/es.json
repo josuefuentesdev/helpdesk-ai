@@ -38,24 +38,63 @@
   },
   "TicketDataTable": {
     "id": "ID",
-    "type": "Tipo",
-    "subtype": "Subtipo",
-    "name": "Nombre",
-    "serialNumber": "Número de serie",
-    "purchaseAt": "Fecha de compra",
-    "purchasePrice": "Precio de compra",
-    "currency": "",
-    "warrantyExpiresAt": "Garantía vence",
+    "title": "Título",
+    "description": "Descripción",
+    "priority": "Prioridad",
     "status": "Estado",
-    "assignedTo": "Asignado a",
-    "noAssigned": "Sin asignar",
-    "createdAt": "Creado el",
+    "agent": "Agente",
+    "unassigned": "Sin asignar",
+    "team": "Equipo",
+    "noTeamAssigned": "Sin equipo asignado",
+    "dueAt": "Fecha de vencimiento",
+    "closedAt": "Fecha de cierre",
+    "createdAt": "Fecha de creación",
     "createdBy": "Creado por",
     "updatedAt": "Actualizado el",
     "updatedBy": "Actualizado por",
-    "neverUpdated": "Nunca actualizado",
-    "department": "Departamento" 
+    "neverUpdated": "Nunca actualizado"
   },
+  "TicketForm": {
+    "title": {
+      "view": "Detalles del ticket",
+      "edit": "Editar ticket",
+      "create": "Agregar nuevo ticket"
+    },
+    "description": {
+      "view": "Ver los detalles del ticket",
+      "edit": "Editar los detalles del ticket",
+      "create": "Llenar los detalles a continuación para agregar un nuevo ticket"
+    },
+    "actions": {
+      "edit": "Editar"
+    },
+    "form": {
+      "title": {
+        "label": "Título",
+        "placeholder": "e.g., Impresora no funciona",
+        "description": "Introduce un título descriptivo para este ticket."
+      },
+      "description": {
+        "label": "Descripción",
+        "placeholder": "e.g., La impresora en la oficina principal no funciona.",
+        "description": "Introduce una descripción detallada del problema."
+      },
+      "dueAt": {
+        "label": "Fecha de vencimiento",
+        "placeholder": "Seleccionar fecha de vencimiento",
+        "description": "Seleccionar la fecha de vencimiento para este ticket."
+      },
+      "submit": {
+        "view": "Ver ticket",
+        "create": "Crear ticket",
+        "edit": "Editar ticket",
+        "loading": {
+          "create": "Creando...",
+          "edit": "Editando..."
+        }
+      }
+    }
+  },  
   "AssetTypeFormField": {
     "label": "Tipo de activo",
     "placeholder": "Seleccionar tipo",
@@ -364,5 +403,78 @@
   "CreateAssetForm": {
     "success": "Activo creado exitosamente",
     "error": "Error creando activo"
+  },
+  "CreateTicketForm": {
+    "success": "Ticket creado exitosamente",
+    "error": "Error creando ticket"
+  },
+  "TicketPriorityFormField": {
+    "label": "Prioridad",
+    "placeholder": "Seleccionar prioridad",
+    "searchPlaceholder": "Buscar prioridad...",
+    "noResults": "No se encontró ninguna prioridad.",
+    "description": "Selecciona la prioridad del ticket.",
+    "priorities": {
+      "LOW": "Bajo",
+      "MEDIUM": "Medio",
+      "HIGH": "Alto",
+      "URGENT": "Urgente"
+    }
+  },
+  "TicketStatusFormField": {
+    "label": "Estado",
+    "placeholder": "Seleccionar estado",
+    "searchPlaceholder": "Buscar estado...",
+    "noResults": "No se encontró ningún estado.",
+    "description": "Selecciona el estado del ticket.",
+    "statuses": {
+      "OPEN": "Abierto",
+      "IN_PROGRESS": "En Progreso",
+      "RESOLVED": "Resuelto",
+      "CLOSED": "Cerrado"
+    }
+  },
+  "TeamFormField": {
+    "label": "Equipo",
+    "placeholder": "Seleccionar equipo...",
+    "searchPlaceholder": "Buscar equipos...",
+    "noResults": "No se encontraron equipos.",
+    "description": "Selecciona el equipo.",
+    "loadingPlaceholder": "Cargando...",
+    "loadingOptions": "Cargando opciones...",
+    "fetchErrorPlaceholder": "Error al cargar equipos: {error}"
+  },  
+  "TicketStatus": {
+    "OPEN": "Abierto",
+    "IN_PROGRESS": "En Progreso",
+    "RESOLVED": "Resuelto",
+    "CLOSED": "Cerrado"
+  },
+  "TicketPriority": {
+    "LOW": "Bajo",
+    "MEDIUM": "Medio",
+    "HIGH": "Alto",
+    "URGENT": "Urgente"
+  },
+  "TicketDataTableToolbar": {
+    "columns": {
+      "title": {
+        "label": "Título",
+        "placeholder": "Filtrar por título..."
+      },
+      "status": {
+        "label": "Estado",
+        "placeholder": "Filtrar por estado..."
+      },
+      "priority": {
+        "label": "Prioridad",
+        "placeholder": "Filtrar por prioridad..."
+      }
+    },
+    "reset": "Reiniciar"
+  },
+  "TicketsPage": {
+    "title": "Tickets",
+    "newTicket": "Nuevo Ticket"
   }
 }

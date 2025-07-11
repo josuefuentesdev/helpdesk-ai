@@ -84,6 +84,15 @@ model User {
   updatedAssets Asset[] @relation(name: "AssetUpdatedBy")
   createdUsers  User[]  @relation(name: "UserCreatedBy")
   updatedUsers  User[]  @relation(name: "UserUpdatedBy")
+  createdTickets  Ticket[] @relation("TicketCreatedBy")
+  updatedTickets  Ticket[] @relation("TicketUpdatedBy")
+
+  // --- Helpdesk Relations ---
+  teams         Team[]    @relation("TeamMembers")
+  assignedTickets Ticket[] @relation("TicketAgent")
+  comments        Comment[] @relation("CommentAuthor")
+  notes           Note[]    @relation("NoteAuthor")
+  // --- End Helpdesk Relations ---
 }
 
 model Department {
@@ -139,4 +148,82 @@ model Asset {
   assignedTo User? @relation(name: "AssetAssignedTo", fields: [assignedToId], references: [id])
   // TODO: tags
   // TODO: location
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}
+
+enum TicketPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+model Team {
+  id    String  @id @default(cuid())
+  name  String  @unique
+  users User[]  @relation("TeamMembers")
+  tickets Ticket[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Ticket {
+  id          String        @id @default(cuid())
+  title       String
+  description String
+  priority    TicketPriority
+  status      TicketStatus  @default(OPEN)
+  closedAt    DateTime?
+  dueAt       DateTime?
+
+  // Assignment (either agent or team)
+  agentId     String?
+  agent       User?         @relation("TicketAgent", fields: [agentId], references: [id])
+  teamId      String?
+  team        Team?         @relation(fields: [teamId], references: [id])
+
+  createdAt         DateTime    @default(now())
+  createdById       String
+  updatedAt         DateTime    @updatedAt
+  updatedById       String?
+  deletedAt         DateTime?
+
+  createdBy  User  @relation(name: "TicketCreatedBy", fields: [createdById], references: [id])
+  updatedBy  User? @relation(name: "TicketUpdatedBy", fields: [updatedById], references: [id])
+
+  // Comments and Notes
+  comments    Comment[]
+  notes       Note[]
+
+  // Indexes for search/filter
+  @@index([status, priority, agentId, teamId, createdAt])
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ticketId  String
+  ticket    Ticket   @relation(fields: [ticketId], references: [id])
+  authorId  String
+  author    User     @relation("CommentAuthor", fields: [authorId], references: [id])
+  isInternal Boolean @default(false) // false: public comment
+}
+
+model Note {
+  id        String   @id @default(cuid())
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ticketId  String
+  ticket    Ticket   @relation(fields: [ticketId], references: [id])
+  authorId  String
+  author    User     @relation("NoteAuthor", fields: [authorId], references: [id])
 }

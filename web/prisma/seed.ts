@@ -109,6 +109,88 @@ async function main() {
   }
   const createdAssets = await prisma.asset.createMany({ data: assets });
   console.log({ createdAssets });
+
+  // seed teams
+  const teams = [
+    'Frontend',
+    'Backend',
+    'Fullstack',
+    'DevOps',
+    'QA',
+  ];
+
+  await prisma.team.createMany({
+    data: teams.map(name => ({
+      name
+    })),
+  });
+
+  const teamRecords = await prisma.team.findMany();
+
+  // seed tickets
+  const tickets: Prisma.TicketCreateManyInput[] = [];
+  for (let i = 0; i < 50; i++) {
+    const toUpdate = faker.datatype.boolean({ probability: 0.5 });
+    const assignToTeam = faker.datatype.boolean({ probability: 0.5 });
+
+    tickets.push({
+      title: faker.lorem.sentence(),
+      description: faker.lorem.paragraphs(3),
+      priority: faker.helpers.arrayElement(['LOW', 'MEDIUM', 'HIGH', 'URGENT']),
+      status: faker.helpers.arrayElement(['OPEN', 'IN_PROGRESS', 'RESOLVED', 'CLOSED']),
+      createdAt: faker.date.past({ years: 1 }),
+      updatedAt: toUpdate ? faker.date.recent() : undefined,
+      closedAt: Math.random() > 0.7 ? faker.date.recent() : undefined,
+      dueAt: faker.date.future({ years: 1 }),
+      agentId: assignToTeam ? undefined : users?.[Math.floor(Math.random() * users.length)]?.id,
+      teamId: assignToTeam ? teamRecords?.[Math.floor(Math.random() * teamRecords.length)]?.id : undefined,
+      createdById: users?.[Math.floor(Math.random() * users.length)]?.id ?? systemUser.id,
+    });
+  }
+
+  const createdTickets = await prisma.ticket.createMany({ data: tickets });
+  console.log({ createdTickets });
+
+  const ticketRecords = await prisma.ticket.findMany();
+
+  // seed comments
+  const comments: Prisma.CommentCreateManyInput[] = [];
+  for (let i = 0; i < 100; i++) {
+    const ticketId = ticketRecords?.[Math.floor(Math.random() * ticketRecords.length)]?.id;
+    if (!ticketId) {
+      continue;
+    }
+    comments.push({
+      content: faker.lorem.paragraph(),
+      createdAt: faker.date.past({ years: 1 }),
+      updatedAt: faker.date.recent(),
+      ticketId: ticketId,
+      authorId: users?.[Math.floor(Math.random() * users.length)]?.id ?? systemUser.id,
+      isInternal: faker.datatype.boolean({ probability: 0.2 }),
+    });
+  }
+
+  const createdComments = await prisma.comment.createMany({ data: comments });
+  console.log({ createdComments });
+
+  // seed notes
+  const notes: Prisma.NoteCreateManyInput[] = [];
+  for (let i = 0; i < 50; i++) {
+    const ticketId = ticketRecords?.[Math.floor(Math.random() * ticketRecords.length)]?.id;
+    if (!ticketId) {
+      continue;
+    }
+    notes.push({
+      content: faker.lorem.paragraph(),
+      createdAt: faker.date.past({ years: 1 }),
+      updatedAt: faker.date.recent(),
+      ticketId: ticketId,
+      authorId: users?.[Math.floor(Math.random() * users.length)]?.id ?? systemUser.id,
+    });
+  }
+
+  const createdNotes = await prisma.note.createMany({ data: notes });
+  console.log({ createdNotes });
 }
 main()
   .then(async () => {
