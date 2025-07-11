@@ -360,5 +360,9 @@
     "tickets": "Tickets",
     "assets": "Activos",
     "users": "Usuarios"
+  },
+  "CreateAssetForm": {
+    "success": "Activo creado exitosamente",
+    "error": "Error creando activo"
   }
 }
