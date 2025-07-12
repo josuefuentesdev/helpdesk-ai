@@ -393,7 +393,8 @@
       "tickets": "Tickets",
       "assets": "Activos",
       "users": "Usuarios"
-    }
+    },
+    "newTicket": "Nuevo Ticket"
   },
   "BreadcrumbNav": {
     "tickets": "Tickets",

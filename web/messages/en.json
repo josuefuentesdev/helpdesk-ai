@@ -352,7 +352,8 @@
       "tickets": "Tickets",
       "assets": "Assets",
       "users": "Users"
-    }
+    },
+    "newTicket": "New Ticket"
   },
   "BreadcrumbNav": {
     "tickets": "Tickets",

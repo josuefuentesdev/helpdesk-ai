@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/sidebar"
 import { useTranslations } from "next-intl"
 import Link from 'next/link'
+import { Button } from "@/components/ui/button"
 
 const itemsData = [
   {
@@ -63,8 +64,16 @@ export function AppSidebar() {
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
+          <SidebarMenuItem>
+            <Button asChild size="sm" className="w-full mt-2">
+              <Link href="/tickets/new" className="gap-2">
+                <Icons.plus className="h-4 w-4" />
+                {t('newTicket')}
+              </Link>
+            </Button>
+          </SidebarMenuItem>
         </SidebarMenu>
-      </SidebarHeader>      
+      </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>
