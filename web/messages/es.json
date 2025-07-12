@@ -281,6 +281,24 @@
   "DataTable": {
     "noResults": "No se encontraron resultados"
   },
+  "AssetDataTable": {
+    "id": "ID",
+    "type": "Tipo",
+    "subtype": "Subtipo",
+    "name": "Nombre",
+    "serialNumber": "Número de serie",
+    "purchaseAt": "Fecha de compra",
+    "warrantyExpiresAt": "Garantía vence",
+    "status": "Estado",
+    "department": "Departamento",
+    "assignedTo": "Asignado a",
+    "noAssigned": "Sin asignar",
+    "createdAt": "Creado el",
+    "createdBy": "Creado por",
+    "updatedAt": "Actualizado el",
+    "updatedBy": "Actualizado por",
+    "neverUpdated": "Nunca actualizado"
+  },
   "DataTableViewOptions": {
     "view": "Ver",
     "selectAll": "Seleccionar todo",

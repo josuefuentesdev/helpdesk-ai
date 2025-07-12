@@ -316,6 +316,24 @@
     "en": "English",
     "es": "Español"
   },
+  "AssetDataTable": {
+    "id": "ID",
+    "type": "Type",
+    "subtype": "Subtype",
+    "name": "Name",
+    "serialNumber": "Serial Number",
+    "purchaseAt": "Purchase Date",
+    "warrantyExpiresAt": "Warranty Expires",
+    "status": "Status",
+    "department": "Department",
+    "assignedTo": "Assigned To",
+    "noAssigned": "Not Assigned",
+    "createdAt": "Created At",
+    "createdBy": "Created By",
+    "updatedAt": "Updated At",
+    "updatedBy": "Updated By",
+    "neverUpdated": "Never Updated"
+  },
   "DepartmentFacetedFilter": {
     "selected": "selected",
     "noResults": "No results found.",

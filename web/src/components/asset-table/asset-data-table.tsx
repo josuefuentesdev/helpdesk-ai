@@ -24,7 +24,7 @@ export function AssetDataTable({
   className?: string,
   initialColumnVisibility?: Partial<Record<keyof AssetGetAllItem, boolean>>
 }) {
-  const t = useTranslations('TicketDataTable');
+  const t = useTranslations('AssetDataTable');
   const formatter = useFormatter()
 
   const router = useRouter();
