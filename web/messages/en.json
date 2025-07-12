@@ -285,7 +285,8 @@
     "name": "Name",
     "email": "Email",
     "avatar": "Avatar",
-    "department": "Department"
+    "department": "Department",
+    "teams": "Teams"
   },
   "UserDataTableToolbar": {
     "columns": {
@@ -299,6 +300,9 @@
       },
       "department": {
         "label": "Departments"
+      },
+      "team": {
+        "label": "Teams"
       }
     },
     "reset": "Reset"
@@ -360,6 +364,36 @@
       "description": "Are you sure you want to delete this department?",
       "affectedUsersWarning": "This department is assigned to {count} users. Are you sure you want to delete it?",
       "noAffectedUsers": "This department is not assigned to any users. Are you sure you want to delete it?",
+      "cancel": "Cancel",
+      "delete": "Delete"
+    }
+  },
+  "TeamFacetedFilter": {
+    "selected": "selected",
+    "noResults": "No results found.",
+    "clearFilters": "Clear filters",
+    "filterTeams": "Filter teams...",
+    "loading": "Loading...",
+    "createNew": "Create new",
+    "newTeamName": "New team name",
+    "add": "Add",
+    "edit": "Edit",
+    "delete": "Delete",
+    "toast": {
+      "failedToLoad": "Failed to load teams",
+      "created": "Team created",
+      "failedToCreate": "Failed to create team",
+      "updated": "Team updated",
+      "failedToUpdate": "Failed to update team",
+      "deleted": "Team deleted",
+      "failedToDelete": "Failed to delete team",
+      "nameCannotBeEmpty": "Team name cannot be empty"
+    },
+    "alert": {
+      "title": "Delete team",
+      "description": "Are you sure you want to delete the team {teamName}?",
+      "affectedUsersWarning": "This team is assigned to {count} users. Are you sure you want to delete it?",
+      "noAffectedUsers": "This team is not assigned to any users. Are you sure you want to delete it?",
       "cancel": "Cancel",
       "delete": "Delete"
     }

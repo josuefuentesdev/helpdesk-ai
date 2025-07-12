@@ -6,6 +6,7 @@ export const baseFormSchema = z.object({
     required_error: "Locale is required.",
   }),
   departmentId: z.string().optional(),
+  teamIds: z.array(z.string()).optional(),
 })
 
 export const editFormSchema = baseFormSchema

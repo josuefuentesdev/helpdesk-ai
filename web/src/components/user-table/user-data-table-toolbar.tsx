@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import type { UserGetAllItem } from "@/types";
 import { DepartmentFacetedFilter } from "../data-table/department-faceted-filter";
+import { TeamFacetedFilter } from "../data-table/team-faceted-filter";
 
 export function UserDataTableToolbar({
   table,
@@ -39,6 +40,13 @@ export function UserDataTableToolbar({
           title={t('columns.department.label')}
         />
       )}
+      {table.getColumn("teams") && (
+        <TeamFacetedFilter
+          table={table}
+          column={table.getColumn("teams")}
+          title={t('columns.team.label')}
+        />
+      )}      
       {isFiltered && (
         <Button
           variant="ghost"

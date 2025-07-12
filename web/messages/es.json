@@ -344,7 +344,8 @@
     "name": "Nombre",
     "email": "Email",
     "avatar": "Avatar",
-    "department": "Departamento"
+    "department": "Departamento",
+    "teams": "Equipos"
   },
   "UserDataTableToolbar": {
     "columns": {
@@ -358,6 +359,9 @@
       },
       "department": {
         "label": "Departamentos"
+      },
+      "team": {
+        "label": "Equipos"
       }
     },
     "reset": "Reiniciar"
@@ -393,14 +397,43 @@
       "updated": "Departamento actualizado",
       "failedToUpdate": "No se pudo actualizar el departamento",
       "deleted": "Departamento eliminado",
-      "failedToDelete": "No se pudo eliminar el departamento",
       "nameCannotBeEmpty": "El nombre del departamento no puede estar vacío"
     },
     "alert": {
       "title": "Eliminar departamento",
-      "description": "¿Estás seguro de que quieres eliminar este departamento?",
-      "affectedUsersWarning": "Este departamento está asignado a {count} usuarios. ¿Estás seguro de que quieres eliminarlo?",
-      "noAffectedUsers": "Este departamento no está asignado a ningún usuario. ¿Estás seguro de que quieres eliminarlo?",
+      "description": "¿Estás seguro de que deseas eliminar este departamento?",
+      "affectedUsersWarning": "Este departamento está asignado a {count} usuarios. ¿Estás seguro de que deseas eliminarlo?",
+      "noAffectedUsers": "Este departamento no está asignado a ningún usuario. ¿Estás seguro de que deseas eliminarlo?",
+      "cancel": "Cancelar",
+      "delete": "Eliminar"
+    }
+  },
+  "TeamFacetedFilter": {
+    "selected": "seleccionado",
+    "noResults": "No se encontraron resultados.",
+    "clearFilters": "Limpiar filtros",
+    "filterTeams": "Filtrar equipos...",
+    "loading": "Cargando...",
+    "createNew": "Crear nuevo",
+    "newTeamName": "Nombre del nuevo equipo",
+    "add": "Agregar",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "toast": {
+      "failedToLoad": "No se pudieron cargar los equipos",
+      "created": "Equipo creado",
+      "failedToCreate": "No se pudo crear el equipo",
+      "updated": "Equipo actualizado",
+      "failedToUpdate": "No se pudo actualizar el equipo",
+      "deleted": "Equipo eliminado",
+      "failedToDelete": "No se pudo eliminar el equipo",
+      "nameCannotBeEmpty": "El nombre del equipo no puede estar vacío"
+    },
+    "alert": {
+      "title": "Eliminar equipo",
+      "description": "¿Estás seguro de que deseas eliminar el equipo {teamName}?",
+      "affectedUsersWarning": "Este equipo está asignado a {count} usuarios. ¿Estás seguro de que deseas eliminarlo?",
+      "noAffectedUsers": "Este equipo no está asignado a ningún usuario. ¿Estás seguro de que deseas eliminarlo?",
       "cancel": "Cancelar",
       "delete": "Eliminar"
     }

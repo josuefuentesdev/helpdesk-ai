@@ -37,6 +37,11 @@ export const userRouter = createTRPCRouter({
           image: true,
           locale: true,
           departmentId: true,
+          teams: {
+            select: {
+              id: true,
+            },
+          },
         },
       });
     }),
@@ -64,6 +69,12 @@ export const userRouter = createTRPCRouter({
           email: true,
           image: true,
           department: {
+            select: {
+              id: true,
+              name: true,
+            },
+          },
+          teams: {
             select: {
               id: true,
               name: true,
@@ -100,6 +111,7 @@ export const userRouter = createTRPCRouter({
       id: z.string(),
       locale: z.enum(locales),
       departmentId: z.string().optional(),
+      teamIds: z.array(z.string()).optional(),
     }))
     .mutation(({ ctx, input }) => {
       return ctx.db.user.update({
@@ -109,6 +121,9 @@ export const userRouter = createTRPCRouter({
         data: {
           locale: input.locale,
           departmentId: input.departmentId,
+          teams: {
+            connect: input.teamIds?.map((teamId) => ({ id: teamId })),
+          },
         },
       })
     }),

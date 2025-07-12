@@ -13,6 +13,7 @@ import Link from "next/link"
 import { baseFormSchema, type UserFormValues } from "./user-form-schemas"
 import { DepartmentFormField } from "../department-form-field"
 import { LocaleFormField } from "../locale-form-field"
+import { TeamFormField } from "../team-form-field"
 
 
 type UserFormProps =
@@ -42,6 +43,7 @@ export function UserForm({
     defaultValues: {
       locale: user?.locale ?? "en",
       departmentId: user?.departmentId ?? undefined,
+      teamIds: user?.teams.map((team) => team.id) ?? [],
     },
   })
 
@@ -86,6 +88,11 @@ export function UserForm({
               <DepartmentFormField
                 control={form.control}
                 name="departmentId"
+                disabled={variant === "view"}
+              />
+              <TeamFormField
+                control={form.control}
+                name="teamIds"
                 disabled={variant === "view"}
               />
             </div>
