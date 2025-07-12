@@ -71,7 +71,7 @@ export function UserForm({
               </Button>
             )}
             <div className="rounded-lg bg-primary/10 p-3">
-              <Icons.assets className="h-6 w-6 text-primary" />
+              <Icons.user className="h-6 w-6 text-primary" />
             </div>
           </div>
         </div>
