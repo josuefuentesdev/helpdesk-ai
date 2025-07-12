@@ -1,4 +1,14 @@
 {
+  "error": {
+    "accessDenied": "Acceso Denegado",
+    "somethingWentWrong": "¡Ups! Algo salió mal",
+    "noPermission": "No tienes permiso para acceder a esta página.",
+    "unexpectedError": "Ha ocurrido un error inesperado.",
+    "errorDetails": "Detalles del Error",
+    "goToHome": "Ir a Inicio",
+    "retrying": "Reintentando...",
+    "tryAgain": "Intentar de nuevo"
+  },
   "HomePage": {},
   "SignInForm": {
     "title": "Inicia sesión en tu cuenta",
@@ -21,7 +31,7 @@
     "signUpWith": "Regístrate con",
     "haveAccount": "¿Ya tienes una cuenta?",
     "signInLink": "Inicia sesión"
-  },  
+  },
   "AssetsPage": {
     "title": "Activos",
     "newAsset": "Nuevo Activo"
@@ -94,7 +104,7 @@
         }
       }
     }
-  },  
+  },
   "AssetTypeFormField": {
     "label": "Tipo de activo",
     "placeholder": "Seleccionar tipo",
@@ -495,7 +505,7 @@
     "loadingPlaceholder": "Cargando...",
     "loadingOptions": "Cargando opciones...",
     "fetchErrorPlaceholder": "Error al cargar equipos: {error}"
-  },  
+  },
   "TicketStatus": {
     "OPEN": "Abierto",
     "IN_PROGRESS": "En Progreso",
@@ -528,5 +538,8 @@
   "TicketsPage": {
     "title": "Tickets",
     "newTicket": "Nuevo Ticket"
+  },
+  "PreviousPageButton": {
+    "label": "Anterior"
   }
 }

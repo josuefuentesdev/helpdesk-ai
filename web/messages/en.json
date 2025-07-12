@@ -1,4 +1,14 @@
 {
+  "error": {
+    "accessDenied": "Access Denied",
+    "somethingWentWrong": "Oops! Something went wrong",
+    "noPermission": "You don't have permission to access this page.",
+    "unexpectedError": "An unexpected error occurred.",
+    "errorDetails": "Error Details",
+    "goToHome": "Go to Home",
+    "retrying": "Retrying...",
+    "tryAgain": "Try Again"
+  },
   "HomePage": {},
   "SignInForm": {
     "title": "Login to your account",
@@ -529,5 +539,8 @@
   "TicketsPage": {
     "title": "Tickets",
     "newTicket": "New Ticket"
+  },
+  "PreviousPageButton": { 
+    "label": "Previous Page"
   }
-} 
+}
