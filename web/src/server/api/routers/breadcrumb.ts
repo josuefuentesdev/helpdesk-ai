@@ -24,14 +24,11 @@ export const breadcrumbRouter = createTRPCRouter({
           const user = await ctx.db.user.findUnique({ where: { id: segment } });
           label = user ? `${user.name} (${user.email})` : segment;
         } else if (prev === "tickets") {
-          // Uncomment if you have a tickets table
-          // const ticket = await ctx.db.ticket.findUnique({ where: { id: segment } });
-          // label = ticket?.title ?? segment;
-          label = segment;
+          const ticket = await ctx.db.ticket.findUnique({ where: { id: segment } });
+          label = ticket?.title ?? segment;
         } else if (prev === "assets") {
           const asset = await ctx.db.asset.findUnique({ where: { id: segment } });
           label = asset?.name ?? segment;
-
         } else {
           try {
             label = decodeURIComponent(segment.replace(/-/g, ' '));
