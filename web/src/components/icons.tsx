@@ -1,4 +1,4 @@
-import { Home, Loader2 } from "lucide-react"
+import { Home, Loader2, ArrowDown, AlertTriangle, AlertOctagon } from "lucide-react"
 import { IoTicketOutline } from "react-icons/io5";
 import { LuBox, LuCloud, LuCode, LuCpu, LuDownload, LuUser, LuX, LuTrash } from "react-icons/lu"
 import { MdDevices } from "react-icons/md";
@@ -24,10 +24,10 @@ export const Icons = {
   OTHER: LuBox,            // A generic container/icon for miscellaneous items
 
   // ticket priorities
-  LOW: LuCpu,
-  MEDIUM: LuCode,
-  HIGH: LuCloud,
-  URGENT: LuBox,
+  LOW: ArrowDown,
+  MEDIUM: ArrowDown,
+  HIGH: AlertTriangle,
+  URGENT: AlertOctagon,
 
   loader: Loader2,
   x: LuX,
