@@ -13,6 +13,7 @@ import {
 import { usePathname } from "next/navigation"
 import { api } from "@/trpc/react"
 import { Skeleton } from "@/components/ui/skeleton"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 export function BreadcrumbNav() {
   const pathname = usePathname();
@@ -38,11 +39,22 @@ export function BreadcrumbNav() {
               <Fragment key={crumb.href}>
                 {idx > 0 && <BreadcrumbSeparator className="hidden md:block" />}
                 <BreadcrumbItem>
-                  {isLast ? (
-                    <BreadcrumbPage>{displayLabel}</BreadcrumbPage>
-                  ) : (
-                    <BreadcrumbLink href={crumb.href}>{displayLabel}</BreadcrumbLink>
-                  )}
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <div className="max-w-[120px] md:max-w-[200px] truncate">
+                          {isLast ? (
+                            <BreadcrumbPage className="truncate">{displayLabel}</BreadcrumbPage>
+                          ) : (
+                            <BreadcrumbLink href={crumb.href} className="truncate">{displayLabel}</BreadcrumbLink>
+                          )}
+                        </div>
+                      </TooltipTrigger>
+                      <TooltipContent side="bottom" align="start" className="max-w-[300px] break-words">
+                        {displayLabel}
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
                 </BreadcrumbItem>
               </Fragment>
             );
