@@ -497,6 +497,13 @@
       "CLOSED": "Closed"
     }
   },
+  "NotFoundPage": {
+    "title": "Page not found",
+    "description": "Sorry, we couldn't find the page you're looking for.",
+    "errorCode": "Error code: 404",
+    "backButton": "Go back",
+    "homeButton": "Back to home"
+  },
   "TeamFormField": {
     "label": "Team",
     "placeholder": "Select team...",

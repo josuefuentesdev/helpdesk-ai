@@ -418,6 +418,13 @@
       "delete": "Eliminar"
     }
   },
+  "NotFoundPage": {
+    "title": "Página no encontrada",
+    "description": "Lo sentimos, no pudimos encontrar la página que estás buscando.",
+    "errorCode": "Código de error: 404",
+    "backButton": "Volver atrás",
+    "homeButton": "Volver al inicio"
+  },
   "TeamFacetedFilter": {
     "selected": "seleccionado",
     "noResults": "No se encontraron resultados.",
