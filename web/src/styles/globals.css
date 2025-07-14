@@ -81,13 +81,29 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
   
-  /* Status colors */
+  /* Asset status colors */
   --status-success: oklch(0.646 0.222 141.116); /* Using a green from the chart colors */
   --status-success-hover: oklch(0.546 0.222 141.116);
   --status-warning: oklch(0.769 0.188 70.08); /* Using chart-5 which is yellowish */
   --status-warning-hover: oklch(0.669 0.188 70.08);
   --status-inactive: oklch(0.708 0 0); /* Using ring color */
   --status-inactive-hover: oklch(0.608 0 0);
+
+  /* Ticket status colors */
+  --ticket-status-open: oklch(0.7 0.2 150); /* Vibrant green for open tickets */
+  --ticket-status-open-hover: oklch(0.6 0.2 150);
+  --ticket-status-in-progress: oklch(0.8 0.2 70); /* Orange-yellow for in-progress */
+  --ticket-status-in-progress-hover: oklch(0.7 0.2 70);
+  --ticket-status-resolved: oklch(0.65 0.15 250); /* Blue for resolved */
+  --ticket-status-resolved-hover: oklch(0.55 0.15 250);
+  --ticket-status-closed: oklch(0.4 0 0); /* Dark gray for closed */
+  --ticket-status-closed-hover: oklch(0.3 0 0);
+
+  /* Priority colors */
+  --priority-low: oklch(0.6 0.118 240);
+  --priority-medium: oklch(0.828 0.189 84.429);
+  --priority-high: oklch(0.7 0.2 45);
+  --priority-urgent: oklch(0.6 0.2 20);
 }
 
 .dark {
@@ -130,6 +146,22 @@
   --status-warning-hover: oklch(0.545 0.246 46.439);
   --status-inactive: oklch(0.556 0 0); /* Using ring color in dark mode */
   --status-inactive-hover: oklch(0.456 0 0);
+
+  /* Priority colors for dark mode */
+  --priority-low: oklch(0.6 0.118 240);
+  --priority-medium: oklch(0.828 0.189 84.429);
+  --priority-high: oklch(0.7 0.2 45);
+  --priority-urgent: oklch(0.6 0.2 20);
+
+  /* Ticket status colors for dark mode */
+  --ticket-status-open: oklch(0.6 0.2 150); /* Slightly darker green for dark mode */
+  --ticket-status-open-hover: oklch(0.7 0.2 150);
+  --ticket-status-in-progress: oklch(0.7 0.2 70); /* Orange-yellow for dark mode */
+  --ticket-status-in-progress-hover: oklch(0.8 0.2 70);
+  --ticket-status-resolved: oklch(0.6 0.15 250); /* Blue for resolved in dark mode */
+  --ticket-status-resolved-hover: oklch(0.7 0.15 250);
+  --ticket-status-closed: oklch(0.3 0 0); /* Darker gray for closed in dark mode */
+  --ticket-status-closed-hover: oklch(0.4 0 0);
 }
 
 @layer base {

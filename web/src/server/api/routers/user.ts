@@ -4,15 +4,31 @@ import {
 } from "@/server/api/trpc";
 import { z } from "zod";
 import { locales } from "@/i18n/config";
-import { UserType } from "@prisma/client";
+import { UserRole, UserType } from "@prisma/client";
+import { type User } from "next-auth"
+
+
+const getHiddenUserTypes = (user: User): UserType[] => {
+  const hiddenTypes: UserType[] = [UserType.SYSTEM];
+  if (user.role !== UserRole.ADMIN) {
+    hiddenTypes.push(UserType.USER);
+  }
+  return hiddenTypes;
+};
 
 export const userRouter = createTRPCRouter({
   getOne: protectedProcedure
     .input(z.object({ id: z.string() }))
     .query(({ ctx, input }) => {
-      return ctx.db.user.findUnique({
+      const isSelf = input.id === ctx.session.user.id;
+      return ctx.db.user.findFirst({
         where: {
           id: input.id,
+          ...(isSelf ? {} : {
+            type: {
+              notIn: getHiddenUserTypes(ctx.session.user),
+            },
+          }),
         },
         select: {
           id: true,
@@ -21,8 +37,13 @@ export const userRouter = createTRPCRouter({
           image: true,
           locale: true,
           departmentId: true,
+          teams: {
+            select: {
+              id: true,
+            },
+          },
         },
-      })
+      });
     }),
 
   getOneAvatar: protectedProcedure
@@ -38,6 +59,7 @@ export const userRouter = createTRPCRouter({
         },
       })
     }),
+
   getAll: protectedProcedure
     .query(({ ctx }) => {
       return ctx.db.user.findMany({
@@ -52,13 +74,19 @@ export const userRouter = createTRPCRouter({
               name: true,
             },
           },
+          teams: {
+            select: {
+              id: true,
+              name: true,
+            },
+          },
         },
         where: {
           type: {
-            not: UserType.SYSTEM,
-          }
+            notIn: getHiddenUserTypes(ctx.session.user),
+          },
         },
-      })
+      });
     }),
 
   getAllIdentifiers: protectedProcedure
@@ -72,7 +100,7 @@ export const userRouter = createTRPCRouter({
         },
         where: {
           type: {
-            not: UserType.SYSTEM,
+            notIn: getHiddenUserTypes(ctx.session.user),
           }
         },
       })
@@ -83,6 +111,7 @@ export const userRouter = createTRPCRouter({
       id: z.string(),
       locale: z.enum(locales),
       departmentId: z.string().optional(),
+      teamIds: z.array(z.string()).optional(),
     }))
     .mutation(({ ctx, input }) => {
       return ctx.db.user.update({
@@ -92,6 +121,9 @@ export const userRouter = createTRPCRouter({
         data: {
           locale: input.locale,
           departmentId: input.departmentId,
+          teams: {
+            connect: input.teamIds?.map((teamId) => ({ id: teamId })),
+          },
         },
       })
     }),

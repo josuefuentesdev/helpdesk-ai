@@ -3,9 +3,11 @@ import { type DefaultSession, type NextAuthConfig } from "next-auth";
 import Google from "next-auth/providers/google";
 import type { Provider } from "next-auth/providers"
 import Resend from "next-auth/providers/resend"
+import type { Adapter } from 'next-auth/adapters';
 
 import { db } from "@/server/db";
 import { env } from "@/env";
+import type { UserRole } from "@prisma/client";
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -18,18 +20,33 @@ declare module "next-auth" {
     user: {
       id: string;
       // ...other properties
-      // role: UserRole;
+      role: UserRole;
     } & DefaultSession["user"];
   }
 
-  // interface User {
-  //   // ...other properties
-  //   // role: UserRole;
-  // }
+  interface User {
+    // ...other properties
+    role: UserRole;
+  }
 }
 
-const providers: Provider[] = [
+const oneClickProviders: Provider[] = [
   Google,
+]
+
+const providerMap = oneClickProviders
+  .map((provider) => {
+    if (typeof provider === "function") {
+      const providerData = provider()
+      return { id: providerData.id, name: providerData.name }
+    } else {
+      return { id: provider.id, name: provider.name }
+    }
+  })
+  .filter((provider) => provider.id !== "credentials")
+
+const providers: Provider[] = [
+  ...oneClickProviders,
   Resend({
     from: env.AUTH_RESEND_EMAIL,
   }),
@@ -44,16 +61,6 @@ const providers: Provider[] = [
    */
 ]
 
-const providerMap = providers
-  .map((provider) => {
-    if (typeof provider === "function") {
-      const providerData = provider()
-      return { id: providerData.id, name: providerData.name }
-    } else {
-      return { id: provider.id, name: provider.name }
-    }
-  })
-  .filter((provider) => provider.id !== "credentials")
 
 /**
  * Options for NextAuth.js used to configure adapters, providers, callbacks, etc.
@@ -62,18 +69,20 @@ const providerMap = providers
  */
 const authConfig = {
   providers,
-  adapter: PrismaAdapter(db),
+  // https://github.com/nextauthjs/next-auth/issues/9493#issuecomment-2247555322
+  adapter: PrismaAdapter(db) as Adapter,
   callbacks: {
     session: ({ session, user }) => ({
       ...session,
       user: {
         ...session.user,
         id: user.id,
+        role: user.role,
       },
     }),
   },
   pages: {
-    signIn: "/signin",
+    signIn: "/sign-in",
   },
 } satisfies NextAuthConfig;
 

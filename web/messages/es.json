@@ -1,15 +1,36 @@
 {
+  "error": {
+    "accessDenied": "Acceso Denegado",
+    "somethingWentWrong": "¡Ups! Algo salió mal",
+    "noPermission": "No tienes permiso para acceder a esta página.",
+    "unexpectedError": "Ha ocurrido un error inesperado.",
+    "errorDetails": "Detalles del Error",
+    "goToHome": "Ir a Inicio",
+    "retrying": "Reintentando...",
+    "tryAgain": "Intentar de nuevo"
+  },
   "HomePage": {},
-  "SignInPage": {
+  "SignInForm": {
     "title": "Inicia sesión en tu cuenta",
     "subtitle": "Ingresa tu correo electrónico para iniciar sesión en tu cuenta",
     "emailLabel": "Correo electrónico",
-    "emailPlaceholder": "m@ejemplo.com",
+    "emailPlaceholder": "jhon@gmail.com",
     "loginButton": "Iniciar sesión",
     "orContinueWith": "O continuar con",
     "signInWith": "Iniciar sesión con",
     "noAccount": "¿No tienes una cuenta?",
     "signUpLink": "Regístrate"
+  },
+  "SignUpForm": {
+    "title": "Regístrate en tu cuenta",
+    "subtitle": "Ingresa tu correo electrónico para iniciar sesión en tu cuenta",
+    "emailLabel": "Correo electrónico",
+    "emailPlaceholder": "jhon@gmail.com",
+    "loginButton": "Regístrate",
+    "orContinueWith": "O continuar con",
+    "signUpWith": "Regístrate con",
+    "haveAccount": "¿Ya tienes una cuenta?",
+    "signInLink": "Inicia sesión"
   },
   "AssetsPage": {
     "title": "Activos",
@@ -19,25 +40,70 @@
     "title": "Usuarios",
     "newUser": "Nuevo Usuario"
   },
+  "UserAccountNav": {
+    "profile": "Perfil",
+    "signOut": "Cerrar sesión",
+    "editUser": "Editar Usuario",
+    "editProfileDescription": "Edita tu perfil"
+  },
   "TicketDataTable": {
     "id": "ID",
-    "type": "Tipo",
-    "subtype": "Subtipo",
-    "name": "Nombre",
-    "serialNumber": "Número de serie",
-    "purchaseAt": "Fecha de compra",
-    "purchasePrice": "Precio de compra",
-    "currency": "",
-    "warrantyExpiresAt": "Garantía vence",
+    "title": "Título",
+    "description": "Descripción",
+    "priority": "Prioridad",
     "status": "Estado",
-    "assignedTo": "Asignado a",
-    "noAssigned": "Sin asignar",
-    "createdAt": "Creado el",
+    "agent": "Agente",
+    "unassigned": "Sin asignar",
+    "team": "Equipo",
+    "noTeamAssigned": "Sin equipo asignado",
+    "dueAt": "Fecha de vencimiento",
+    "closedAt": "Fecha de cierre",
+    "createdAt": "Fecha de creación",
     "createdBy": "Creado por",
     "updatedAt": "Actualizado el",
     "updatedBy": "Actualizado por",
-    "neverUpdated": "Nunca actualizado",
-    "department": "Departamento" 
+    "neverUpdated": "Nunca actualizado"
+  },
+  "TicketForm": {
+    "title": {
+      "view": "Detalles del ticket",
+      "edit": "Editar ticket",
+      "create": "Agregar nuevo ticket"
+    },
+    "description": {
+      "view": "Ver los detalles del ticket",
+      "edit": "Editar los detalles del ticket",
+      "create": "Llenar los detalles a continuación para agregar un nuevo ticket"
+    },
+    "actions": {
+      "edit": "Editar"
+    },
+    "form": {
+      "title": {
+        "label": "Título",
+        "placeholder": "e.g., Impresora no funciona",
+        "description": "Introduce un título descriptivo para este ticket."
+      },
+      "description": {
+        "label": "Descripción",
+        "placeholder": "e.g., La impresora en la oficina principal no funciona.",
+        "description": "Introduce una descripción detallada del problema."
+      },
+      "dueAt": {
+        "label": "Fecha de vencimiento",
+        "placeholder": "Seleccionar fecha de vencimiento",
+        "description": "Seleccionar la fecha de vencimiento para este ticket."
+      },
+      "submit": {
+        "view": "Ver ticket",
+        "create": "Crear ticket",
+        "edit": "Editar ticket",
+        "loading": {
+          "create": "Creando...",
+          "edit": "Editando..."
+        }
+      }
+    }
   },
   "AssetTypeFormField": {
     "label": "Tipo de activo",
@@ -159,6 +225,16 @@
     "placeholder": "Seleccionar una fecha...",
     "description": "Seleccionar una fecha"
   },
+  "ProfileEditForm": {
+    "toast": {
+      "success": "Perfil actualizado",
+      "error": "Error al actualizar el perfil"
+    },
+    "button": {
+      "save": "Guardar",
+      "saving": "Guardando..."
+    }
+  },
   "UserFormField": {
     "label": "Usuario",
     "placeholder": "Seleccionar usuario...",
@@ -215,6 +291,24 @@
   "DataTable": {
     "noResults": "No se encontraron resultados"
   },
+  "AssetDataTable": {
+    "id": "ID",
+    "type": "Tipo",
+    "subtype": "Subtipo",
+    "name": "Nombre",
+    "serialNumber": "Número de serie",
+    "purchaseAt": "Fecha de compra",
+    "warrantyExpiresAt": "Garantía vence",
+    "status": "Estado",
+    "department": "Departamento",
+    "assignedTo": "Asignado a",
+    "noAssigned": "Sin asignar",
+    "createdAt": "Creado el",
+    "createdBy": "Creado por",
+    "updatedAt": "Actualizado el",
+    "updatedBy": "Actualizado por",
+    "neverUpdated": "Nunca actualizado"
+  },
   "DataTableViewOptions": {
     "view": "Ver",
     "selectAll": "Seleccionar todo",
@@ -260,7 +354,8 @@
     "name": "Nombre",
     "email": "Email",
     "avatar": "Avatar",
-    "department": "Departamento"
+    "department": "Departamento",
+    "teams": "Equipos"
   },
   "UserDataTableToolbar": {
     "columns": {
@@ -274,6 +369,9 @@
       },
       "department": {
         "label": "Departamentos"
+      },
+      "team": {
+        "label": "Equipos"
       }
     },
     "reset": "Reiniciar"
@@ -309,16 +407,217 @@
       "updated": "Departamento actualizado",
       "failedToUpdate": "No se pudo actualizar el departamento",
       "deleted": "Departamento eliminado",
-      "failedToDelete": "No se pudo eliminar el departamento",
       "nameCannotBeEmpty": "El nombre del departamento no puede estar vacío"
     },
     "alert": {
       "title": "Eliminar departamento",
-      "description": "¿Estás seguro de que quieres eliminar este departamento?",
-      "affectedUsersWarning": "Este departamento está asignado a {count} usuarios. ¿Estás seguro de que quieres eliminarlo?",
-      "noAffectedUsers": "Este departamento no está asignado a ningún usuario. ¿Estás seguro de que quieres eliminarlo?",
+      "description": "¿Estás seguro de que deseas eliminar este departamento?",
+      "affectedUsersWarning": "Este departamento está asignado a {count} usuarios. ¿Estás seguro de que deseas eliminarlo?",
+      "noAffectedUsers": "Este departamento no está asignado a ningún usuario. ¿Estás seguro de que deseas eliminarlo?",
       "cancel": "Cancelar",
       "delete": "Eliminar"
     }
+  },
+  "NotFoundPage": {
+    "title": "Página no encontrada",
+    "description": "Lo sentimos, no pudimos encontrar la página que estás buscando.",
+    "errorCode": "Código de error: 404",
+    "backButton": "Volver atrás",
+    "homeButton": "Volver al inicio"
+  },
+  "TeamFacetedFilter": {
+    "selected": "seleccionado",
+    "noResults": "No se encontraron resultados.",
+    "clearFilters": "Limpiar filtros",
+    "filterTeams": "Filtrar equipos...",
+    "loading": "Cargando...",
+    "createNew": "Crear nuevo",
+    "newTeamName": "Nombre del nuevo equipo",
+    "add": "Agregar",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "toast": {
+      "failedToLoad": "No se pudieron cargar los equipos",
+      "created": "Equipo creado",
+      "failedToCreate": "No se pudo crear el equipo",
+      "updated": "Equipo actualizado",
+      "failedToUpdate": "No se pudo actualizar el equipo",
+      "deleted": "Equipo eliminado",
+      "failedToDelete": "No se pudo eliminar el equipo",
+      "nameCannotBeEmpty": "El nombre del equipo no puede estar vacío"
+    },
+    "alert": {
+      "title": "Eliminar equipo",
+      "description": "¿Estás seguro de que deseas eliminar el equipo {teamName}?",
+      "affectedUsersWarning": "Este equipo está asignado a {count} usuarios. ¿Estás seguro de que deseas eliminarlo?",
+      "noAffectedUsers": "Este equipo no está asignado a ningún usuario. ¿Estás seguro de que deseas eliminarlo?",
+      "cancel": "Cancelar",
+      "delete": "Eliminar"
+    }
+  },
+  "AppSidebar": {
+    "nav": {
+      "home": "Inicio",
+      "tickets": "Tickets",
+      "assets": "Activos",
+      "users": "Usuarios"
+    },
+    "newTicket": "Nuevo Ticket"
+  },
+  "BreadcrumbNav": {
+    "tickets": "Tickets",
+    "assets": "Activos",
+    "users": "Usuarios"
+  },
+  "CreateAssetForm": {
+    "success": "Activo creado exitosamente",
+    "error": "Error creando activo"
+  },
+  "CreateTicketForm": {
+    "success": "Ticket creado exitosamente",
+    "error": "Error creando ticket"
+  },
+  "TicketPriorityFormField": {
+    "label": "Prioridad",
+    "placeholder": "Seleccionar prioridad",
+    "searchPlaceholder": "Buscar prioridad...",
+    "noResults": "No se encontró ninguna prioridad.",
+    "description": "Selecciona la prioridad del ticket.",
+    "priorities": {
+      "LOW": "Bajo",
+      "MEDIUM": "Medio",
+      "HIGH": "Alto",
+      "URGENT": "Urgente"
+    }
+  },
+  "TicketStatusFormField": {
+    "label": "Estado",
+    "placeholder": "Seleccionar estado",
+    "searchPlaceholder": "Buscar estado...",
+    "noResults": "No se encontró ningún estado.",
+    "description": "Selecciona el estado del ticket.",
+    "statuses": {
+      "OPEN": "Abierto",
+      "IN_PROGRESS": "En Progreso",
+      "RESOLVED": "Resuelto",
+      "CLOSED": "Cerrado"
+    }
+  },
+  "StatCard": {
+    "vsLastMonth": "vs mes pasado"
+  },
+  "RecentTickets": {
+    "title": "Tickets Recientes",
+    "viewAll": "Ver Todos",
+    "error": {
+      "failedToLoad": "Error al cargar los tickets",
+      "tryAgainLater": "Por favor, inténtalo de nuevo más tarde"
+    },
+    "emptyState": {
+      "noTickets": "No hay tickets recientes",
+      "createTicket": "Crea un ticket para comenzar",
+      "newTicket": "Nuevo Ticket"
+    },
+    "viewTicket": "Ver ticket"
+  },
+  "TeamFormField": {
+    "label": "Equipo",
+    "placeholder": "Seleccionar equipo...",
+    "searchPlaceholder": "Buscar equipos...",
+    "noResults": "No se encontraron equipos.",
+    "description": "Selecciona el equipo.",
+    "loadingPlaceholder": "Cargando...",
+    "loadingOptions": "Cargando opciones...",
+    "fetchErrorPlaceholder": "Error al cargar equipos: {error}"
+  },
+  "TicketStatus": {
+    "OPEN": "Abierto",
+    "IN_PROGRESS": "En Progreso",
+    "RESOLVED": "Resuelto",
+    "CLOSED": "Cerrado"
+  },
+  "TicketPriority": {
+    "LOW": "Bajo",
+    "MEDIUM": "Medio",
+    "HIGH": "Alto",
+    "URGENT": "Urgente"
+  },
+  "TicketDataTableToolbar": {
+    "columns": {
+      "title": {
+        "label": "Título",
+        "placeholder": "Filtrar por título..."
+      },
+      "status": {
+        "label": "Estado",
+        "placeholder": "Filtrar por estado..."
+      },
+      "priority": {
+        "label": "Prioridad",
+        "placeholder": "Filtrar por prioridad..."
+      }
+    },
+    "reset": "Reiniciar"
+  },
+  "TicketsPage": {
+    "title": "Tickets",
+    "newTicket": "Nuevo Ticket"
+  },
+  "PreviousPageButton": {
+    "label": "Anterior"
+  },
+  "WarrantyExpiringCard": {
+    "title": "Garantía por vencer",
+    "viewAll": "Ver todos",
+    "error": {
+      "failedToLoadAssets": "Error al cargar activos",
+      "tryAgainLater": "Por favor, inténtalo de nuevo más tarde"
+    },
+    "empty": {
+      "noWarranties": "No hay garantías por vencer pronto",
+      "checkBack": "Vuelve más tarde para ver actualizaciones"
+    },
+    "expiresIn": "Vence en {days} días",
+    "viewAsset": "Ver activo"
+  },
+  "Analytics": {
+    "assets": "Activos",
+    "tickets": "Tickets",
+    "ticketStatus": {
+      "title": "Estado de Tickets",
+      "description": "Distribución actual de tickets",
+      "open": "Abierto",
+      "inProgress": "En Progreso",
+      "resolved": "Resuelto",
+      "closed": "Cerrado",
+      "showingAll": "Mostrando todos los estados de tickets",
+      "noData": "No hay datos de tickets disponibles"
+    },
+    "assetStatus": {
+      "title": "Estado de Activos",
+      "description": "Distribución actual de activos",
+      "active": "Activo",
+      "inactive": "Inactivo",
+      "decommissioned": "Fuera de servicio",
+      "showingAll": "Mostrando todos los estados de activos",
+      "noData": "No hay datos de activos disponibles"
+    },
+    "ticketsOverTime": {
+      "title": "Tickets a lo Largo del Tiempo",
+      "description": "Últimos 30 días"
+    },
+    "assetsByType": {
+      "title": "Activos por Tipo",
+      "description": "Distribución actual",
+      "showingTypes": "Mostrando {count} tipos de activos"
+    }
+  },
+  "DashboardStats": {
+    "overview": "Resumen",
+    "analytics": "Analítica",
+    "open": "Tickets Abiertos",
+    "inProgress": "En Progreso",
+    "resolved": "Resueltos",
+    "activeAssets": "Activos en Uso"
   }
 }

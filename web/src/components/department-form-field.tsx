@@ -38,7 +38,7 @@ type DepartmentFormFieldProps<
 > = {
   control: Control<TFieldValues>
   name: TName
-  disabled: boolean
+  disabled?: boolean
 }
 
 
@@ -51,6 +51,7 @@ export function DepartmentFormField<
   disabled = false,
 }: DepartmentFormFieldProps<TFieldValues, TName>) {
   const t = useTranslations('DepartmentFormField');
+  const [open, setOpen] = React.useState(false)
 
   const { data: departments, isPending, error } = api.department.getAll.useQuery()
 
@@ -69,7 +70,7 @@ export function DepartmentFormField<
       render={({ field }) => (
         <FormItem className="flex flex-col">
           <FormLabel>{t('label')}</FormLabel>
-          <Popover>
+          <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild disabled={disabled || isPending}>
               <FormControl>
                 <Button
@@ -113,6 +114,7 @@ export function DepartmentFormField<
                           key={option.value}
                           onSelect={() => {
                             field.onChange(option.value)
+                            setOpen(false)
                           }}
                         >
                           <div className="flex items-center">

@@ -1,6 +1,16 @@
 {
+  "error": {
+    "accessDenied": "Access Denied",
+    "somethingWentWrong": "Oops! Something went wrong",
+    "noPermission": "You don't have permission to access this page.",
+    "unexpectedError": "An unexpected error occurred.",
+    "errorDetails": "Error Details",
+    "goToHome": "Go to Home",
+    "retrying": "Retrying...",
+    "tryAgain": "Try Again"
+  },
   "HomePage": {},
-  "SignInPage": {
+  "SignInForm": {
     "title": "Login to your account",
     "subtitle": "Enter your email below to login to your account",
     "emailLabel": "Email",
@@ -11,6 +21,17 @@
     "noAccount": "Don't have an account?",
     "signUpLink": "Sign up"
   },
+  "SignUpForm": {
+    "title": "Sign up to your account",
+    "subtitle": "Enter your email below to sign up to your account",
+    "emailLabel": "Email",
+    "emailPlaceholder": "m@example.com",
+    "loginButton": "Sign up",
+    "orContinueWith": "Or continue with",
+    "signUpWith": "Sign up with",
+    "haveAccount": "Already have an account?",
+    "signInLink": "Sign in"
+  },
   "AssetsPage": {
     "title": "Assets",
     "newAsset": "New Asset"
@@ -19,25 +40,29 @@
     "title": "Users",
     "newUser": "New User"
   },
+  "UserAccountNav": {
+    "profile": "Profile",
+    "signOut": "Sign out",
+    "editUser": "Edit User",
+    "editProfileDescription": "Edit your profile"
+  },
   "TicketDataTable": {
     "id": "ID",
-    "type": "Type",
-    "subtype": "SubType",
-    "name": "Name",
-    "serialNumber": "Serial Number",
-    "purchaseAt": "Purchase Date",
-    "purchasePrice": "Purchase Price",
-    "currency": "",
-    "warrantyExpiresAt": "Warranty Expires",
+    "title": "Title",
+    "description": "Description",
+    "priority": "Priority",
     "status": "Status",
-    "assignedTo": "Assigned To",
-    "noAssigned": "No assigned",
+    "agent": "Agent",
+    "unassigned": "Unassigned",
+    "team": "Team",
+    "noTeamAssigned": "No team assigned",
+    "dueAt": "Due At",
+    "closedAt": "Closed At",
     "createdAt": "Created At",
     "createdBy": "Created By",
     "updatedAt": "Updated At",
     "updatedBy": "Updated By",
-    "neverUpdated": "Never updated",
-    "department": "Departament"
+    "neverUpdated": "Never updated"
   },
   "AssetTypeFormField": {
     "label": "Asset Type",
@@ -62,6 +87,16 @@
       "ACTIVE": "Active",
       "INACTIVE": "Inactive",
       "DECOMMISSIONED": "Decommissioned"
+    }
+  },
+  "ProfileEditForm": {
+    "toast": {
+      "success": "Profile updated",
+      "error": "Error updating profile"
+    },
+    "button": {
+      "save": "Save",
+      "saving": "Saving..."
     }
   },
   "AssetForm": {
@@ -260,7 +295,8 @@
     "name": "Name",
     "email": "Email",
     "avatar": "Avatar",
-    "department": "Department"
+    "department": "Department",
+    "teams": "Teams"
   },
   "UserDataTableToolbar": {
     "columns": {
@@ -274,6 +310,9 @@
       },
       "department": {
         "label": "Departments"
+      },
+      "team": {
+        "label": "Teams"
       }
     },
     "reset": "Reset"
@@ -290,6 +329,24 @@
     "label": "Language",
     "en": "English",
     "es": "Español"
+  },
+  "AssetDataTable": {
+    "id": "ID",
+    "type": "Type",
+    "subtype": "Subtype",
+    "name": "Name",
+    "serialNumber": "Serial Number",
+    "purchaseAt": "Purchase Date",
+    "warrantyExpiresAt": "Warranty Expires",
+    "status": "Status",
+    "department": "Department",
+    "assignedTo": "Assigned To",
+    "noAssigned": "Not Assigned",
+    "createdAt": "Created At",
+    "createdBy": "Created By",
+    "updatedAt": "Updated At",
+    "updatedBy": "Updated By",
+    "neverUpdated": "Never Updated"
   },
   "DepartmentFacetedFilter": {
     "selected": "selected",
@@ -320,5 +377,248 @@
       "cancel": "Cancel",
       "delete": "Delete"
     }
+  },
+  "TeamFacetedFilter": {
+    "selected": "selected",
+    "noResults": "No results found.",
+    "clearFilters": "Clear filters",
+    "filterTeams": "Filter teams...",
+    "loading": "Loading...",
+    "createNew": "Create new",
+    "newTeamName": "New team name",
+    "add": "Add",
+    "edit": "Edit",
+    "delete": "Delete",
+    "toast": {
+      "failedToLoad": "Failed to load teams",
+      "created": "Team created",
+      "failedToCreate": "Failed to create team",
+      "updated": "Team updated",
+      "failedToUpdate": "Failed to update team",
+      "deleted": "Team deleted",
+      "failedToDelete": "Failed to delete team",
+      "nameCannotBeEmpty": "Team name cannot be empty"
+    },
+    "alert": {
+      "title": "Delete team",
+      "description": "Are you sure you want to delete the team {teamName}?",
+      "affectedUsersWarning": "This team is assigned to {count} users. Are you sure you want to delete it?",
+      "noAffectedUsers": "This team is not assigned to any users. Are you sure you want to delete it?",
+      "cancel": "Cancel",
+      "delete": "Delete"
+    }
+  },
+  "AppSidebar": {
+    "nav": {
+      "home": "Home",
+      "tickets": "Tickets",
+      "assets": "Assets",
+      "users": "Users"
+    },
+    "newTicket": "New Ticket"
+  },
+  "BreadcrumbNav": {
+    "tickets": "Tickets",
+    "assets": "Assets",
+    "users": "Users"
+  },
+  "CreateAssetForm": {
+    "success": "Asset created successfully",
+    "error": "Error creating asset"
+  },
+  "TicketForm": {
+    "title": {
+      "view": "Ticket Details",
+      "edit": "Edit Ticket",
+      "create": "Add New Ticket"
+    },
+    "description": {
+      "view": "View the details of your ticket",
+      "edit": "Edit the details of your ticket",
+      "create": "Fill in the details below to add a new ticket"
+    },
+    "actions": {
+      "edit": "Edit"
+    },
+    "form": {
+      "title": {
+        "label": "Title",
+        "placeholder": "e.g., Printer not working",
+        "description": "Enter a descriptive title for this ticket."
+      },
+      "description": {
+        "label": "Description",
+        "placeholder": "e.g., The printer in the main office is not printing.",
+        "description": "Enter a detailed description of the issue."
+      },
+      "dueAt": {
+        "label": "Due Date",
+        "placeholder": "Select due date",
+        "description": "Select the due date for this ticket."
+      },
+      "submit": {
+        "view": "View Ticket",
+        "create": "Create Ticket",
+        "edit": "Edit Ticket",
+        "loading": {
+          "create": "Creating...",
+          "edit": "Editing..."
+        }
+      }
+    }
+  },
+  "CreateTicketForm": {
+    "success": "Ticket created successfully",
+    "error": "Error creating ticket"
+  },
+  "TicketPriorityFormField": {
+    "label": "Priority",
+    "placeholder": "Select priority",
+    "searchPlaceholder": "Search priority...",
+    "noResults": "No priority found.",
+    "description": "Select the priority of the ticket.",
+    "priorities": {
+      "LOW": "Low",
+      "MEDIUM": "Medium",
+      "HIGH": "High",
+      "URGENT": "Urgent"
+    }
+  },
+  "TicketStatusFormField": {
+    "label": "Status",
+    "placeholder": "Select status",
+    "searchPlaceholder": "Search status...",
+    "noResults": "No status found.",
+    "description": "Select the status of the ticket.",
+    "statuses": {
+      "OPEN": "Open",
+      "IN_PROGRESS": "In Progress",
+      "RESOLVED": "Resolved",
+      "CLOSED": "Closed"
+    }
+  },
+  "NotFoundPage": {
+    "title": "Page not found",
+    "description": "Sorry, we couldn't find the page you're looking for.",
+    "errorCode": "Error code: 404",
+    "backButton": "Go back",
+    "homeButton": "Back to home"
+  },
+  "StatCard": {
+    "vsLastMonth": "vs last month"
+  },
+  "RecentTickets": {
+    "title": "Recent Tickets",
+    "viewAll": "View All",
+    "error": {
+      "failedToLoad": "Failed to load tickets",
+      "tryAgainLater": "Please try again later"
+    },
+    "emptyState": {
+      "noTickets": "No recent tickets",
+      "createTicket": "Create a ticket to get started",
+      "newTicket": "New Ticket"
+    },
+    "viewTicket": "View ticket"
+  },
+  "TeamFormField": {
+    "label": "Team",
+    "placeholder": "Select team...",
+    "searchPlaceholder": "Search teams...",
+    "noResults": "No teams found.",
+    "description": "Select the team.",
+    "loadingPlaceholder": "Loading...",
+    "loadingOptions": "Loading options...",
+    "fetchErrorPlaceholder": "Error fetching teams: {error}"
+  },
+  "TicketStatus": {
+    "OPEN": "Open",
+    "IN_PROGRESS": "In Progress",
+    "RESOLVED": "Resolved",
+    "CLOSED": "Closed"
+  },
+  "TicketPriority": {
+    "LOW": "Low",
+    "MEDIUM": "Medium",
+    "HIGH": "High",
+    "URGENT": "Urgent"
+  },
+  "TicketDataTableToolbar": {
+    "columns": {
+      "title": {
+        "label": "Title",
+        "placeholder": "Filter by title..."
+      },
+      "status": {
+        "label": "Status",
+        "placeholder": "Filter by status..."
+      },
+      "priority": {
+        "label": "Priority",
+        "placeholder": "Filter by priority..."
+      }
+    },
+    "reset": "Reset"
+  },
+  "TicketsPage": {
+    "title": "Tickets",
+    "newTicket": "New Ticket"
+  },
+  "PreviousPageButton": {
+    "label": "Previous Page"
+  },
+  "WarrantyExpiringCard": {
+    "title": "Warranty Expiring",
+    "viewAll": "View All",
+    "error": {
+      "failedToLoadAssets": "Failed to load assets",
+      "tryAgainLater": "Please try again later"
+    },
+    "empty": {
+      "noWarranties": "No warranties expiring soon",
+      "checkBack": "Check back later for updates"
+    },
+    "expiresIn": "Expires in {days} days",
+    "viewAsset": "View asset"
+  },
+  "Analytics": {
+    "assets": "Assets",
+    "tickets": "Tickets",
+    "ticketStatus": {
+      "title": "Ticket Status",
+      "description": "Current ticket distribution",
+      "open": "Open",
+      "inProgress": "In Progress",
+      "resolved": "Resolved",
+      "closed": "Closed",
+      "showingAll": "Showing all ticket statuses",
+      "noData": "No ticket data available"
+    },
+    "assetStatus": {
+      "title": "Asset Status",
+      "description": "Current asset distribution",
+      "active": "Active",
+      "inactive": "Inactive",
+      "decommissioned": "Decommissioned",
+      "showingAll": "Showing all asset statuses",
+      "noData": "No asset data available"
+    },
+    "ticketsOverTime": {
+      "title": "Tickets Over Time",
+      "description": "Last 30 days"
+    },
+    "assetsByType": {
+      "title": "Assets by Type",
+      "description": "Current distribution",
+      "showingTypes": "Showing {count} asset types"
+    }
+  },
+  "DashboardStats": {
+    "overview": "Overview",
+    "analytics": "Analytics",
+    "open": "Open Tickets",
+    "inProgress": "In Progress",
+    "resolved": "Resolved",
+    "activeAssets": "Active Assets"
   }
 }

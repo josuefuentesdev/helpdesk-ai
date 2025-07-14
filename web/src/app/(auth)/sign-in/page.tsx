@@ -1,9 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from 'next/image'
-import { getTranslations } from 'next-intl/server';
-import { LoginForm } from "./login-form"
 import { auth } from '@/server/auth';
 import { redirect } from 'next/navigation';
+import { SignInForm } from './sign-in-form';
 
 
 export default async function SignInPage({
@@ -19,15 +18,13 @@ export default async function SignInPage({
     redirect("/");
   }
 
-  const t = await getTranslations('SignInPage');
-
   return (
     <div className="grid min-h-svh lg:grid-cols-2">
       <div className="flex flex-col gap-4 p-6 md:p-10">
         <div className="flex justify-center gap-2 md:justify-start">
           <a href="#" className="flex items-center gap-2 font-medium">
             <Image
-              src="/helpdesk-ai.png"
+              src="/helpdesk-ai.webp"
               alt="helpdesk-ai logo"
               width={32}
               height={32}
@@ -37,7 +34,7 @@ export default async function SignInPage({
         </div>
         <div className="flex flex-1 items-center justify-center">
           <div className="w-full max-w-xs">
-            <LoginForm callbackUrl={resolvedSearchParams.callbackUrl} t={t} />
+            <SignInForm callbackUrl={resolvedSearchParams.callbackUrl} />
           </div>
         </div>
       </div>

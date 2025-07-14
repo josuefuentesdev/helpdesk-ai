@@ -11,6 +11,7 @@ import Link from "next/link"
 import { Icons } from "@/components/icons"
 import { UserWithAvatar } from "../user-with-avatar"
 import { useRouter } from "next/navigation"
+import { Badge } from "@/components/ui/badge"
 
 export function UserDataTable({
   data,
@@ -85,6 +86,42 @@ export function UserDataTable({
       },
       meta: {
         title: t('department'),
+        csv: true
+      }
+    }),
+    columnHelper.accessor(row => row.teams, {
+      id: "teams",
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title={t('teams')} />
+      ),
+      cell: ({ row }) => {
+        const teams = row.getValue<Array<{ id: string; name: string }>>("teams")
+        return (
+          <div className="flex flex-wrap gap-1">
+            {teams?.map((team) => (
+              <Badge key={team.id} variant="outline" className="text-xs">
+                {team.name}
+              </Badge>
+            )) || '-'}
+          </div>
+        )
+      },
+      // TODO: improve this later
+      filterFn: (row, id, filterValue: unknown) => {
+        if (!filterValue) return true;
+        
+        const teams = row.getValue<Array<{ id: string }>>(id) || [];
+        const teamIds = teams.map(team => team.id);
+        
+        // Convert filterValue to an array of team IDs if it's a string
+        const filterIds = typeof filterValue === 'string' 
+          ? JSON.parse(filterValue) as string[]
+          : filterValue as string[];
+          
+        return teamIds.some(id => filterIds.includes(id));
+      },
+      meta: {
+        title: t('teams'),
         csv: true
       }
     }),
