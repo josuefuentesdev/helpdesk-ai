@@ -503,6 +503,23 @@
       "CLOSED": "Cerrado"
     }
   },
+  "StatCard": {
+    "vsLastMonth": "vs mes pasado"
+  },
+  "RecentTickets": {
+    "title": "Tickets Recientes",
+    "viewAll": "Ver Todos",
+    "error": {
+      "failedToLoad": "Error al cargar los tickets",
+      "tryAgainLater": "Por favor, inténtalo de nuevo más tarde"
+    },
+    "emptyState": {
+      "noTickets": "No hay tickets recientes",
+      "createTicket": "Crea un ticket para comenzar",
+      "newTicket": "Nuevo Ticket"
+    },
+    "viewTicket": "Ver ticket"
+  },
   "TeamFormField": {
     "label": "Equipo",
     "placeholder": "Seleccionar equipo...",
@@ -548,5 +565,59 @@
   },
   "PreviousPageButton": {
     "label": "Anterior"
+  },
+  "WarrantyExpiringCard": {
+    "title": "Garantía por vencer",
+    "viewAll": "Ver todos",
+    "error": {
+      "failedToLoadAssets": "Error al cargar activos",
+      "tryAgainLater": "Por favor, inténtalo de nuevo más tarde"
+    },
+    "empty": {
+      "noWarranties": "No hay garantías por vencer pronto",
+      "checkBack": "Vuelve más tarde para ver actualizaciones"
+    },
+    "expiresIn": "Vence en {days} días",
+    "viewAsset": "Ver activo"
+  },
+  "Analytics": {
+    "assets": "Activos",
+    "tickets": "Tickets",
+    "ticketStatus": {
+      "title": "Estado de Tickets",
+      "description": "Distribución actual de tickets",
+      "open": "Abierto",
+      "inProgress": "En Progreso",
+      "resolved": "Resuelto",
+      "closed": "Cerrado",
+      "showingAll": "Mostrando todos los estados de tickets",
+      "noData": "No hay datos de tickets disponibles"
+    },
+    "assetStatus": {
+      "title": "Estado de Activos",
+      "description": "Distribución actual de activos",
+      "active": "Activo",
+      "inactive": "Inactivo",
+      "decommissioned": "Fuera de servicio",
+      "showingAll": "Mostrando todos los estados de activos",
+      "noData": "No hay datos de activos disponibles"
+    },
+    "ticketsOverTime": {
+      "title": "Tickets a lo Largo del Tiempo",
+      "description": "Últimos 30 días"
+    },
+    "assetsByType": {
+      "title": "Activos por Tipo",
+      "description": "Distribución actual",
+      "showingTypes": "Mostrando {count} tipos de activos"
+    }
+  },
+  "DashboardStats": {
+    "overview": "Resumen",
+    "analytics": "Analítica",
+    "open": "Tickets Abiertos",
+    "inProgress": "En Progreso",
+    "resolved": "Resueltos",
+    "activeAssets": "Activos en Uso"
   }
 }

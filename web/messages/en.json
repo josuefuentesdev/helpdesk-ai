@@ -504,6 +504,23 @@
     "backButton": "Go back",
     "homeButton": "Back to home"
   },
+  "StatCard": {
+    "vsLastMonth": "vs last month"
+  },
+  "RecentTickets": {
+    "title": "Recent Tickets",
+    "viewAll": "View All",
+    "error": {
+      "failedToLoad": "Failed to load tickets",
+      "tryAgainLater": "Please try again later"
+    },
+    "emptyState": {
+      "noTickets": "No recent tickets",
+      "createTicket": "Create a ticket to get started",
+      "newTicket": "New Ticket"
+    },
+    "viewTicket": "View ticket"
+  },
   "TeamFormField": {
     "label": "Team",
     "placeholder": "Select team...",
@@ -547,7 +564,61 @@
     "title": "Tickets",
     "newTicket": "New Ticket"
   },
-  "PreviousPageButton": { 
+  "PreviousPageButton": {
     "label": "Previous Page"
+  },
+  "WarrantyExpiringCard": {
+    "title": "Warranty Expiring",
+    "viewAll": "View All",
+    "error": {
+      "failedToLoadAssets": "Failed to load assets",
+      "tryAgainLater": "Please try again later"
+    },
+    "empty": {
+      "noWarranties": "No warranties expiring soon",
+      "checkBack": "Check back later for updates"
+    },
+    "expiresIn": "Expires in {days} days",
+    "viewAsset": "View asset"
+  },
+  "Analytics": {
+    "assets": "Assets",
+    "tickets": "Tickets",
+    "ticketStatus": {
+      "title": "Ticket Status",
+      "description": "Current ticket distribution",
+      "open": "Open",
+      "inProgress": "In Progress",
+      "resolved": "Resolved",
+      "closed": "Closed",
+      "showingAll": "Showing all ticket statuses",
+      "noData": "No ticket data available"
+    },
+    "assetStatus": {
+      "title": "Asset Status",
+      "description": "Current asset distribution",
+      "active": "Active",
+      "inactive": "Inactive",
+      "decommissioned": "Decommissioned",
+      "showingAll": "Showing all asset statuses",
+      "noData": "No asset data available"
+    },
+    "ticketsOverTime": {
+      "title": "Tickets Over Time",
+      "description": "Last 30 days"
+    },
+    "assetsByType": {
+      "title": "Assets by Type",
+      "description": "Current distribution",
+      "showingTypes": "Showing {count} asset types"
+    }
+  },
+  "DashboardStats": {
+    "overview": "Overview",
+    "analytics": "Analytics",
+    "open": "Open Tickets",
+    "inProgress": "In Progress",
+    "resolved": "Resolved",
+    "activeAssets": "Active Assets"
   }
 }

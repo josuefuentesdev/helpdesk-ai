@@ -4,6 +4,12 @@ import type { RouterInputs } from "./trpc/react";
 
 type RouterOutput = inferRouterOutputs<AppRouter>;
 
+// Dashboard
+export type DashboardStats = RouterOutput['dashboard']['getStats']
+
+type DashboardRecentTickets = RouterOutput['dashboard']['getRecentTickets']
+export type DashboardRecentTicketsItem = DashboardRecentTickets[number];
+
 // Asset
 type AssetGetAll = RouterOutput['asset']['getAll']
 export type AssetGetAllItem = AssetGetAll[number];

@@ -5,6 +5,7 @@ import { departmentRouter } from "./routers/department";
 import { breadcrumbRouter } from "./routers/breadcrumb";
 import { ticketRouter } from "./routers/ticket";
 import { teamRouter } from "./routers/team";
+import { dashboardRouter } from "./routers/dashboard";
 
 /**
  * This is the primary router for your server.
@@ -18,6 +19,7 @@ export const appRouter = createTRPCRouter({
   breadcrumb: breadcrumbRouter,
   ticket: ticketRouter,
   team: teamRouter,
+  dashboard: dashboardRouter,
 });
 
 // export type definition of API
