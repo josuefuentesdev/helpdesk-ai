@@ -1,5 +1,9 @@
 ---
-trigger: manual
+trigger: always_on
 ---
 
-Use TRPC and useQuery with preference of "data", "isPending" and "error"
+Use trpc with useQuery, preferring data, isPending, and error.
+Guard logic:
+- data is valid only when !isPending && !error.
+
+During loading (isPending === true), prefer shadcn <Skeleton /> over placeholder text.
