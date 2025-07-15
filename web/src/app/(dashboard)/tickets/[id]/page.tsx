@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation"
 import { TicketForm } from "@/components/ticket-form/ticket-form"
 import { api } from "@/trpc/server"
+import { CommentSection } from '@/components/ticket-form/comment-section';
 
 export default async function TicketPage({
   params,
@@ -20,6 +21,7 @@ export default async function TicketPage({
   return (
     <div className="max-w-2xl px-6 py-8">
       <TicketForm ticket={ticket} variant="view"/>
+      <CommentSection ticketId={ticket.id} />
     </div>
   )
 }
