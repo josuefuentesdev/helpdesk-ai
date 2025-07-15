@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react";
 import { api } from "@/trpc/react";
-import { Avatar } from "@/components/ui/avatar";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -23,7 +23,10 @@ export function CommentSection({ ticketId }: { ticketId: string }) {
         ) : comments && comments.length > 0 ? (
           comments.map((comment) => (
             <div key={comment.id} className="flex gap-3 items-start border-b pb-2">
-              <Avatar src={comment.author?.image} alt={comment.author?.name} />
+              <Avatar>
+                <AvatarImage src={comment.author?.image || undefined} alt={comment.author?.name || undefined} />
+                <AvatarFallback>{comment.author?.name?.[0] || "?"}</AvatarFallback>
+              </Avatar>
               <div>
                 <div className="font-medium">{comment.author?.name || "Unknown"}</div>
                 <div className="text-xs text-muted-foreground">{new Date(comment.createdAt).toLocaleString()}</div>
