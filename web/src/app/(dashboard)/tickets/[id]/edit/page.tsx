@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation"
 import { api } from "@/trpc/server"
 import { EditTicketForm } from "@/components/ticket-form/edit-ticket-form"
+import { CommentSection } from '@/components/ticket-form/comment-section';
 
 export default async function EditTicketPage({
   params,
@@ -21,6 +22,7 @@ export default async function EditTicketPage({
   return (
     <div className="max-w-2xl px-6 py-8">
       <EditTicketForm ticket={ticket} />
+      <CommentSection ticketId={ticket.id} />
     </div>
   )
 }
