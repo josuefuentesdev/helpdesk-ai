@@ -100,4 +100,45 @@ export const ticketRouter = createTRPCRouter({
       });
     }),
 
+  getComments: protectedProcedure
+    .input(z.object({ ticketId: z.string() }))
+    .query(async ({ ctx, input }) => {
+      return ctx.db.comment.findMany({
+        where: { ticketId: input.ticketId },
+        orderBy: { createdAt: "asc" },
+        select: {
+          id: true,
+          content: true,
+          createdAt: true,
+          updatedAt: true,
+          authorId: true,
+          isInternal: true,
+          author: {
+            select: {
+              id: true,
+              name: true,
+              image: true,
+            },
+          },
+        },
+      });
+    }),
+
+  addComment: protectedProcedure
+    .input(z.object({
+      ticketId: z.string(),
+      content: z.string().min(1, "Comment cannot be empty"),
+      isInternal: z.boolean().optional(),
+    }))
+    .mutation(async ({ ctx, input }) => {
+      return ctx.db.comment.create({
+        data: {
+          ticketId: input.ticketId,
+          content: input.content,
+          isInternal: input.isInternal ?? false,
+          authorId: ctx.session.user.id,
+        },
+      });
+    }),
+
 });

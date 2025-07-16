@@ -103,7 +103,8 @@
           "edit": "Editando..."
         }
       }
-    }
+    },
+    "comments": "Comentarios"
   },
   "AssetTypeFormField": {
     "label": "Tipo de activo",
@@ -619,5 +620,24 @@
     "inProgress": "En Progreso",
     "resolved": "Resueltos",
     "activeAssets": "Activos en Uso"
+  },
+  "TicketCommentList": {
+    "loading": "Cargando comentarios...",
+    "error": {
+      "loadFailed": "Error al cargar los comentarios",
+      "addFailed": "Error al agregar el comentario"
+    },
+    "empty": "Aún no hay comentarios.",
+    "unknown": "Desconocido",
+    "internal": "Interno",
+    "toast": {
+      "success": "Comentario agregado exitosamente"
+    },
+    "form": {
+      "placeholder": "Agregar un comentario...",
+      "add": "Agregar comentario",
+      "adding": "Agregando...",
+      "hint": "Presiona Ctrl+Enter o Cmd+Enter para enviar"
+    }
   }
 }

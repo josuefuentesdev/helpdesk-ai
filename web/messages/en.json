@@ -465,7 +465,8 @@
           "edit": "Editing..."
         }
       }
-    }
+    },
+    "comments": "Comments"
   },
   "CreateTicketForm": {
     "success": "Ticket created successfully",
@@ -620,5 +621,24 @@
     "inProgress": "In Progress",
     "resolved": "Resolved",
     "activeAssets": "Active Assets"
+  },
+  "TicketCommentList": {
+    "loading": "Loading comments...",
+    "error": {
+      "loadFailed": "Failed to load comments",
+      "addFailed": "Failed to add comment"
+    },
+    "empty": "No comments yet.",
+    "unknown": "Unknown",
+    "internal": "Internal",
+    "toast": {
+      "success": "Comment added successfully"
+    },
+    "form": {
+      "placeholder": "Add a comment...",
+      "add": "Add Comment",
+      "adding": "Adding...",
+      "hint": "Press Ctrl+Enter or Cmd+Enter to submit"
+    }
   }
 }

@@ -24,6 +24,9 @@ export type TicketGetAllItem = TicketGetAll[number];
 export type TicketGetOne = NonNullable<RouterOutput['ticket']['getOne']>;
 export type CreateTicket = NonNullable<RouterInputs['ticket']['create']>;
 
+type TicketGetComments = RouterOutput['ticket']['getComments']
+export type TicketGetCommentsItem = TicketGetComments[number];
+
 // User
 type UserGetAll = RouterOutput['user']['getAll']
 export type UserGetAllItem = UserGetAll[number];

@@ -25,6 +25,7 @@ import { TicketStatusFormField } from "./ticket-status-form-field";
 import { TeamFormField } from "./team-form-field";
 import { Textarea } from "@/components/ui/textarea";
 import { AssetDateFormField } from "@/components/asset-date-form-field";
+import { TicketCommentList } from "./ticket-comment-list";
 
 type TicketFormProps =
   | {
@@ -176,11 +177,19 @@ export function TicketForm({
 
           {(variant === "view" || variant === "edit") && ticket && (
             <AuditFieldsDisplay
-                createdById={ticket.createdById}
-                createdAt={ticket.createdAt}
-                updatedAt={ticket.updatedAt}
-                updatedById={ticket.updatedById}
-              />
+              createdById={ticket.createdById}
+              createdAt={ticket.createdAt}
+              updatedAt={ticket.updatedAt}
+              updatedById={ticket.updatedById}
+            />
+          )}
+
+          {/* Comments Section */}
+          {(variant === "view" || variant === "edit") && ticket && (
+            <div className="mt-8">
+              <h3 className="text-lg font-semibold mb-2">{t("comments")}</h3>
+              <TicketCommentList ticketId={ticket.id} editable={variant === "edit"} />
+            </div>
           )}
 
           {(variant === "edit" || variant === "create") && (
