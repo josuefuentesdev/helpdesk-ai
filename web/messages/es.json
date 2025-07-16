@@ -375,7 +375,8 @@
         "label": "Equipos"
       }
     },
-    "reset": "Reiniciar"
+    "reset": "Reiniciar",
+    "sampleWarning": "Solo se muestran usuarios de ejemplo"
   },
   "AuditFields": {
     "createdBy": "Creado por",

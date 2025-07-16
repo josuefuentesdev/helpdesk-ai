@@ -6,6 +6,7 @@ import { Icons } from "@/components/icons";
 import type { UserGetAllItem } from "@/types";
 import { DepartmentFacetedFilter } from "../data-table/department-faceted-filter";
 import { TeamFacetedFilter } from "../data-table/team-faceted-filter";
+import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 
 export function UserDataTableToolbar({
   table,
@@ -46,7 +47,7 @@ export function UserDataTableToolbar({
           column={table.getColumn("teams")}
           title={t('columns.team.label')}
         />
-      )}      
+      )}
       {isFiltered && (
         <Button
           variant="ghost"
@@ -57,6 +58,17 @@ export function UserDataTableToolbar({
           <Icons.x className="ml-2 h-4 w-4" />
         </Button>
       )}
+      {/* Tooltip warning for sample users */}
+      <div className="ml-4">
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Icons.alert className="text-yellow-500 cursor-pointer" />
+          </TooltipTrigger>
+          <TooltipContent side="bottom">
+            {t('sampleWarning')}
+          </TooltipContent>
+        </Tooltip>
+      </div>
     </div>
   );
 }

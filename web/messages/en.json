@@ -315,7 +315,8 @@
         "label": "Teams"
       }
     },
-    "reset": "Reset"
+    "reset": "Reset",
+    "sampleWarning": "Only showing sample users"
   },
   "AuditFields": {
     "createdBy": "Created by",
