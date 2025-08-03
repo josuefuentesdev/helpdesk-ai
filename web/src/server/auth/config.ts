@@ -83,6 +83,7 @@ const authConfig = {
   },
   pages: {
     signIn: "/sign-in",
+    verifyRequest: "/verify-request",
   },
 } satisfies NextAuthConfig;
 

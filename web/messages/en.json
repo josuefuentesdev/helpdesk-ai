@@ -32,6 +32,11 @@
     "haveAccount": "Already have an account?",
     "signInLink": "Sign in"
   },
+  "VerifyRequestPage": {
+    "title": "Check your email",
+    "subtitle": "A sign in link has been sent to your email address.",
+    "backToSignIn": "Back to sign in"
+  },
   "AssetsPage": {
     "title": "Assets",
     "newAsset": "New Asset"

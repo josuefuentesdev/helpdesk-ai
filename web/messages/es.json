@@ -32,6 +32,11 @@
     "haveAccount": "¿Ya tienes una cuenta?",
     "signInLink": "Inicia sesión"
   },
+  "VerifyRequestPage": {
+    "title": "Revisa tu correo electrónico",
+    "subtitle": "Se ha enviado un enlace de inicio de sesión a tu dirección de correo electrónico.",
+    "backToSignIn": "Volver al inicio de sesión"
+  },
   "AssetsPage": {
     "title": "Activos",
     "newAsset": "Nuevo Activo"
