@@ -1,6 +1,7 @@
 import { Home, Loader2, ArrowDown, AlertTriangle, AlertOctagon, Clock, HardDrive } from "lucide-react"
 import { IoTicketOutline } from "react-icons/io5";
 import { LuBox, LuCloud, LuCode, LuCpu, LuDownload, LuUser, LuX, LuTrash, LuPlus, LuEye, LuSquarePen } from "react-icons/lu"
+import { FaGithub } from "react-icons/fa";
 import { MdDevices } from "react-icons/md";
 import { Check, ChevronsUpDown } from "lucide-react"
 
@@ -26,7 +27,7 @@ export const Icons = {
   MEDIUM: ArrowDown,
   HIGH: AlertTriangle,
   URGENT: AlertOctagon,
-  
+
   // dashboard icons
   clock: Clock,
   hardDrive: HardDrive,
@@ -34,6 +35,9 @@ export const Icons = {
 
   // Information
   alert: AlertTriangle,
+
+  // brands
+  github: FaGithub,
 
   loader: Loader2,
   x: LuX,
