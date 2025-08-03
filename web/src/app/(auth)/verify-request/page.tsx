@@ -55,7 +55,7 @@ export default async function VerifyRequestPage() {
       </div>
       <div className="relative hidden bg-muted lg:block">
         <img
-          src="/helpdesk-ai-singin.png"
+          src="/helpdesk-ai-singin.jpg"
           alt="Image"
           className="absolute inset-0 h-full w-full object-cover"
         />
