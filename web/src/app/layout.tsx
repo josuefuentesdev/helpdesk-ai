@@ -9,6 +9,8 @@ import { getLocale } from 'next-intl/server';
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "@/components/ui/sonner";
 import { PostHogProvider } from "@/components/PostHogProvider";
+import { auth } from "@/server/auth";
+
 
 export const metadata: Metadata = {
   title: "Helpdesk AI",
@@ -47,10 +49,12 @@ export default async function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   const locale = await getLocale();
 
+  const session = await auth();
+
   return (
     <html lang={locale} className={`${geist.variable}`} suppressHydrationWarning>
       <body>
-        <PostHogProvider>
+        <PostHogProvider session={session}>
           <NextIntlClientProvider>
             <TRPCReactProvider>
               <ThemeProvider
