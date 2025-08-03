@@ -8,6 +8,7 @@ import type { Adapter } from 'next-auth/adapters';
 import { db } from "@/server/db";
 import { env } from "@/env";
 import type { UserRole } from "@prisma/client";
+import { sendVerificationRequest } from "@/lib/authSendRequest";
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -49,6 +50,8 @@ const providers: Provider[] = [
   ...oneClickProviders,
   Resend({
     from: env.AUTH_RESEND_EMAIL,
+    apiKey: env.AUTH_RESEND_KEY,
+    sendVerificationRequest: (params) => sendVerificationRequest(params),
   }),
   /**
    * ...add more providers here.
