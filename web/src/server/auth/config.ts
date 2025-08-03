@@ -8,7 +8,7 @@ import type { Adapter } from 'next-auth/adapters';
 import { db } from "@/server/db";
 import { env } from "@/env";
 import type { UserRole } from "@prisma/client";
-import { sendVerificationRequest } from "@/lib/authSendRequest";
+import { sendVerificationRequest } from "@/lib/auth-send-request";
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
