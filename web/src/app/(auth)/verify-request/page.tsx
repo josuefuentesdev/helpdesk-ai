@@ -2,7 +2,6 @@
 import { auth } from '@/server/auth';
 import { redirect } from 'next/navigation';
 import { getTranslations } from "next-intl/server"
-import { LanguageToggle } from "@/components/language-toggle"
 import { ModeToggle } from "@/components/mode-toggle"
 import { Button } from "@/components/ui/button"
 import { AuthHeader } from '../auth-header';
@@ -36,7 +35,6 @@ export default async function VerifyRequestPage() {
                 </Button>
               </div>
               <div className="flex justify-center">
-                <LanguageToggle />
                 <ModeToggle />
               </div>
             </div>
