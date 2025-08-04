@@ -28,7 +28,7 @@ export function BreadcrumbNav() {
           <Skeleton className="inline-block h-4 w-32 align-middle" />
         ) : error ? (
           <BreadcrumbItem>
-            <BreadcrumbPage className="text-red-500">Error loading breadcrumbs</BreadcrumbPage>
+            <BreadcrumbPage className="text-red-500">{t("errorLoading")}</BreadcrumbPage>
           </BreadcrumbItem>
         ) : breadcrumbs ? (
           breadcrumbs.map((crumb, idx) => {

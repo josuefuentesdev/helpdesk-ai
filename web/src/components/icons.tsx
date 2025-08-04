@@ -1,4 +1,4 @@
-import { Home, Loader2, ArrowDown, AlertTriangle, AlertOctagon, Clock, HardDrive } from "lucide-react"
+import { Home, Loader2, ArrowDown, AlertTriangle, AlertOctagon, Clock, HardDrive, Upload, Image } from "lucide-react"
 import { IoTicketOutline } from "react-icons/io5";
 import { LuBox, LuCloud, LuCode, LuCpu, LuDownload, LuUser, LuX, LuTrash, LuPlus, LuEye, LuSquarePen } from "react-icons/lu"
 import { FaGithub } from "react-icons/fa";
@@ -40,6 +40,9 @@ export const Icons = {
   github: FaGithub,
 
   loader: Loader2,
+  spinner: Loader2,
   x: LuX,
   trash: LuTrash,
+  upload: Upload,
+  imageIcon: Image,
 }

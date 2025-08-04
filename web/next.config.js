@@ -7,6 +7,16 @@ import "./src/env.js";
 
 /** @type {import("next").NextConfig} */
 const config = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'lb9mcgcvpitwiyix.public.blob.vercel-storage.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+  },
   async rewrites() {
     return [
       {

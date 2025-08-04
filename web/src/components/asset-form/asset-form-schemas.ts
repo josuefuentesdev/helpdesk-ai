@@ -18,7 +18,8 @@ export const baseFormSchema = z.object({
   serialNumber: z.string().optional(),
   purchaseAt: z.date().optional(),
   warrantyExpiresAt: z.date().optional(),
-  assignedToId: z.string().optional()
+  assignedToId: z.string().optional(),
+  image: z.string().optional()
 })
 
 export const editFormSchema = baseFormSchema

@@ -14,6 +14,7 @@ import { AssetStatusBadge } from "@/components/asset-table/asset-status-badge"
 import { AssetTypeBadge } from "@/components/asset-table/asset-type-badge"
 import { useRouter } from "next/navigation"
 import { useFormatter } from "next-intl"
+import Image from 'next/image'
 
 export function AssetDataTable({
   data,
@@ -38,6 +39,33 @@ export function AssetDataTable({
       meta: {
         title: t('id'),
         csv: true
+      }
+    }),
+    columnHelper.accessor("image", {
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title={t('image')} />
+      ),
+      cell: (image) => {
+        const imageValue = image.getValue();
+        return imageValue ? (
+          <div className="flex items-center">
+            <Image
+              src={imageValue}
+              alt="Asset"
+              className="h-8 w-8 rounded object-cover"
+              width={32}
+              height={32}
+            />
+          </div>
+        ) : (
+          <div className="flex items-center justify-center h-8 w-8 rounded bg-muted">
+            <Icons.imageIcon className="h-4 w-4 text-muted-foreground" />
+          </div>
+        );
+      },
+      meta: {
+        title: t('image'),
+        csv: false
       }
     }),
     columnHelper.accessor("type", {
@@ -136,12 +164,12 @@ export function AssetDataTable({
       ),
       filterFn: (row, id, value: string) => {
         return value.includes(row.getValue<string>(id))
-      },      
+      },
       meta: {
         title: t('department'),
         csv: true
       }
-    }),    
+    }),
     columnHelper.accessor("assignedToId", {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={t('assignedTo')} />
@@ -236,7 +264,7 @@ export function AssetDataTable({
     }),
     // dirty fix as https://github.com/TanStack/table/issues/4302
   ] as ColumnDef<AssetGetAllItem, unknown>[],
-  [columnHelper, formatter, t])
+    [columnHelper, formatter, t])
 
   return (
     <DataTable

@@ -23,6 +23,7 @@ import { AssetStatusFormField } from "@/components/asset-status-form-field"
 import { baseFormSchema, type AssetFormValues } from "./asset-form-schemas"
 import { UserFormField } from "@/components/user-form-field"
 import { AuditFieldsDisplay } from "@/components/audit-fields-display"
+import { AssetImageUpload } from "@/components/asset-image-upload"
 
 
 type AssetFormProps =
@@ -61,6 +62,7 @@ export function AssetForm({
       purchaseAt: asset?.purchaseAt ?? undefined,
       warrantyExpiresAt: asset?.warrantyExpiresAt ?? undefined,
       assignedToId: asset?.assignedToId ?? undefined,
+      image: asset?.image ?? undefined,
     },
   })
 
@@ -116,6 +118,23 @@ export function AssetForm({
                   <FormDescription className="text-muted-foreground/70">
                     {t('form.name.description')}
                   </FormDescription>
+                  <FormMessage className="text-xs" />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="image"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <AssetImageUpload
+                      value={field.value}
+                      onChange={field.onChange}
+                      disabled={variant === "view"}
+                    />
+                  </FormControl>
                   <FormMessage className="text-xs" />
                 </FormItem>
               )}
@@ -273,11 +292,11 @@ export function AssetForm({
 
           {(variant === "view" || variant === "edit") && asset && (
             <AuditFieldsDisplay
-                createdById={asset.createdById}
-                createdAt={asset.createdAt}
-                updatedAt={asset.updatedAt}
-                updatedById={asset.updatedById}
-              />
+              createdById={asset.createdById}
+              createdAt={asset.createdAt}
+              updatedAt={asset.updatedAt}
+              updatedById={asset.updatedById}
+            />
           )}
 
           {(variant === "edit" || variant === "create") && (

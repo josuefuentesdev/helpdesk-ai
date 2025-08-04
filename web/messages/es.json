@@ -299,6 +299,7 @@
   },
   "AssetDataTable": {
     "id": "ID",
+    "image": "Imagen",
     "type": "Tipo",
     "subtype": "Subtipo",
     "name": "Nombre",
@@ -474,7 +475,8 @@
   "BreadcrumbNav": {
     "tickets": "Tickets",
     "assets": "Activos",
-    "users": "Usuarios"
+    "users": "Usuarios",
+    "errorLoading": "Error cargando navegación"
   },
   "CreateAssetForm": {
     "success": "Activo creado exitosamente",
@@ -644,6 +646,41 @@
       "add": "Agregar comentario",
       "adding": "Agregando...",
       "hint": "Presiona Ctrl+Enter o Cmd+Enter para enviar"
+    }
+  },
+  "AssetImageUpload": {
+    "label": "Imagen del Activo",
+    "altText": "Imagen del activo",
+    "clickToUpload": "Haz clic para subir",
+    "replaceImage": "Reemplazar Imagen",
+    "remove": "Eliminar",
+    "uploadImage": "Subir Imagen",
+    "uploading": "Subiendo...",
+    "supportedFormats": "Formatos soportados: JPEG, PNG, WebP. Tamaño máximo: 5MB.",
+    "toast": {
+      "fileSizeError": "El tamaño del archivo debe ser menor a 5MB",
+      "fileTypeError": "Solo se permiten archivos JPEG, PNG y WebP",
+      "uploadSuccess": "Imagen subida exitosamente",
+      "uploadError": "Error al subir la imagen",
+      "removeSuccess": "Imagen eliminada"
+    }
+  },
+  "EditAssetForm": {
+    "toast": {
+      "success": "Activo actualizado exitosamente",
+      "error": "Error actualizando activo"
+    }
+  },
+  "EditTicketForm": {
+    "toast": {
+      "success": "Ticket actualizado exitosamente",
+      "error": "Error actualizando ticket"
+    }
+  },
+  "EditUserForm": {
+    "toast": {
+      "success": "Usuario actualizado exitosamente",
+      "error": "Error actualizando usuario"
     }
   }
 }

@@ -8,6 +8,7 @@ import type { UserGetOne } from "@/types"
 import { api } from "@/trpc/react"
 import { type editFormSchema } from "./user-form-schemas"
 import { toast } from "sonner"
+import { useTranslations } from "next-intl"
 
 export function EditUserForm({
   user,
@@ -15,15 +16,16 @@ export function EditUserForm({
   user: UserGetOne,
 }) {
   const router = useRouter();
+  const t = useTranslations("EditUserForm");
 
   const mutation = api.user.updateOne.useMutation({
     onSuccess: () => {
-      toast.success("User updated successfully")
+      toast.success(t("toast.success"))
       router.refresh();
     },
     onError: (error) => {
       console.error("Error updating user:", error)
-      toast.error("Error updating user")
+      toast.error(t("toast.error"))
     },
   })
 

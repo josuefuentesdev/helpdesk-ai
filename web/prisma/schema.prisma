@@ -69,27 +69,27 @@ model User {
   locale        Locale      @default(en)
   departmentId  String?
   department    Department? @relation(fields: [departmentId], references: [id])
-  createdAt         DateTime    @default(now())
-  createdById       String?
-  updatedAt         DateTime    @updatedAt
-  updatedById       String?
-  createdBy     User?      @relation("UserCreatedBy", fields: [createdById], references: [id])
-  updatedBy     User?     @relation("UserUpdatedBy", fields: [updatedById], references: [id])
+  createdAt     DateTime    @default(now())
+  createdById   String?
+  updatedAt     DateTime    @updatedAt
+  updatedById   String?
+  createdBy     User?       @relation("UserCreatedBy", fields: [createdById], references: [id])
+  updatedBy     User?       @relation("UserUpdatedBy", fields: [updatedById], references: [id])
 
   accounts Account[]
   sessions Session[]
   assets   Asset[]   @relation(name: "AssetAssignedTo")
 
-  createdAssets Asset[] @relation(name: "AssetCreatedBy")
-  updatedAssets Asset[] @relation(name: "AssetUpdatedBy")
-  createdUsers  User[]  @relation(name: "UserCreatedBy")
-  updatedUsers  User[]  @relation(name: "UserUpdatedBy")
-  createdTickets  Ticket[] @relation("TicketCreatedBy")
-  updatedTickets  Ticket[] @relation("TicketUpdatedBy")
+  createdAssets  Asset[]  @relation(name: "AssetCreatedBy")
+  updatedAssets  Asset[]  @relation(name: "AssetUpdatedBy")
+  createdUsers   User[]   @relation(name: "UserCreatedBy")
+  updatedUsers   User[]   @relation(name: "UserUpdatedBy")
+  createdTickets Ticket[] @relation("TicketCreatedBy")
+  updatedTickets Ticket[] @relation("TicketUpdatedBy")
 
   // --- Helpdesk Relations ---
-  teams         Team[]    @relation("TeamMembers")
-  assignedTickets Ticket[] @relation("TicketAgent")
+  teams           Team[]    @relation("TeamMembers")
+  assignedTickets Ticket[]  @relation("TicketAgent")
   comments        Comment[] @relation("CommentAuthor")
   notes           Note[]    @relation("NoteAuthor")
   // --- End Helpdesk Relations ---
@@ -137,6 +137,7 @@ model Asset {
   status            AssetStatus
   assignedToId      String?
   customFields      Json?
+  image             String? // URL to asset image stored in Vercel Blob
   createdAt         DateTime    @default(now())
   createdById       String
   updatedAt         DateTime    @updatedAt
@@ -165,56 +166,56 @@ enum TicketPriority {
 }
 
 model Team {
-  id    String  @id @default(cuid())
-  name  String  @unique
-  users User[]  @relation("TeamMembers")
-  tickets Ticket[]
+  id        String   @id @default(cuid())
+  name      String   @unique
+  users     User[]   @relation("TeamMembers")
+  tickets   Ticket[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model Ticket {
-  id          String        @id @default(cuid())
+  id          String         @id @default(cuid())
   title       String
   description String
   priority    TicketPriority
-  status      TicketStatus  @default(OPEN)
+  status      TicketStatus   @default(OPEN)
   closedAt    DateTime?
   dueAt       DateTime?
 
   // Assignment (either agent or team)
-  agentId     String?
-  agent       User?         @relation("TicketAgent", fields: [agentId], references: [id])
-  teamId      String?
-  team        Team?         @relation(fields: [teamId], references: [id])
+  agentId String?
+  agent   User?   @relation("TicketAgent", fields: [agentId], references: [id])
+  teamId  String?
+  team    Team?   @relation(fields: [teamId], references: [id])
 
-  createdAt         DateTime    @default(now())
-  createdById       String
-  updatedAt         DateTime    @updatedAt
-  updatedById       String?
-  deletedAt         DateTime?
+  createdAt   DateTime  @default(now())
+  createdById String
+  updatedAt   DateTime  @updatedAt
+  updatedById String?
+  deletedAt   DateTime?
 
-  createdBy  User  @relation(name: "TicketCreatedBy", fields: [createdById], references: [id])
-  updatedBy  User? @relation(name: "TicketUpdatedBy", fields: [updatedById], references: [id])
+  createdBy User  @relation(name: "TicketCreatedBy", fields: [createdById], references: [id])
+  updatedBy User? @relation(name: "TicketUpdatedBy", fields: [updatedById], references: [id])
 
   // Comments and Notes
-  comments    Comment[]
-  notes       Note[]
+  comments Comment[]
+  notes    Note[]
 
   // Indexes for search/filter
   @@index([status, priority, agentId, teamId, createdAt])
 }
 
 model Comment {
-  id        String   @id @default(cuid())
-  content   String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  ticketId  String
-  ticket    Ticket   @relation(fields: [ticketId], references: [id])
-  authorId  String
-  author    User     @relation("CommentAuthor", fields: [authorId], references: [id])
-  isInternal Boolean @default(false) // false: public comment
+  id         String   @id @default(cuid())
+  content    String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  ticketId   String
+  ticket     Ticket   @relation(fields: [ticketId], references: [id])
+  authorId   String
+  author     User     @relation("CommentAuthor", fields: [authorId], references: [id])
+  isInternal Boolean  @default(false) // false: public comment
 }
 
 model Note {

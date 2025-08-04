@@ -8,6 +8,7 @@ import type { AssetGetOne } from "@/types"
 import { api } from "@/trpc/react"
 import { type editFormSchema } from "./asset-form-schemas"
 import { toast } from "sonner"
+import { useTranslations } from "next-intl"
 
 export function EditAssetForm({
   asset,
@@ -15,15 +16,16 @@ export function EditAssetForm({
   asset: AssetGetOne,
 }) {
   const router = useRouter();
+  const t = useTranslations("EditAssetForm");
 
   const mutation = api.asset.updateOne.useMutation({
     onSuccess: () => {
-      toast.success("Asset updated successfully")
+      toast.success(t("toast.success"))
       router.refresh();
     },
     onError: (error) => {
       console.error("Error updating asset:", error)
-      toast.error("Error updating asset")
+      toast.error(t("toast.error"))
     },
   })
 

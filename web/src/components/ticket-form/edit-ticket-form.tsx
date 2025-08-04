@@ -8,6 +8,7 @@ import type { TicketGetOne } from "@/types"
 import { api } from "@/trpc/react"
 import { type editFormSchema } from "./ticket-form-schemas"
 import { toast } from "sonner"
+import { useTranslations } from "next-intl"
 
 export function EditTicketForm({
   ticket,
@@ -15,15 +16,16 @@ export function EditTicketForm({
   ticket: TicketGetOne,
 }) {
   const router = useRouter();
+  const t = useTranslations("EditTicketForm");
 
   const mutation = api.ticket.updateOne.useMutation({
     onSuccess: () => {
-      toast.success("Ticket updated successfully")
+      toast.success(t("toast.success"))
       router.refresh();
     },
     onError: (error) => {
       console.error("Error updating ticket:", error)
-      toast.error("Error updating ticket")
+      toast.error(t("toast.error"))
     },
   })
 

@@ -27,6 +27,7 @@ export const assetRouter = createTRPCRouter({
           warrantyExpiresAt: true,
           status: true,
           assignedToId: true,
+          image: true,
           createdAt: true,
           createdById: true,
           updatedAt: true,
@@ -54,6 +55,7 @@ export const assetRouter = createTRPCRouter({
           warrantyExpiresAt: true,
           status: true,
           assignedToId: true,
+          image: true,
           assignedTo: {
             select: {
               id: true,
@@ -88,6 +90,7 @@ export const assetRouter = createTRPCRouter({
       warrantyExpiresAt: z.date().optional(),
       status: z.nativeEnum(AssetStatus),
       assignedToId: z.string().optional(),
+      image: z.string().optional(),
     }))
     .mutation(({ ctx, input }) => {
       const { id, ...data } = input;
@@ -116,6 +119,7 @@ export const assetRouter = createTRPCRouter({
       warrantyExpiresAt: z.date().optional(),
       status: z.nativeEnum(AssetStatus),
       assignedToId: z.string().optional(),
+      image: z.string().optional(),
     }))
     .mutation(({ ctx, input }) => {
       return ctx.db.asset.create({

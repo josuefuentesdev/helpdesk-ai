@@ -338,6 +338,7 @@
   },
   "AssetDataTable": {
     "id": "ID",
+    "image": "Image",
     "type": "Type",
     "subtype": "Subtype",
     "name": "Name",
@@ -426,7 +427,8 @@
   "BreadcrumbNav": {
     "tickets": "Tickets",
     "assets": "Assets",
-    "users": "Users"
+    "users": "Users",
+    "errorLoading": "Error loading breadcrumbs"
   },
   "CreateAssetForm": {
     "success": "Asset created successfully",
@@ -645,6 +647,41 @@
       "add": "Add Comment",
       "adding": "Adding...",
       "hint": "Press Ctrl+Enter or Cmd+Enter to submit"
+    }
+  },
+  "AssetImageUpload": {
+    "label": "Asset Image",
+    "altText": "Asset image",
+    "clickToUpload": "Click to upload",
+    "replaceImage": "Replace Image",
+    "remove": "Remove",
+    "uploadImage": "Upload Image",
+    "uploading": "Uploading...",
+    "supportedFormats": "Supported formats: JPEG, PNG, WebP. Max size: 5MB.",
+    "toast": {
+      "fileSizeError": "File size must be less than 5MB",
+      "fileTypeError": "Only JPEG, PNG, and WebP files are allowed",
+      "uploadSuccess": "Image uploaded successfully",
+      "uploadError": "Failed to upload image",
+      "removeSuccess": "Image removed"
+    }
+  },
+  "EditAssetForm": {
+    "toast": {
+      "success": "Asset updated successfully",
+      "error": "Error updating asset"
+    }
+  },
+  "EditTicketForm": {
+    "toast": {
+      "success": "Ticket updated successfully",
+      "error": "Error updating ticket"
+    }
+  },
+  "EditUserForm": {
+    "toast": {
+      "success": "User updated successfully",
+      "error": "Error updating user"
     }
   }
 }
