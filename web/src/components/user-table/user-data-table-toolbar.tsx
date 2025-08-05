@@ -24,7 +24,7 @@ export function UserDataTableToolbar({
         onChange={(event) =>
           table.getColumn("name")?.setFilterValue(event.target.value)
         }
-        className="max-w-sm"
+        className="max-w-sm min-w-[130px]"
       />
       <Input
         placeholder={t('columns.email.placeholder')}
@@ -32,7 +32,7 @@ export function UserDataTableToolbar({
         onChange={(event) =>
           table.getColumn("email")?.setFilterValue(event.target.value)
         }
-        className="max-w-sm"
+        className="max-w-sm min-w-[130px]"
       />
       {table.getColumn("department") && (
         <DepartmentFacetedFilter
@@ -59,7 +59,7 @@ export function UserDataTableToolbar({
         </Button>
       )}
       {/* Tooltip warning for sample users */}
-      <div className="ml-4">
+      <div className="m-2">
         <Tooltip>
           <TooltipTrigger asChild>
             <Icons.alert className="text-yellow-500 cursor-pointer" />
