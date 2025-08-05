@@ -61,7 +61,7 @@ const chartPalette = [
 ];
 
 // Generic function to map data to chart config and color
-function mapDataWithColors<T extends Record<string, unknown>>(data: T[], key = 'name', labelKey = 'label'): (T & { fill: string })[] {
+function mapDataWithColors<T extends Record<string, unknown>>(data: T[], _key = 'name', _labelKey = 'label'): (T & { fill: string })[] {
   return data.map((item, idx) => ({
     ...item,
     fill: chartPalette[idx % chartPalette.length] ?? '', // always a string
@@ -113,8 +113,8 @@ export function Analytics({ dashboardStats }: AnalyticsProps) {
             nameKey="name"
             cx="50%"
             cy="50%"
-            innerRadius={60}
-            outerRadius={100}
+            innerRadius={50}
+            outerRadius={85}
             paddingAngle={2}
           />
           <ChartLegend content={<ChartLegendContent nameKey="name" />} verticalAlign="bottom" />
@@ -158,8 +158,8 @@ export function Analytics({ dashboardStats }: AnalyticsProps) {
             nameKey="name"
             cx="50%"
             cy="50%"
-            innerRadius={60}
-            outerRadius={100}
+            innerRadius={50}
+            outerRadius={85}
             paddingAngle={2}
           />
           <ChartLegend content={<ChartLegendContent nameKey="name" />} verticalAlign="bottom" />
@@ -180,8 +180,8 @@ export function Analytics({ dashboardStats }: AnalyticsProps) {
   ];
 
   return (
-    <>
-      <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-2">
+    <div className="space-y-4 overflow-hidden">
+      <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">
         {chartCards.map((card, _) => (
           <ChartCard
             key={card.title}
@@ -191,37 +191,39 @@ export function Analytics({ dashboardStats }: AnalyticsProps) {
             footer={card.footer}
             className={card.className}
           >
-            <ChartContainer config={card.config} className="mx-auto aspect-square max-h-[250px]">
+            <ChartContainer config={card.config} className="mx-auto aspect-square max-h-[220px] sm:max-h-[250px] w-full min-h-[180px]">
               {card.Chart({ data: card.data })}
             </ChartContainer>
           </ChartCard>
         ))}
       </div>
 
-      <div className="grid gap-4 mt-4">
+      <div className="space-y-4">
         <ChartCard
           title={t('ticketsOverTime.title')}
           description={t('ticketsOverTime.description')}
           icon={LineChartIcon}
-          className="col-span-2"
+          className="w-full"
         >
-          <ChartContainer config={{ count: { label: t('tickets'), color: chartPalette[0] } }} className="w-full h-[300px]">
+          <ChartContainer config={{ count: { label: t('tickets'), color: chartPalette[0] } }} className="w-full h-[250px] sm:h-[300px]">
             <RechartsLineChart
               data={dashboardStats.ticketTrend}
-              margin={{ top: 5, right: 20, left: 0, bottom: 5 }}
+              margin={{ top: 5, right: 10, left: 0, bottom: 5 }}
             >
               <XAxis
                 dataKey="date"
                 tickLine={false}
                 axisLine={false}
-                tickMargin={10}
+                tickMargin={8}
                 className="text-xs"
+                interval="preserveStartEnd"
               />
               <YAxis
                 tickLine={false}
                 axisLine={false}
-                tickMargin={10}
+                tickMargin={8}
                 className="text-xs"
+                width={30}
               />
               <ChartTooltip content={<ChartTooltipContent />} />
               <Line
@@ -240,29 +242,34 @@ export function Analytics({ dashboardStats }: AnalyticsProps) {
           title={t('assetsByType.title')}
           description={t('assetsByType.description')}
           icon={Icons.assets}
-          className="col-span-2"
+          className="w-full"
           footer={
             <div className="text-xs text-muted-foreground">
               {t('assetsByType.showingTypes', { count: dashboardStats.assetTypes?.length || 0 })}
             </div>
           }
         >
-          <ChartContainer config={assetTypeConfig} className="w-full h-[300px]">
+          <ChartContainer config={assetTypeConfig} className="w-full h-[250px] sm:h-[300px]">
             <BarChart
               data={assetTypesWithColor}
-              margin={{ top: 5, right: 20, left: 0, bottom: 5 }}
-              barSize={36}
+              margin={{ top: 5, right: 10, left: 0, bottom: 5 }}
+              barSize={24}
             >
               <XAxis
                 dataKey="type"
                 tickLine={false}
                 axisLine={false}
                 className="text-xs"
+                interval={0}
+                angle={-45}
+                textAnchor="end"
+                height={60}
               />
               <YAxis
                 tickLine={false}
                 axisLine={false}
                 className="text-xs"
+                width={30}
               />
               <ChartTooltip content={<ChartTooltipContent nameKey="type" />} />
               <Bar
@@ -276,17 +283,20 @@ export function Analytics({ dashboardStats }: AnalyticsProps) {
           </ChartContainer>
         </ChartCard>
       </div>
-    </>
+    </div>
   );
 }
 
 export function AnalyticsSkeleton() {
   return (
-    <div className="grid gap-4">
-      <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-2"></div>
-      <div className="grid gap-4">
-        <Skeleton className="h-[300px] w-full" />
-        <Skeleton className="h-[300px] w-full" />
+    <div className="space-y-4 overflow-hidden">
+      <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">
+        <Skeleton className="h-[220px] sm:h-[250px] w-full" />
+        <Skeleton className="h-[220px] sm:h-[250px] w-full" />
+      </div>
+      <div className="space-y-4">
+        <Skeleton className="h-[250px] sm:h-[300px] w-full" />
+        <Skeleton className="h-[250px] sm:h-[300px] w-full" />
       </div>
     </div>
   )
