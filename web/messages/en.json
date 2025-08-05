@@ -278,7 +278,7 @@
   "DataTablePagination": {
     "rowsPerPage": "Rows per page",
     "page": "Page {page} of {pageCount}",
-    "rowsSelected": "{selected} of {total} row(s) selected",
+    "rowsSelected": "{selected, plural, =0 {0 of {total} rows selected} =1 {1 of {total} row selected} other {# of {total} rows selected}}",
     "goToFirstPage": "Go to first page",
     "goToPreviousPage": "Go to previous page",
     "goToNextPage": "Go to next page",
