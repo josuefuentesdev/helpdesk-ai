@@ -35,14 +35,14 @@ export function AssetDataTableToolbar({
 
   const departmentOptions = useMemo(() => {
     const uniqueDepartments = new Set<string>();
-    
+
     table.getRowModel().rows.forEach((row) => {
       const departmentName = row.original.assignedTo?.department?.name;
       if (departmentName) {
         uniqueDepartments.add(departmentName);
       }
     });
-    
+
     return Array.from(uniqueDepartments).map((name) => ({
       label: name,
       value: name,
@@ -59,7 +59,7 @@ export function AssetDataTableToolbar({
         onChange={(event) =>
           table.getColumn("name")?.setFilterValue(event.target.value)
         }
-        className="max-w-sm"
+        className="max-w-sm min-w-[130px]"
       />
       {table.getColumn("status") && (
         <DataTableFacetedFilter
@@ -83,15 +83,15 @@ export function AssetDataTableToolbar({
         />
       )}
       {isFiltered && (
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => table.resetColumnFilters()}
-          >
-            {t('reset')}
-            <Icons.x />
-          </Button>
-        )}
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => table.resetColumnFilters()}
+        >
+          {t('reset')}
+          <Icons.x />
+        </Button>
+      )}
     </div>
   );
 }

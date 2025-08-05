@@ -75,9 +75,9 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className={cn("space-y-4 flex flex-col h-full min-h-0", className)}>
-      <div className="flex items-center">
+      <div className="flex items-center overflow-x-auto">
         {toolbar?.(table)}
-        <div className="flex items-center gap-2 ml-auto">
+        <div className="flex items-center gap-2 ml-auto shrink-0">
           <DataTableViewOptions table={table} />
           <DataTableDownload table={table} />
         </div>
@@ -89,7 +89,7 @@ export function DataTable<TData, TValue>({
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead 
+                    <TableHead
                       key={header.id}
                       className={header.column.getIsPinned() ?
                         "sticky right-0 z-0 bg-accent shadow-md" : ""
