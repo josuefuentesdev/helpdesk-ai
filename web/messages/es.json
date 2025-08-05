@@ -568,6 +568,11 @@
     },
     "reset": "Reiniciar"
   },
+  "TicketBulkStatusUpdate": {
+    "updateStatus": "Actualizar Estado ({count})",
+    "statusUpdateSuccess": "Estado actualizado exitosamente para {count} tickets",
+    "statusUpdateError": "Error al actualizar estado: {error}"
+  },
   "TicketsPage": {
     "title": "Tickets",
     "newTicket": "Nuevo Ticket"

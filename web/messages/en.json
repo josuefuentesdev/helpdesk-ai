@@ -569,6 +569,11 @@
     },
     "reset": "Reset"
   },
+  "TicketBulkStatusUpdate": {
+    "updateStatus": "Update Status ({count})",
+    "statusUpdateSuccess": "Successfully updated status for {count} tickets",
+    "statusUpdateError": "Failed to update status: {error}"
+  },
   "TicketsPage": {
     "title": "Tickets",
     "newTicket": "New Ticket"

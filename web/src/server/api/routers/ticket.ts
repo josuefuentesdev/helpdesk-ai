@@ -141,4 +141,31 @@ export const ticketRouter = createTRPCRouter({
       });
     }),
 
+  updateStatusBulk: protectedProcedure
+    .input(z.object({
+      ticketIds: z.array(z.string()),
+      status: z.nativeEnum(TicketStatus),
+    }))
+    .mutation(async ({ ctx, input }) => {
+      const { ticketIds, status } = input;
+      
+      // Update all tickets with the new status
+      const updatedTickets = await ctx.db.ticket.updateMany({
+        where: {
+          id: { in: ticketIds },
+          deletedAt: null,
+        },
+        data: {
+          status,
+          updatedById: ctx.session.user.id,
+          // If status is CLOSED, set closedAt timestamp
+          ...(status === 'CLOSED' && { closedAt: new Date() }),
+          // If status is not CLOSED and was previously closed, clear closedAt
+          ...(status !== 'CLOSED' && { closedAt: null }),
+        },
+      });
+
+      return updatedTickets;
+    }),
+
 });

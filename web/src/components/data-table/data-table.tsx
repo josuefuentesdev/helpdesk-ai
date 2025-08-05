@@ -59,6 +59,7 @@ export function DataTable<TData, TValue>({
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
     getFacetedUniqueValues: getFacetedUniqueValues(),
+    enableRowSelection: true,
     state: {
       sorting,
       columnFilters,

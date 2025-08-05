@@ -14,6 +14,7 @@ import { useFormatter } from "next-intl"
 import { TicketDataTableToolbar } from "./ticket-data-table-toolbar"
 import { TicketStatusBadge } from "./ticket-status-badge"
 import { TicketPriorityBadge } from "./ticket-priority-badge"
+import { Checkbox } from "@/components/ui/checkbox"
 
 export function TicketDataTable({
   data,
@@ -31,6 +32,28 @@ export function TicketDataTable({
 
   const columnHelper = createColumnHelper<TicketGetAllItem>()
   const columns = useMemo(() => [
+    columnHelper.display({
+      id: "select",
+      header: ({ table }) => (
+        <Checkbox
+          checked={
+            table.getIsAllPageRowsSelected() ||
+            (table.getIsSomePageRowsSelected() && "indeterminate")
+          }
+          onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+          aria-label="Select all"
+        />
+      ),
+      cell: ({ row }) => (
+        <Checkbox
+          checked={row.getIsSelected()}
+          onCheckedChange={(value) => row.toggleSelected(!!value)}
+          aria-label="Select row"
+        />
+      ),
+      enableSorting: false,
+      enableHiding: false,
+    }),
     columnHelper.accessor("id", {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={t('id')} />
