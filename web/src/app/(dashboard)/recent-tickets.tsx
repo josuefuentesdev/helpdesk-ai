@@ -97,13 +97,13 @@ export function RecentTickets({ className }: { className?: string }) {
           </Link>
         </Button>
       </CardHeader>
-      <CardContent className="flex-1 min-h-0">
+      <CardContent className="flex-1 md:min-h-0">
         {isPending ? (
           <LoadingState />
         ) : error ? (
           <ErrorState />
         ) : recentTickets && recentTickets.length > 0 ? (
-          <ScrollArea className="h-full overflow-hidden ">
+          <ScrollArea className="h-full md:overflow-hidden">
             {recentTickets.map((ticket) => (
               <TicketItem key={ticket.id} ticket={ticket} />
             ))}

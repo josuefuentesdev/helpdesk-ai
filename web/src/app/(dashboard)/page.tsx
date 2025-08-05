@@ -24,7 +24,7 @@ export default function DashboardPage() {
         <TabsTrigger value="analytics">{t("analytics")}</TabsTrigger>
       </TabsList>
       <TabsContent value="overview" className="">
-        <div className="flex flex-col h-[calc(100vh-var(--header-height)-7rem)] space-y-4 ">
+        <div className="flex flex-col md:h-[calc(100vh-var(--header-height)-7rem)] space-y-4">
           <div className="grid gap-3 sm:gap-4 grid-cols-1 xs:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
             {isPending ? (
               <>
@@ -62,9 +62,9 @@ export default function DashboardPage() {
               </>
             )}
           </div>
-          <div className="flex-1 flex flex-col md:flex-row gap-4 min-h-0">
-            <RecentTickets className="h-full flex-1 md:flex-[4]" />
-            <WarrantyExpiringCard className="h-full flex-1 md:flex-[3]" />
+          <div className="flex-1 flex flex-col md:flex-row gap-4 md:min-h-0">
+            <RecentTickets className="min-h-[400px] md:h-full flex-1 md:flex-[4]" />
+            <WarrantyExpiringCard className="min-h-[300px] md:h-full flex-1 md:flex-[3]" />
           </div>
         </div>
       </TabsContent>
