@@ -1,0 +1,41 @@
+---
+description: theme color palette
+globs: global.css
+alwaysApply: false
+---
+
+Theme: Clean Slate
+
+⸻
+
+Light Mode
+• Background / Foreground: #f8fafc / #1e293b
+• Primary: #6366f1 with white text
+• Secondary: #e5e7eb, text: #374151
+• Accent: #e0e7ff, text: #374151
+• Cards & Popovers: White with dark text
+• Muted: #f3f4f6 / #6b7280
+• Border/Input: #d1d5db, Ring: #6366f1
+• Destructive: Red #ef4444 with white text
+• Charts: Purple tones from #6366f1 to #312e81
+• Sidebar: Light gray background with purple highlights and dark text
+
+⸻
+
+Dark Mode
+• Background / Foreground: #0f172a / #e2e8f0
+• Primary: #818cf8 with dark text
+• Secondary: #2d3748, text: #d1d5db
+• Accent: #374151, text: #d1d5db
+• Cards & Popovers: #1e293b with light text
+• Muted: #1e293b / #9ca3af
+• Border/Input: #4b5563, Ring: #818cf8
+• Destructive: Red #ef4444 with dark text
+• Charts: Purple tones from #818cf8 to #3730a3
+• Sidebar: Dark background with purple highlights and light text
+
+⸻
+
+Summary
+
+“Clean Slate” uses soft purples and slate grays for a balanced, modern look. Light mode is bright with cool contrasts; dark mode is deep and muted with strong legibility.
