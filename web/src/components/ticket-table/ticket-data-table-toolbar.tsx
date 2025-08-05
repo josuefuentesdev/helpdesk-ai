@@ -9,6 +9,7 @@ import { Button } from "../ui/button";
 import { Icons } from "../icons";
 import type { TicketGetAllItem } from "@/types";
 import { TicketPriorityBadge } from "./ticket-priority-badge";
+import { TicketBulkStatusUpdate } from "./ticket-bulk-status-update";
 
 export function TicketDataTableToolbar({
   table,
@@ -40,6 +41,10 @@ export function TicketDataTableToolbar({
       })),
     [tTicketStatus]
   );
+
+  const selectedTicketIds = table
+    .getFilteredSelectedRowModel()
+    .rows.map((row) => row.original.id);
 
   return (
     <div className="flex items-center space-x-2">
@@ -75,6 +80,10 @@ export function TicketDataTableToolbar({
           <Icons.x />
         </Button>
       )}
+      <TicketBulkStatusUpdate
+        selectedTicketIds={selectedTicketIds}
+        onSuccess={() => table.resetRowSelection()}
+      />
     </div>
   );
 }
