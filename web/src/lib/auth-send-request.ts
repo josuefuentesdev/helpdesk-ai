@@ -40,18 +40,18 @@ function html(params: { url: string; host: string; theme?: Theme }) {
 
   const escapedHost = host.replace(/\./g, "&#8203;.");
 
-  // Use actual shadcn theme colors based on your theme summary
-  const brandColor = theme?.brandColor ?? "#3b82f6"; // Correct primary blue color
+  // Use Clean Slate theme colors
+  const brandColor = theme?.brandColor ?? "#6366f1"; // Primary purple
   const color = {
-    background: "#ffffff", // Light mode background: white
-    text: "#333333", // Light mode foreground: dark gray
-    mainBackground: "#ffffff", // Card background: white
+    background: "#f8fafc", // Light mode background
+    text: "#1e293b", // Light mode foreground
+    mainBackground: "#ffffff", // Cards & Popovers: White
     buttonBackground: brandColor,
     buttonBorder: brandColor,
-    buttonText: theme?.buttonText ?? "#ffffff", // White text on blue button
-    muted: "#f3f4f6", // Light gray muted background
+    buttonText: theme?.buttonText ?? "#ffffff", // White text on primary button
+    muted: "#f3f4f6", // Muted background
     mutedForeground: "#6b7280", // Muted text color
-    border: "#e5e7eb", // Light gray border
+    border: "#d1d5db", // Border color
   };
 
   return `
