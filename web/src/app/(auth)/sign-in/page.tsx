@@ -29,9 +29,9 @@ export default async function SignInPage({
       </div>
       <div className="relative hidden bg-muted lg:block">
         <img
-          src="/helpdesk-ai-singin.jpg"
+          src="/banner.jpg"
           alt="Image"
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover object-right"
         />
       </div>
     </div>

@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     siteName: "Helpdesk AI",
     images: [
       {
-        url: "https://www.helpdesk-ai.org/og-image.jpg",
+        url: "https://www.helpdesk-ai.org/banner.jpg",
         width: 1200,
         height: 630,
         alt: "Helpdesk AI",
