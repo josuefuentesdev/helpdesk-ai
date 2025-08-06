@@ -32,16 +32,16 @@ const ChartCard = ({
 }) => (
   <Card className={`flex flex-col ${className}`}>
     <CardHeader className="items-center pb-0">
-      <div className="flex items-center gap-2">
-        <Icon className="h-4 w-4 text-muted-foreground" />
-        <CardTitle className="text-lg">{title}</CardTitle>
+      <div className="flex items-center gap-2 min-w-0">
+        <Icon className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+        <CardTitle className="text-lg break-words hyphens-auto min-w-0">{title}</CardTitle>
       </div>
-      {description && <CardDescription>{description}</CardDescription>}
+      {description && <CardDescription className="break-words hyphens-auto">{description}</CardDescription>}
     </CardHeader>
     <CardContent className="flex-1 pb-0">
       {children}
     </CardContent>
-    {footer && <CardFooter className="flex-col gap-1 text-sm pt-0">
+    {footer && <CardFooter className="flex-col gap-1 text-sm pt-0 min-w-0">
       {footer}
     </CardFooter>}
   </Card>
@@ -122,8 +122,8 @@ export function Analytics({ dashboardStats }: AnalyticsProps) {
       ),
       footer: (
         <div className="flex items-center gap-2 text-sm">
-          <TrendingUp className="h-4 w-4 text-muted-foreground" />
-          <span className="text-muted-foreground">
+          <TrendingUp className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+          <span className="text-muted-foreground text-xs sm:text-sm break-words hyphens-auto">
             {dashboardStats.open + dashboardStats.inProgress + dashboardStats.resolved + dashboardStats.closed > 0
               ? t('ticketStatus.showingAll')
               : t('ticketStatus.noData')}
@@ -167,8 +167,8 @@ export function Analytics({ dashboardStats }: AnalyticsProps) {
       ),
       footer: (
         <div className="flex items-center gap-2 text-sm">
-          <TrendingUp className="h-4 w-4 text-muted-foreground" />
-          <span className="text-muted-foreground">
+          <TrendingUp className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+          <span className="text-muted-foreground text-xs sm:text-sm break-words hyphens-auto">
             {dashboardStats.active + dashboardStats.inactive + dashboardStats.decommissioned > 0
               ? t('assetStatus.showingAll')
               : t('assetStatus.noData')}
@@ -189,9 +189,9 @@ export function Analytics({ dashboardStats }: AnalyticsProps) {
             description={card.description}
             icon={card.icon}
             footer={card.footer}
-            className={card.className}
+            className={`${card.className} min-w-0`}
           >
-            <ChartContainer config={card.config} className="mx-auto aspect-square max-h-[220px] sm:max-h-[250px] w-full min-h-[180px]">
+            <ChartContainer config={card.config} className="mx-auto aspect-square max-h-[220px] sm:max-h-[250px] w-full min-h-[180px] min-w-0">
               {card.Chart({ data: card.data })}
             </ChartContainer>
           </ChartCard>
@@ -203,9 +203,9 @@ export function Analytics({ dashboardStats }: AnalyticsProps) {
           title={t('ticketsOverTime.title')}
           description={t('ticketsOverTime.description')}
           icon={LineChartIcon}
-          className="w-full"
+          className="w-full min-w-0"
         >
-          <ChartContainer config={{ count: { label: t('tickets'), color: chartPalette[0] } }} className="w-full h-[250px] sm:h-[300px]">
+          <ChartContainer config={{ count: { label: t('tickets'), color: chartPalette[0] } }} className="w-full h-[250px] sm:h-[300px] min-w-0">
             <RechartsLineChart
               data={dashboardStats.ticketTrend}
               margin={{ top: 5, right: 10, left: 0, bottom: 5 }}
@@ -242,14 +242,14 @@ export function Analytics({ dashboardStats }: AnalyticsProps) {
           title={t('assetsByType.title')}
           description={t('assetsByType.description')}
           icon={Icons.assets}
-          className="w-full"
+          className="w-full min-w-0"
           footer={
-            <div className="text-xs text-muted-foreground">
+            <div className="text-xs text-muted-foreground break-words hyphens-auto">
               {t('assetsByType.showingTypes', { count: dashboardStats.assetTypes?.length || 0 })}
             </div>
           }
         >
-          <ChartContainer config={assetTypeConfig} className="w-full h-[250px] sm:h-[300px]">
+          <ChartContainer config={assetTypeConfig} className="w-full h-[250px] sm:h-[300px] min-w-0">
             <BarChart
               data={assetTypesWithColor}
               margin={{ top: 5, right: 10, left: 0, bottom: 5 }}
